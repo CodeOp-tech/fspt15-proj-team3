@@ -4,10 +4,10 @@ import CountdownTimer from "../Components/CountdownTimer";
 
 function BreakPage() {
 
-  const THREE_DAYS_IN_MS = 1 * 60 * 1000;
+  const ONE_MIN_IN_MS = 1 * 60 * 1000;
   const NOW_IN_MS = new Date().getTime();
 
-  const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
+  const dateTimeAfterOneMin = NOW_IN_MS + ONE_MIN_IN_MS;
 
   return (
     <div className="App">
@@ -15,7 +15,7 @@ function BreakPage() {
       <p> Break Page </p>
 
       <h1>Countdown Timer</h1>
-      <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+      <CountdownTimer targetDate={dateTimeAfterOneMin} />
       
     </div>
   )

@@ -2,11 +2,13 @@ import React from 'react';
 import { useCountdown } from '../Hooks/useCountDown'
 import DateTimeDisplay from './DateTimeDisplay';
 
+//Parent component that conditionally renders ShowCounter or ExpirydNotice
+
 const ExpiredNotice = () => {
   return (
     <div className="expired-notice">
-      <span>Expired!!!</span>
-      <p>Please select a future date and time.</p>
+      <span> Your Break has finished </span>
+      <p> Reset to continue break </p>
     </div>
   );
 };
@@ -31,14 +33,13 @@ const ShowCounter = ({ minutes, seconds }) => {
 
 const CountdownTimer = ({ targetDate }) => {
   const [minutes, seconds] = useCountdown(targetDate);
+  //takes min and second of targetDate define in BreakPage
 
   if (minutes + seconds <= 0) {
     return <ExpiredNotice />;
   } else {
     return (
-      <ShowCounter
-        //days={days}
-        //hours={hours}
+        <ShowCounter
         minutes={minutes}
         seconds={seconds}
       />

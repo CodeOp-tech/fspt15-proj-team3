@@ -1,17 +1,9 @@
-import React from 'react';
+import {React, useState} from 'react';
 import { useCountdown } from '../Hooks/useCountDown'
+import BreakEnd from './BreakEnd';
 import DateTimeDisplay from './DateTimeDisplay';
 
 //Parent component that conditionally renders ShowCounter or ExpiredNotice
-
-const ExpiredNotice = () => {
-  return (
-    <div className="expired-notice">
-      <span> Your Break has finished </span>
-      <p> Reset to continue break </p>
-    </div>
-  );
-};
 
 const ShowCounter = ({ minutes, seconds }) => {
   return (
@@ -31,19 +23,37 @@ const ShowCounter = ({ minutes, seconds }) => {
   );
 };
 
-const CountdownTimer = ({targetTimeCB, start}) => {
+const CountdownTimer = ({targetTimeCB, handleChangeMinCB, targetMin}) => {
+  const [start, setStart] = useState(true)
+  
+  const toggleStart = () => {
+    setStart(!start)
+    console.log(start)
+}
   const [minutes, seconds] = useCountdown(targetTimeCB, start);
   //takes min and second of targetDate defined in BreakPage
 
   if (minutes + seconds <= 0) {
-    return <ExpiredNotice />;
+    return <BreakEnd />;
   } else {
-    
     return (
+      <div>
         <ShowCounter
         minutes={minutes}
         seconds={seconds}
       />
+
+      <div>
+        <input
+        type="number"
+        value={targetMin}
+        onChange={handleChangeMinCB}>
+        </input>
+      </div>
+
+      <button onClick={toggleStart}> Start/Pause </button>
+      
+     </div>
     );
   }
 };

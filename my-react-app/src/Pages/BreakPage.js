@@ -4,7 +4,7 @@ import CountdownTimer from "../Components/CountdownTimer";
 
 function BreakPage() {
   const [targetMin, setTargetMin] = useState(1)
-  const [start, setStart] = useState(true)
+  //const [start, setStart] = useState(true)
 
   const MIN_IN_MS = targetMin * 60 * 1000;
   const NOW_IN_MS = new Date().getTime();
@@ -14,9 +14,12 @@ function BreakPage() {
     setTargetMin(e.target.value);
       }
 
-  const toggleStart = () => {
+
+  /*const toggleStart = () => {
         setStart(!start)
-    }
+        console.log(start)
+  }
+  */
 
   return (
     <div className="App">
@@ -26,9 +29,12 @@ function BreakPage() {
       <h1>Countdown Timer</h1>
       <CountdownTimer 
       targetTimeCB={targetTime}
-      start={start} />
+      handleChangeMinCB={handleChangeMin}
+      targetMin={targetMin} />
 
+{/*
       <div>
+        <label> remove </label>
         <input
         type="number"
         value={targetMin}
@@ -37,7 +43,7 @@ function BreakPage() {
       </div>
 
       <button onClick={toggleStart}> Start/Pause </button>
-      
+  */}  
     </div>
   )
 }

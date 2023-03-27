@@ -9,28 +9,28 @@ const useCountdown = (targetTimeCB, start) => {
   console.log(countDownTime)
 
 //Time remaining
-  const [countDown, setCountDown] = useState(
+  const [timer, setTimer] = useState(
     countDownTime - new Date().getTime()
   );
-  console.log(countDown)
+  console.log(timer)
 
   //setInterval browser API method to calculate the spare time every second(1000 milliseconds).
   useEffect(() => {
     const interval = setInterval(() => {
-      if (start === true)
-      setCountDown(countDownTime - new Date().getTime());
+      if (start)
+      setTimer(countDownTime - new Date().getTime());
     }, 1000);
   
     return () => clearInterval(interval);
   }, [countDownTime]);
 
-  return getReturnValues(countDown);
+  return getReturnValues(timer);
 };
 
-const getReturnValues = (countDown) => {
+const getReturnValues = (timer) => {
   // calculate time left
-  const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((countDown % (1000 * 60)) / 1000);
+  const minutes = Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timer % (1000 * 60)) / 1000);
   return [minutes, seconds];
 };
 

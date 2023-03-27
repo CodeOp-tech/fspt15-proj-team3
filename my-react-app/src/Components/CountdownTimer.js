@@ -23,13 +23,19 @@ const ShowCounter = ({ minutes, seconds }) => {
   );
 };
 
-const CountdownTimer = ({targetTimeCB, handleChangeMinCB, targetMin, setTargetMinCB}) => {
+const CountdownTimer = ({targetTimeCB, targetMin, setTargetMinCB}) => {
   const [start, setStart] = useState(true)
   
   const toggleStart = () => {
     setStart(!start)
     console.log(start)
 }
+
+const handleChangeMin = (e) => {
+  setTargetMinCB(e.target.value);
+    }
+
+
   const [minutes, seconds] = useCountdown(targetTimeCB, start);
   //takes min and second of targetDate defined in BreakPage
 
@@ -49,7 +55,7 @@ const CountdownTimer = ({targetTimeCB, handleChangeMinCB, targetMin, setTargetMi
         <input
         type="number"
         value={targetMin}
-        onChange={handleChangeMinCB}>
+        onChange={handleChangeMin}>
         </input>
       </div>
 

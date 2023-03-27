@@ -1,7 +1,10 @@
 import React from 'react';
+import { NavLink} from "react-router-dom";
 
-// re-usable component to show time remaining
-const BreakEnd = () => {
+
+const BreakEnd = ({setTargetMinCB}) => {
+
+
   return (
     <div className="container card">
 
@@ -16,11 +19,20 @@ const BreakEnd = () => {
       <div>
 
         <div>
-        <button> Explore more !</button>
+        <NavLink
+        to="/dashboard">
+        <button
+        > Explore more !</button>
+        </NavLink>
         </div>
 
         <div>
-        <button> Repeat break </button>
+        <NavLink
+        to="/break">
+        <button
+        onClick={()=> setTargetMinCB(1)}
+        > Repeat break </button>
+        </NavLink>
         </div>
 
         <div>

@@ -23,7 +23,7 @@ const ShowCounter = ({ minutes, seconds }) => {
   );
 };
 
-const CountdownTimer = ({targetTimeCB, handleChangeMinCB, targetMin}) => {
+const CountdownTimer = ({targetTimeCB, handleChangeMinCB, targetMin, setTargetMinCB}) => {
   const [start, setStart] = useState(true)
   
   const toggleStart = () => {
@@ -34,7 +34,8 @@ const CountdownTimer = ({targetTimeCB, handleChangeMinCB, targetMin}) => {
   //takes min and second of targetDate defined in BreakPage
 
   if (minutes + seconds <= 0) {
-    return <BreakEnd />;
+    return <BreakEnd
+          setTargetMinCB={setTargetMinCB} />;
   } else {
     return (
       <div>

@@ -3,7 +3,7 @@ import CountdownTimer from "../Components/CountdownTimer";
 
 
 function BreakPage() {
-  const [targetMin, setTargetMin] = useState(1)
+  const [targetMin, setTargetMin] = useState(0.5)
   //const [start, setStart] = useState(true)
 
   const MIN_IN_MS = targetMin * 60 * 1000;
@@ -13,7 +13,6 @@ function BreakPage() {
   const handleChangeMin = (e) => {
     setTargetMin(e.target.value);
       }
-
 
   /*const toggleStart = () => {
         setStart(!start)
@@ -30,7 +29,8 @@ function BreakPage() {
       <CountdownTimer 
       targetTimeCB={targetTime}
       handleChangeMinCB={handleChangeMin}
-      targetMin={targetMin} />
+      targetMin={targetMin}
+      setTargetMinCB={setTargetMin} />
 
 {/*
       <div>

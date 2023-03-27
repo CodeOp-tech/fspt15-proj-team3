@@ -35,7 +35,8 @@ const CountdownTimer = ({targetTimeCB, handleChangeMinCB, targetMin, setTargetMi
 
   if (minutes + seconds <= 0) {
     return <BreakEnd
-          setTargetMinCB={setTargetMinCB} />;
+           setTargetMinCB={setTargetMinCB}
+           targetMin={targetMin} />;
   } else {
     return (
       <div>

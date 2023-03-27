@@ -3,7 +3,7 @@ import CountdownTimer from "../Components/CountdownTimer";
 
 
 function BreakPage() {
-  const [targetMin, setTargetMin] = useState(0.5)
+  const [targetMin, setTargetMin] = useState(1)
   //const [start, setStart] = useState(true)
 
   const MIN_IN_MS = targetMin * 60 * 1000;

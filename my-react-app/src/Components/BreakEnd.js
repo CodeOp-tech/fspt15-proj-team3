@@ -2,7 +2,12 @@ import React from 'react';
 import { NavLink} from "react-router-dom";
 
 
-const BreakEnd = ({setTargetMinCB}) => {
+const BreakEnd = ({setTargetMinCB, targetMin}) => {
+
+const resetTimer = (e) => {
+  setTargetMinCB(1)
+  console.log(targetMin)
+}
 
 
   return (
@@ -30,7 +35,7 @@ const BreakEnd = ({setTargetMinCB}) => {
         <NavLink
         to="/break">
         <button
-        onClick={()=> setTargetMinCB(1)}
+        onClick={resetTimer}
         > Repeat break </button>
         </NavLink>
         </div>

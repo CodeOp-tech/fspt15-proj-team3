@@ -5,7 +5,7 @@ function DashBoard() {
   return (
     <div className="App">
 
-      <p> DashBoard </p>
+      <p> DashBoard 1</p>
       
     </div>
   )

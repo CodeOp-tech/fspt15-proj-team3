@@ -1,13 +1,20 @@
-import React from "react";
+import {React, useState} from "react";
 import CountdownTimer from "../Components/CountdownTimer";
 
 
 function BreakPage() {
+  const [targetMin, setTargetMin] = useState(1)
+  //const [start, setStart] = useState(true)
 
-  const ONE_MIN_IN_MS = 1 * 60 * 1000;
+  const MIN_IN_MS = targetMin * 60 * 1000;
   const NOW_IN_MS = new Date().getTime();
+  const targetTime = NOW_IN_MS + MIN_IN_MS;
 
-  const dateTimeAfterOneMin = NOW_IN_MS + ONE_MIN_IN_MS;
+  /*const toggleStart = () => {
+        setStart(!start)
+        console.log(start)
+  }
+  */
 
   return (
     <div className="App">
@@ -15,8 +22,23 @@ function BreakPage() {
       <p> Break Page </p>
 
       <h1>Countdown Timer</h1>
-      <CountdownTimer targetDate={dateTimeAfterOneMin} />
-      
+      <CountdownTimer 
+      targetTime={targetTime}
+      targetMin={targetMin}
+      setTargetMinCB={setTargetMin} />
+
+{/*
+      <div>
+        <label> remove </label>
+        <input
+        type="number"
+        value={targetMin}
+        onChange={handleChangeMin}>
+        </input>
+      </div>
+
+      <button onClick={toggleStart}> Start/Pause </button>
+  */}  
     </div>
   )
 }

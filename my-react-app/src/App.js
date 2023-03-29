@@ -6,6 +6,7 @@ import BreakPage from "./Pages/BreakPage";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
+import FunBreak from "./Pages/FunBreak";
 
 function App() {
   const services = new Services();
@@ -19,7 +20,7 @@ function App() {
   {
     return (
       <div className="container">
-       
+
        <nav>
             <Link to ="/dashboard"><button className="btn btn-primary">DashBoard</button></Link>
             <Link to ="/list"><button className="btn btn-primary">List</button></Link>
@@ -27,16 +28,17 @@ function App() {
         </nav>
 
 
-        <div className="App">
-         
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/dashboard" element={<DashBoard />} />
-              <Route path="/list" element={<List />} />
-              <Route path="/break" element={<BreakPage />} />
-            </Routes>
-        
-        </div>
+      <div className="App">
+
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/list" element={<List />} />
+            <Route path="/break" element={<BreakPage />} />
+            <Route path="/funbreak" element={<FunBreak />} />
+          </Routes>
+        </BrowserRouter>
       </div>
     );
   }

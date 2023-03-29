@@ -3,7 +3,7 @@ import { useCountdown } from '../Hooks/useCountDown'
 import BreakEnd from './BreakEnd';
 import DateTimeDisplay from './DateTimeDisplay';
 
-//Parent component that conditionally renders ShowCounter or ExpiredNotice
+//Parent component that conditionally renders ShowCounter or BreakEnd
 
 const ShowCounter = ({ minutes, seconds }) => {
   return (
@@ -23,7 +23,7 @@ const ShowCounter = ({ minutes, seconds }) => {
   );
 };
 
-const CountdownTimer = ({targetTimeCB, targetMin, setTargetMinCB}) => {
+const CountdownTimer = ({targetTime, targetMin, setTargetMinCB}) => {
   const [start, setStart] = useState(true)
   
   const toggleStart = () => {
@@ -36,7 +36,7 @@ const handleChangeMin = (e) => {
     }
 
 
-  const [minutes, seconds] = useCountdown(targetTimeCB, start);
+  const [minutes, seconds] = useCountdown(targetTime, start);
   //takes min and second of targetDate defined in BreakPage
 
   if (minutes + seconds <= 0) {

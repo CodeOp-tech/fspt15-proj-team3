@@ -10,8 +10,6 @@ function BreakPage() {
   const NOW_IN_MS = new Date().getTime();
   const targetTime = NOW_IN_MS + MIN_IN_MS;
 
- 
-
   /*const toggleStart = () => {
         setStart(!start)
         console.log(start)
@@ -25,7 +23,7 @@ function BreakPage() {
 
       <h1>Countdown Timer</h1>
       <CountdownTimer 
-      targetTimeCB={targetTime}
+      targetTime={targetTime}
       targetMin={targetMin}
       setTargetMinCB={setTargetMin} />
 

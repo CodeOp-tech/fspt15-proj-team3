@@ -13,7 +13,7 @@ const resetTimer = (e) => {
   return (
     <div className="container card">
 
-      <div>
+      <div className="row">
       <h4> Well done! Want more? </h4>
       </div>
 
@@ -21,7 +21,14 @@ const resetTimer = (e) => {
       <p> Find balance in your life </p>
       </div>
 
-      <div>
+      <div className='row'>
+      <div className="col-5">
+        <p>Image</p>
+      </div>
+      </div>
+
+      <div className='row'>
+      <div className='col-7'>
 
         <div>
         <NavLink
@@ -42,6 +49,7 @@ const resetTimer = (e) => {
 
         <div>
         <button> Let me work now </button>
+        </div>
         </div>
 
 

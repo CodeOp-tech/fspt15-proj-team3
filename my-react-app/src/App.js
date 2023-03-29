@@ -20,25 +20,29 @@ function App() {
   {
     return (
       <div className="container">
-
-       <nav>
-            <Link to ="/dashboard"><button className="btn btn-primary">DashBoard</button></Link>
-            <Link to ="/list"><button className="btn btn-primary">List</button></Link>
-            <Link to ="/break"><button className="btn btn-primary">Break</button></Link>
+        <nav>
+          <Link to="/dashboard">
+            <button className="btn btn-primary">DashBoard</button>
+          </Link>
+          <Link to="/list">
+            <button className="btn btn-primary">List</button>
+          </Link>
+          <Link to="/break">
+            <button className="btn btn-primary">Break</button>
+          </Link>
         </nav>
 
-
-      <div className="App">
-
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<DashBoard />} />
-            <Route path="/list" element={<List />} />
-            <Route path="/break" element={<BreakPage />} />
-            <Route path="/funbreak" element={<FunBreak />} />
-          </Routes>
-        </BrowserRouter>
+        <div className="App">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<DashBoard />} />
+              <Route path="/list" element={<List />} />
+              <Route path="/break" element={<BreakPage />} />
+              <Route path="/funbreak" element={<FunBreak />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
       </div>
     );
   }

@@ -4,8 +4,8 @@ import BreakEnd from './BreakEnd';
 import DateTimeDisplay from './DateTimeDisplay';
 import "./CountDownTimer.css";
 import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-import AlarmIcon from '@mui/icons-material/Alarm';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 //Parent component that conditionally renders ShowCounter or BreakEnd
 
 const ShowCounter = ({ minutes, seconds }) => {
@@ -64,24 +64,25 @@ const decreaseMin = () => {
 
       
      <IconButton aria-label="delete">
-      <DeleteIcon
+      <KeyboardArrowUpIcon
       value={targetMin}
       onClick={increaseMin}/>
       </IconButton>
 
       <IconButton aria-label="delete">
-      <AlarmIcon
+      <KeyboardArrowDownIcon
       value={targetMin}
       onClick={decreaseMin}/>
       </IconButton>
 
+{/*
         <input
         type="number"
-        //value={targetMin}
+        value={targetMin}
         className='timer-increment'
         onChange={handleChangeMin}>
         </input>
-    
+*/} 
 
       <div className='timer-button-box'>
       <button 

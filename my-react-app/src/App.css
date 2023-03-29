@@ -119,6 +119,10 @@
   margin: 90px 150px 60px 290px;
 }
 
+.funTitle2 {
+  margin-top: 14px;
+}
+
 .fontColor {
   color: #fdc758;
 }
@@ -127,7 +131,7 @@
   position: absolute;
   width: 300px;
   height: 210px;
-  left: 960px;
+  left: 980px;
   top: 110px;
 }
 

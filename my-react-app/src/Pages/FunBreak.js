@@ -10,8 +10,10 @@ function FunBreak() {
         <br />
         if you unplug it for a few minutes.
         <br />
-        Including
-        <span className="fontColor"> you</span>.
+        <div className="funTitle2">
+          Including
+          <span className="fontColor"> you</span>.
+        </div>
       </p>
       <img className="funBreakImg" src={funBreakImg} />
       <div className="funContainer">

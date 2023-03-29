@@ -14,7 +14,7 @@ function App() {
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
   // useEffect(() => {
-  //   services.getFacts();
+  //   services.getDogs();
   // }, []);
 
   {

@@ -33,7 +33,7 @@ function App() {
         </nav>
 
         <div className="App">
-          <BrowserRouter>
+        
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/dashboard" element={<DashBoard />} />
@@ -41,7 +41,7 @@ function App() {
               <Route path="/break" element={<BreakPage />} />
               <Route path="/funbreak" element={<FunBreak />} />
             </Routes>
-          </BrowserRouter>
+        
         </div>
       </div>
     );

@@ -1,11 +1,10 @@
 import React from 'react';
 
 // re-usable component to show time remaining
-const DateTimeDisplay = ({ value, type, isDanger }) => {
+const DateTimeDisplay = ({ value }) => {
   return (
-    <div className={isDanger ? 'countdown danger' : 'countdown'}>
+    <div className='countdown'>
       <p>{value}</p>
-      <span>{type}</span>
     </div>
   );
 };

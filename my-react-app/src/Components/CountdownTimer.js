@@ -2,19 +2,15 @@ import {React, useState} from 'react';
 import { useCountdown } from '../Hooks/useCountDown'
 import BreakEnd from './BreakEnd';
 import DateTimeDisplay from './DateTimeDisplay';
-
+import "./CountDownTimer.css";
 //Parent component that conditionally renders ShowCounter or BreakEnd
 
 const ShowCounter = ({ minutes, seconds }) => {
   return (
     <div className="show-counter">
       <a
-        href="https://tapasadhikary.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="countdown-link"
+      className="countdown-link"
       >
-      
         <DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
         <p>:</p>
         <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />
@@ -36,7 +32,7 @@ const handleChangeMin = (e) => {
     }
 
 
-  const [minutes, seconds] = useCountdown(targetTime, start, targetMin);
+  const [minutes, seconds] = useCountdown(targetTime, start, targetMin, setStart);
   //takes min and second of targetDate defined in BreakPage
 
   if (minutes + seconds <= 0) {
@@ -48,7 +44,7 @@ const handleChangeMin = (e) => {
   } else {
     return (
       <div>
-        <ShowCounter
+       <ShowCounter
         minutes={minutes}
         seconds={seconds}
       />

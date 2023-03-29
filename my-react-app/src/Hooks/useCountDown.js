@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 
 //function which performs countdown calculation
 //passes targetTime from breakPage
-const useCountdown = (targetTime, start, targetMin) => {
+const useCountdown = (targetTime, start, targetMin, setStart) => {
 
 //Target time
-  const countDownTime = new Date(targetTime).getTime();
+
+const countDownTime = new Date(targetTime).getTime();
   console.log(countDownTime)
 
 //Time emaining > targetTime - currentTime
@@ -19,8 +20,11 @@ const useCountdown = (targetTime, start, targetMin) => {
     const interval = setInterval(() => {
       if (start)
       setTimer(countDownTime - new Date().getTime());
-    }, 1000);
-    return () => clearInterval(interval);
+      }, 1000);
+      //setStart(false)
+     return () => {
+      clearInterval(interval)  
+    }
   }, [countDownTime, start, targetMin]);
 
   return getReturnValues(timer);

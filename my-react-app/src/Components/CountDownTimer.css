@@ -1,0 +1,94 @@
+
+  
+  .show-counter {
+    padding: 0.5rem;
+  }
+  
+  .show-counter .countdown-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    padding: 0.5rem;
+    border: 1px solid #ebebeb;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .show-counter .countdown {
+    line-height: 1.25rem;
+    padding: 0 0.75rem 0 0.75rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+.left-container{
+    text-align: left;
+    width: 40%;
+    padding-left: 5px;
+    padding-top: 4em;
+}
+
+.right-container{
+    text-align: left;
+    width: 40%;
+    padding-left: 5px;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.title {
+    font-family: 'Abril Fatface', cursive;
+    margin-top: 1em;  
+}
+
+
+.popup-button {
+    margin-top: 0.1em;
+	background-color: #363FF2;
+	border: 3px solid #FDC758;
+	border-radius: 20px;
+	padding: 10px 15px;
+	color:  #FDC758;
+	font-family: Helvetica, sans-serif;
+    font-weight: 700;
+    justify-content: center;
+}
+
+.popup-button:hover{
+    background-color:  #FDC758;
+	border: 3px solid #FDC758;
+    color: #363FF2;
+}
+
+
+.button-box{
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 0.1em;
+    gap: 0.1em;
+    justify-content: center;
+}
+
+
+
+.popup-button-outline{
+    margin-top: 2.5em;
+	background-color: #363FF2;
+	border: 1px solid #FDC758;
+	color: #FDC758;
+}
+
+.button-outline:hover{
+    margin-top: 2.5em;
+	background-color: #FDC758;
+	border: 1px solid #FDC758;
+	color: #363FF2;
+}

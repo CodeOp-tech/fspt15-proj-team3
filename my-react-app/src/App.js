@@ -3,7 +3,7 @@ import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import List from "./Pages/List";
 import BreakPage from "./Pages/BreakPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
@@ -14,22 +14,35 @@ function App() {
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
   // useEffect(() => {
-  //   services.getDogs();
+  //   services.getFacts();
   // }, []);
 
   {
     return (
-      <div className="App">
+      <div className="container">
+        <nav>
+          <Link to="/dashboard">
+            <button className="btn btn-primary">DashBoard</button>
+          </Link>
+          <Link to="/list">
+            <button className="btn btn-primary">List</button>
+          </Link>
+          <Link to="/break">
+            <button className="btn btn-primary">Break</button>
+          </Link>
+        </nav>
 
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<DashBoard />} />
-            <Route path="/list" element={<List />} />
-            <Route path="/break" element={<BreakPage />} />
-            <Route path="/funbreak" element={<FunBreak />} />
-          </Routes>
-        </BrowserRouter>
+        <div className="App">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<DashBoard />} />
+              <Route path="/list" element={<List />} />
+              <Route path="/break" element={<BreakPage />} />
+              <Route path="/funbreak" element={<FunBreak />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
       </div>
     );
   }

@@ -6,6 +6,7 @@ import BreakPage from "./Pages/BreakPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
+import FunBreak from "./Pages/FunBreak";
 
 function App() {
   const services = new Services();
@@ -27,6 +28,7 @@ function App() {
             <Route path="/dashboard" element={<DashBoard />} />
             <Route path="/list" element={<List />} />
             <Route path="/break" element={<BreakPage />} />
+            <Route path="/funbreak" element={<FunBreak />} />
           </Routes>
         </BrowserRouter>
       </div>

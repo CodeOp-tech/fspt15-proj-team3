@@ -95,3 +95,34 @@
   font-size: 0.75rem;
   line-height: 1rem;
 }
+
+.funContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 100px;
+  margin: 90px 200px 90px 200px;
+  font-family: "Inter", sans-serif;
+}
+
+.funTitle {
+  font-family: "Abril Fatface", cursive;
+  font-size: 40px;
+  text-align: left;
+  margin: 90px 220px 60px 220px;
+}
+
+.fontColor {
+  color: #fdc758;
+}
+
+.funRandom {
+  color: #fdc758;
+  background-color: #363ff2;
+  border: solid;
+  border-radius: 22px;
+  font-size: 15px;
+  width: 170px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  padding: 10px;
+}

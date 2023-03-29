@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 //function which performs countdown calculation
 //passes targetTime from breakPage
-const useCountdown = (targetTime, start) => {
+const useCountdown = (targetTime, start, targetMin) => {
 
 //Target time
   const countDownTime = new Date(targetTime).getTime();
@@ -17,11 +17,11 @@ const useCountdown = (targetTime, start) => {
   //setInterval browser API method to calculate the spare time every second(1000 milliseconds).
   useEffect(() => {
     const interval = setInterval(() => {
-      //if (start)
+      if (start)
       setTimer(countDownTime - new Date().getTime());
     }, 1000);
     return () => clearInterval(interval);
-  }, [countDownTime]);
+  }, [countDownTime, start, targetMin]);
 
   return getReturnValues(timer);
 };

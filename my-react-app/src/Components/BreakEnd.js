@@ -2,11 +2,14 @@ import React from 'react';
 import { NavLink} from "react-router-dom";
 
 
-const BreakEnd = ({setTargetMinCB, targetMin}) => {
+const BreakEnd = ({setTargetMinCB, targetMin, targetTime}) => {
+
+
 
 const resetTimer = (e) => {
   setTargetMinCB(1)
   console.log(targetMin)
+  console.log(targetTime)
 }
 
 

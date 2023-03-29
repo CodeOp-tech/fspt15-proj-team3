@@ -13,8 +13,8 @@ export default class Services {
       "live_6hBYy42WdGzHYjc6WOfL1mVmnWPRySqMXqQ3ShSWjkACe7DfiiGUMwQnTf7wIYJT",
   };
 
-  getJoke = () => {
-    fetch("https://api.api-ninjas.com/v1/jokes?limit=1", {
+  getJoke = (limit = 1) => {
+    fetch(`https://api.api-ninjas.com/v1/jokes?limit=${limit}`, {
       method: "GET",
       headers: this.#headers,
     })
@@ -25,8 +25,8 @@ export default class Services {
       .catch((error) => {});
   };
 
-  getQuote = () => {
-    fetch("https://api.api-ninjas.com/v1/quotes?limit=1", {
+  getQuote = (limit = 1) => {
+    fetch(`https://api.api-ninjas.com/v1/quotes?limit=${limit}`, {
       method: "GET",
       headers: this.#headers,
     })
@@ -37,8 +37,8 @@ export default class Services {
       .catch((error) => {});
   };
 
-  getFacts = () => {
-    fetch("https://api.api-ninjas.com/v1/facts?limit=1", {
+  getFacts = (limit = 1) => {
+    fetch(`https://api.api-ninjas.com/v1/facts?limit=${limit}`, {
       method: "GET",
       headers: this.#headers,
     })
@@ -49,8 +49,8 @@ export default class Services {
       .catch((error) => {});
   };
 
-  getCats = () => {
-    fetch("https://api.thecatapi.com/v1/images/search?limit=20", {
+  getCats = (limit = 1) => {
+    fetch(`https://api.thecatapi.com/v1/images/search?limit=${limit}`, {
       method: "GET",
       headers: this.#catHeader,
     })
@@ -61,8 +61,8 @@ export default class Services {
       .catch((error) => {});
   };
 
-  getDogs = () => {
-    fetch("https://api.thedogapi.com/v1/images/search?limit=20", {
+  getDogs = (limit = 1) => {
+    fetch(`https://api.thedogapi.com/v1/images/search?limit=${limit}`, {
       method: "GET",
       headers: this.#dogHeader,
     })

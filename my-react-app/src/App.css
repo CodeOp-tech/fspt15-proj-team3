@@ -99,25 +99,37 @@
 .funContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 100px;
-  margin: 90px 200px 90px 200px;
+  grid-gap: 40px;
+  margin: 90px 330px 70px 330px;
   font-family: "Inter", sans-serif;
+}
+
+.displayBox {
+  border: solid;
+  border-color: #fdc758;
+  border-radius: 8px;
+  border-width: 2px;
+  width: 140px;
 }
 
 .funTitle {
   font-family: "Abril Fatface", cursive;
   font-size: 40px;
   text-align: left;
-  margin: 90px 220px 60px 220px;
+  margin: 90px 150px 60px 290px;
 }
 
 .fontColor {
   color: #fdc758;
 }
 
-/* .funBreakImg {
-  float: right;
-} */
+.funBreakImg {
+  position: absolute;
+  width: 300px;
+  height: 210px;
+  left: 960px;
+  top: 110px;
+}
 
 .funRandom {
   color: #fdc758;

@@ -1,5 +1,6 @@
 import React from "react";
 import funBreakImg from "../Illustrations/funBreak.png";
+import FunDisplayBox from "./FunDisplayBox";
 
 function FunBreak() {
   return (
@@ -12,18 +13,18 @@ function FunBreak() {
         Including
         <span className="fontColor"> you</span>.
       </p>
-      {/* <img className="funBreakImg" src={funBreakImg} /> */}
+      <img className="funBreakImg" src={funBreakImg} />
       <div className="funContainer">
-        <div>Joke</div>
-        <div>Quote</div>
-        <div>Fact</div>
-        <div>Joke</div>
-        <div>Quote</div>
-        <div>Cat</div>
-        <div>Dog</div>
-        <div>Cat</div>
-        <div>Dog</div>
-        <div>Cat</div>
+        <FunDisplayBox input="I will put a random joke here from jokesapi" />
+        <FunDisplayBox input="Quote" />
+        <FunDisplayBox input="Fact" />
+        <FunDisplayBox input="Joke" />
+        <FunDisplayBox input="Quote" />
+        <FunDisplayBox input="A cute cat photo will be here" />
+        <FunDisplayBox input="Dog" />
+        <FunDisplayBox input="Cat" />
+        <FunDisplayBox input="Dog" />
+        <FunDisplayBox input="Cat" />
       </div>
 
       <button className="funRandom">SHOW RANDOM</button>

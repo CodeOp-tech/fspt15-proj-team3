@@ -1,4 +1,5 @@
 import React from "react";
+import funBreakImg from "../Illustrations/funBreak.png";
 
 function FunBreak() {
   return (
@@ -9,8 +10,9 @@ function FunBreak() {
         if you unplug it for a few minutes.
         <br />
         Including
-        <span className="fontColor"> you </span>
+        <span className="fontColor"> you</span>.
       </p>
+      {/* <img className="funBreakImg" src={funBreakImg} /> */}
       <div className="funContainer">
         <div>Joke</div>
         <div>Quote</div>

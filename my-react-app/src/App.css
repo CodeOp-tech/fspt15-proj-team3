@@ -100,7 +100,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 40px;
-  margin: 80px 200px 40px 200px;
+  margin: 70px 230px 40px 230px;
   font-family: "Helvetica LT Std";
   font-size: 14px;
 }
@@ -126,7 +126,7 @@
   font-family: "Abril Fatface", cursive;
   font-size: 48px;
   text-align: left;
-  margin: 60px 130px 60px 180px;
+  margin: 40px 130px 60px 200px;
 }
 
 .funTitle2 {
@@ -142,12 +142,14 @@
   width: 340px;
   height: 250px;
   left: 980px;
-  top: 135px;
+  top: 110px;
 }
 
 .animalImage {
   width: 175px;
   height: 170px;
+  object-fit: cover;
+  overflow: hidden;
   padding: 2px;
 }
 
@@ -161,4 +163,8 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
   margin-bottom: 20px;
+}
+
+:hover.funRandom {
+  border: solid;
 }

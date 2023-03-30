@@ -3,12 +3,13 @@ import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import List from "./Pages/List";
 import Move from "./Pages/Move";
-import Relax  from "./Pages/Relax";
+import Relax from "./Pages/Relax";
 import BreakPage from "./Pages/BreakPage";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
+import FunRandom from "./Pages/FunRandom";
 
 function App() {
   const services = new Services();
@@ -39,27 +40,27 @@ function App() {
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <Link to="/dashboard">
-                <a className="nav-link active">Home</a>
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link to="/move">
-                <a className="nav-link active">Move</a>
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link to="/relax" >
-                <a className="nav-link active">Relax</a>
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link to="/funbreak">
-                <a className="nav-link active">Fun</a>
-              </Link>
-              </li>
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <Link to="/dashboard">
+                    <a className="nav-link active">Home</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/move">
+                    <a className="nav-link active">Move</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/relax">
+                    <a className="nav-link active">Relax</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/funbreak">
+                    <a className="nav-link active">Fun</a>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -72,6 +73,7 @@ function App() {
             <Route path="/list" element={<List />} />
             <Route path="/break" element={<BreakPage />} />
             <Route path="/funbreak" element={<FunBreak />} />
+            <Route path="/funrandom" element={<FunRandom />} />
             <Route path="/relax" element={<Relax />} />
             <Route path="/move" element={<Move />} />
           </Routes>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import FunContainer from "../Components/FunContainer";
 import funBreakImg from "../Illustrations/funBreak.png";
 import Services from "../services";
+import "./FunBreak.css";
 
 function FunBreak() {
   const [jokes, setJokes] = useState(null);

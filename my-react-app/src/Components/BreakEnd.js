@@ -3,13 +3,7 @@ import { NavLink} from "react-router-dom";
 import "./BreakEnd.css"
 import illustration from "../Illustrations/zombieing.png"
 
-const BreakEnd = ({setTargetMinCB, targetMin, targetTime}) => {
-
-const resetTimer = (e) => {
-  setTargetMinCB(1)
-  console.log(targetMin)
-  console.log(targetTime)
-}
+const BreakEnd = ({resetTimer}) => {
 
   return (
     <div className='App'>

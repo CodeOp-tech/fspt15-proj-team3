@@ -1,100 +1,102 @@
-import {React, useState} from 'react';
-import { useCountdown } from '../Hooks/useCountDown'
+import {React, useState, useEffect} from 'react';
 import BreakEnd from './BreakEnd';
-import DateTimeDisplay from './DateTimeDisplay';
+import ShowCounter from './ShowCounter';
 import "./CountDownTimer.css";
-import IconButton from '@mui/material/IconButton';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 //Parent component that conditionally renders ShowCounter or BreakEnd
 
-const ShowCounter = ({ minutes, seconds }) => {
-  return (
-    <div className="counter">
-      <a
-      className="countdown">
-        <DateTimeDisplay value={minutes} type={'Mins'}  />
-        <p> : </p>
-        <DateTimeDisplay value={seconds} type={'Seconds'} />
-      </a>
-    </div>
-  );
-};
+const CountdownTimer = () => {
 
-const CountdownTimer = ({targetTime, targetMin, setTargetMinCB}) => {
   const [start, setStart] = useState(false)
-  
+  const [targetMin, setTargetMin] = useState(1)
+  const MIN_IN_MS = targetMin * 60 * 1000;
+  const NOW_IN_MS = new Date().getTime();
+  const targetTime = NOW_IN_MS + MIN_IN_MS;
+
+  //hook that calculates time left
+  const useCountdown = (targetTime, start, targetMin) => {
+    
+    //Target time
+    const countDownTime = new Date(targetTime).getTime();
+    console.log(countDownTime)
+
+    //Timer > targetTime - currentTime
+    const [timer, setTimer] = useState(
+      countDownTime - new Date().getTime()
+      );
+      console.log(timer)
+    
+    //setInterval browser API method to calculate the spare time every second(1000 milliseconds).
+      useEffect(() => {
+        const interval = setInterval(() => {
+          if (start)
+          setTimer(countDownTime - new Date().getTime());
+          }, 1000);
+          //setStart(false)
+         return () => {
+          clearInterval(interval)  
+        }
+      }, [start, targetMin]);
+    
+      return getReturnValues(timer);
+    };
+    
+      const getReturnValues = (timer) => {
+      //calculate  min & seconds left
+      const minutes = Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timer % (1000 * 60)) / 1000);
+      if (timer === 0) setStart(false)
+      console.log(start)
+      return [minutes, seconds];
+    };
+
+
+  const [minutes, seconds] = useCountdown(targetTime, start, targetMin);
+  //takes min and second of targetDate
+
   const toggleStart = () => {
     setStart(!start)
     console.log(start)
 }
 
-const handleChangeMin = (e) => {
-  setTargetMinCB(e.target.value);
-    }
-
-const increaseMin = () => {
+  const increaseMin = () => {
   console.log(targetMin)
-  setTargetMinCB(targetMin + 1) 
+  setTargetMin(targetMin + 1) 
+  console.log(targetMin)
+ }
+
+  const decreaseMin = () => {
+  console.log(targetMin)
+  setTargetMin(targetMin - 1) 
+  console.log(targetMin)
+ }
+
+ const resetTimer = (e) => {
+  setTargetMin(1)
+  toggleStart()
   console.log(targetMin)
 }
 
-const decreaseMin = () => {
-  console.log(targetMin)
-  setTargetMinCB(targetMin - 1) 
-  console.log(targetMin)
-}
 
-  const [minutes, seconds] = useCountdown(targetTime, start, targetMin, setStart);
-  //takes min and second of targetDate defined in BreakPage
-
-  if (minutes + seconds <= 0) {
-    return <BreakEnd
-           setTargetMinCB={setTargetMinCB}
-           targetMin={targetMin}
-           targetTime={targetTime}
+if (minutes + seconds <= 0) {
+   return <BreakEnd
+           resetTimer={resetTimer}
             />;
-  } else {
+  } 
+
+  else { 
     return (
       <div>
        <ShowCounter
         minutes={minutes}
         seconds={seconds}
-      />
-
-      
-     <IconButton aria-label="delete">
-      <KeyboardArrowUpIcon
-      value={targetMin}
-      onClick={increaseMin}/>
-      </IconButton>
-
-      <IconButton aria-label="delete">
-      <KeyboardArrowDownIcon
-      value={targetMin}
-      onClick={decreaseMin}/>
-      </IconButton>
-
-{/*
-        <input
-        type="number"
-        value={targetMin}
-        className='timer-increment'
-        onChange={handleChangeMin}>
-        </input>
-*/} 
-
-      <div className='timer-button-box'>
-      <button 
-      className='timer-button timer-button-outline'
-      onClick={toggleStart}> GO! 
-      </button>
-      </div>
-
-
-
-      
-      
+        targetMin={targetMin}
+        setTargetMin={setTargetMin}
+        start={start}
+        toggleStart={toggleStart}
+        setStart={setStart}
+        increaseMin={increaseMin}
+        decreaseMin={decreaseMin}
+      /> 
      </div>
     );
   }

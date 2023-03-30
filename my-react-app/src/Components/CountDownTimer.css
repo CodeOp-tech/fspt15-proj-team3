@@ -1,6 +1,6 @@
 
 .counter {
-    padding: 0.5rem;
+    padding: 0.2rem;
   }
   
 .counter .countdown {
@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
     font-weight: 700;
-    font-size: 3rem;
+    font-size: 4rem;
     line-height: 1.75rem;
     padding: 0.2rem;
     text-decoration: none;
@@ -24,38 +24,12 @@
     flex-direction: column;
   }
   
-.timer-increment {
-    border: transparent;
-   
-}
-
-.left-container{
-    text-align: left;
-    width: 40%;
-    padding-left: 5px;
-    padding-top: 4em;
-}
-
-.right-container{
-    text-align: left;
-    width: 40%;
-    padding-left: 5px;
-    padding-top: 2em;
-    padding-bottom: 2em;
-}
-
-.title {
-    font-family: 'Abril Fatface', cursive;
-    margin-top: 1em;  
-}
-
 
 .timer-button {
-    margin-top: 0.1em;
 	background-color: #363FF2;
 	border: 3px solid #FDC758;
 	border-radius: 20px;
-	padding: 10px 15px;
+	padding: 10px 20px;
 	color:  #FDC758;
 	font-family: Helvetica, sans-serif;
     font-weight: 700;
@@ -68,26 +42,14 @@
     color: #363FF2;
 }
 
-.button-box{
-    display: flex;
-    width: 50%;
-    margin: 0 auto;
-    padding-top: 0.1em;
-    gap: 0.1em;
-    justify-content: center;
-}
-
-
 
 .timer-button-outline{
-    margin-top: 2.5em;
 	background-color: #363FF2;
 	border: 1px solid #FDC758;
 	color: #FDC758;
 }
 
 .timer-button-outline:hover{
-    margin-top: 2.5em;
 	background-color: #FDC758;
 	border: 1px solid #FDC758;
 	color: #363FF2;

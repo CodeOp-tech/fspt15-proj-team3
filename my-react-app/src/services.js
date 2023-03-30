@@ -13,62 +13,62 @@ export default class Services {
       "live_6hBYy42WdGzHYjc6WOfL1mVmnWPRySqMXqQ3ShSWjkACe7DfiiGUMwQnTf7wIYJT",
   };
 
-  getJoke = (limit = 1) => {
-    fetch(`https://api.api-ninjas.com/v1/jokes?limit=${limit}`, {
+  getJoke = async (limit = 1) => {
+    return fetch(`https://api.api-ninjas.com/v1/jokes?limit=${limit}`, {
       method: "GET",
       headers: this.#headers,
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
+        return json.map((joke) => joke.joke);
       })
       .catch((error) => {});
   };
 
-  getQuote = (limit = 1) => {
-    fetch(`https://api.api-ninjas.com/v1/quotes?limit=${limit}`, {
+  getQuote = async (limit = 1) => {
+    return fetch(`https://api.api-ninjas.com/v1/quotes?limit=${limit}`, {
       method: "GET",
       headers: this.#headers,
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
+        return json.map((quote) => quote.quote);
       })
       .catch((error) => {});
   };
 
-  getFacts = (limit = 1) => {
-    fetch(`https://api.api-ninjas.com/v1/facts?limit=${limit}`, {
+  getFacts = async (limit = 1) => {
+    return fetch(`https://api.api-ninjas.com/v1/facts?limit=${limit}`, {
       method: "GET",
       headers: this.#headers,
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
+        return json.map((fact) => fact.fact);
       })
       .catch((error) => {});
   };
 
-  getCats = (limit = 1) => {
-    fetch(`https://api.thecatapi.com/v1/images/search?limit=${limit}`, {
+  getCats = async (limit = 1) => {
+    return fetch(`https://api.thecatapi.com/v1/images/search?limit=${limit}`, {
       method: "GET",
       headers: this.#catHeader,
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
+        return json.map((cat) => cat.url);
       })
       .catch((error) => {});
   };
 
-  getDogs = (limit = 1) => {
-    fetch(`https://api.thedogapi.com/v1/images/search?limit=${limit}`, {
+  getDogs = async (limit = 1) => {
+    return fetch(`https://api.thedogapi.com/v1/images/search?limit=${limit}`, {
       method: "GET",
       headers: this.#dogHeader,
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
+        return json.map((dog) => dog.url);
       })
       .catch((error) => {});
   };

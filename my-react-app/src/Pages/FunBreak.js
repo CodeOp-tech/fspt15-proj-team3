@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import FunContainer from "../Components/FunContainer";
 import funBreakImg from "../Illustrations/funBreak.png";
-import FunDisplayBox from "./FunDisplayBox";
+import Services from "../services";
 
 function FunBreak() {
+  const [jokes, setJokes] = useState(null);
+  const [quotes, setQuotes] = useState(null);
+  const [facts, setFacts] = useState(null);
+  const [cats, setCats] = useState(null);
+  const [dogs, setDogs] = useState(null);
+
+  const services = new Services();
+
+  //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
+
+  const getData = async () => {
+    const jokesArray = await services.getJoke(2);
+    setJokes(jokesArray);
+
+    const quotesArray = await services.getQuote(2);
+    setQuotes(quotesArray);
+
+    const factsArray = await services.getFacts(1);
+    setFacts(factsArray);
+
+    const catsArray = await services.getCats(3);
+    setCats(catsArray);
+
+    const dogsArray = await services.getDogs(2);
+    setDogs(dogsArray);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className="App">
       <p className="funTitle">
@@ -16,19 +48,13 @@ function FunBreak() {
         </div>
       </p>
       <img className="funBreakImg" src={funBreakImg} />
-      <div className="funContainer">
-        <FunDisplayBox input="I will put a random joke here from jokesapi" />
-        <FunDisplayBox input="Quote" />
-        <FunDisplayBox input="Fact" />
-        <FunDisplayBox input="Joke" />
-        <FunDisplayBox input="Quote" />
-        <FunDisplayBox input="A cute cat photo will be here" />
-        <FunDisplayBox input="Dog" />
-        <FunDisplayBox input="Cat" />
-        <FunDisplayBox input="Dog" />
-        <FunDisplayBox input="Cat" />
-      </div>
-
+      <FunContainer
+        jokes={jokes}
+        quotes={quotes}
+        facts={facts}
+        cats={cats}
+        dogs={dogs}
+      />
       <button className="funRandom">SHOW RANDOM</button>
     </div>
   );

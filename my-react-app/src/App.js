@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
+import logo from "./Illustrations/logoBreaktime.png";
 
 function App() {
   const services = new Services();
@@ -25,7 +26,7 @@ function App() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
             <a class="navbar-brand" href="#">
-              BreakTime
+            <img className="logo-img" src={logo} />
             </a>
             <button
               class="navbar-toggler"

@@ -1,6 +1,8 @@
 import React from "react";
 
 function FunBreak() {
+ 
+
   return (
     <div className="App">
       <p className="funTitle">

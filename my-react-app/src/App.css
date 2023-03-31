@@ -118,7 +118,7 @@
 .funRandom {
   color: #fdc758;
   background-color: #363ff2;
-  border: solid;
+  border: 1px solid #363ff2;
   border-radius: 22px;
   font-size: 15px;
   width: 170px;

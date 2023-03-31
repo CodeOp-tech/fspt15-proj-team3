@@ -1,0 +1,35 @@
+@import "react-alice-carousel/lib/alice-carousel.css";
+.title-relax{
+    font-family: 'Abril Fatface', cursive;
+    margin-top: 1em;
+}
+.meditating{
+    width: 13%;
+}
+
+.pink{
+    color: #FE6665;
+}
+
+
+.container
+{
+
+}
+.video {
+margin-top: 2em;
+margin-bottom: 2em;
+cursor: pointer;
+
+    
+  }
+
+.carousel-wrapper{
+   
+margin-bottom: 2em;
+}
+
+.library{
+    margin-top: 2em;
+    color: #FE6665;
+}

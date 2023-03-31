@@ -4,6 +4,7 @@ import funBreakImg from "../Illustrations/funBreak.png";
 import Services from "../services";
 
 function FunBreak() {
+
   const [jokes, setJokes] = useState(null);
   const [quotes, setQuotes] = useState(null);
   const [facts, setFacts] = useState(null);
@@ -34,6 +35,7 @@ function FunBreak() {
   useEffect(() => {
     getData();
   }, []);
+
 
   return (
     <div className="App">

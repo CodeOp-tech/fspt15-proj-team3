@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState } from "react";
 import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import List from "./Pages/List";
@@ -9,10 +9,13 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
+import RelaxBreak from "./Pages/RelaxBreak";
+import MoveBreak from "./Pages/MoveBreak";
 import logo from "./Illustrations/logoBreaktime.png";
 
 function App() {
   const services = new Services();
+  const [isShown, setIsShown] = useState(false);
 
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
@@ -57,7 +60,7 @@ function App() {
               </Link>
               </li>
               <li class="nav-item">
-              <Link to="/funbreak">
+              <Link to="/fun">
                 <a className="nav-link active">Fun</a>
               </Link>
               </li>
@@ -72,9 +75,10 @@ function App() {
             <Route path="/dashboard" element={<DashBoard />} />
             <Route path="/list" element={<List />} />
             <Route path="/break" element={<BreakPage />} />
-            <Route path="/funbreak" element={<FunBreak />} />
-            <Route path="/relax" element={<Relax />} />
-            <Route path="/move" element={<Move />} />
+            <Route path="/fun" element={<FunBreak />} />
+            <Route path="/relax" element={<RelaxBreak />} /> 
+            <Route path="/move" element={<MoveBreak />} />
+
           </Routes>
         </div>
       </div>

@@ -13,6 +13,7 @@
   border-radius: 8px;
   border-width: 2px;
   width: 180px;
+  background-color: #fdc758;
 }
 
 .displayText {
@@ -25,7 +26,7 @@
 
 .funTitle {
   font-family: "Abril Fatface", cursive;
-  font-size: 48px;
+  font-size: calc(1.375rem + 1.5vw);
   text-align: left;
   margin: 40px 130px 60px 200px;
 }
@@ -68,4 +69,20 @@
 
 :hover.funRandom {
   border: solid;
+}
+
+.joke {
+  background-color: #fe6665;
+}
+
+.fact {
+  background-color: #363ff2;
+}
+
+.cat {
+  background-color: #fe6665;
+}
+
+.dog {
+  background-color: #363ff2;
 }

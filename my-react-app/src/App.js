@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import List from "./Pages/List";
-import Move from "./Pages/Move";
-import Relax from "./Pages/Relax";
+import Move from "./Pages/MoveBreak";
+import Relax from "./Pages/RelaxBreak";
 import BreakPage from "./Pages/BreakPage";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
+import logo from "./Illustrations/logoBreaktime.png";
 
 function App() {
   const services = new Services();
@@ -57,7 +58,7 @@ function App() {
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link to="/funbreak">
+                  <Link to="/fun">
                     <a className="nav-link active">Fun</a>
                   </Link>
                 </li>
@@ -72,7 +73,7 @@ function App() {
             <Route path="/dashboard" element={<DashBoard />} />
             <Route path="/list" element={<List />} />
             <Route path="/break" element={<BreakPage />} />
-            <Route path="/funbreak" element={<FunBreak />} />
+            <Route path="/fun" element={<FunBreak />} />
             <Route path="/relax" element={<Relax />} />
             <Route path="/move" element={<Move />} />
           </Routes>

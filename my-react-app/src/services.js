@@ -26,10 +26,13 @@ export default class Services {
   };
 
   getQuote = async (limit = 1) => {
-    return fetch(`https://api.api-ninjas.com/v1/quotes?limit=${limit}`, {
-      method: "GET",
-      headers: this.#headers,
-    })
+    return fetch(
+      `https://api.api-ninjas.com/v1/quotes?category=success&limit=${limit}`,
+      {
+        method: "GET",
+        headers: this.#headers,
+      }
+    )
       .then((res) => res.json())
       .then((json) => {
         return json.map((quote) => quote.quote);

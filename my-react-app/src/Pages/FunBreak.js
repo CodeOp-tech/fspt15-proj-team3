@@ -6,7 +6,6 @@ import "./FunBreak.css";
 import { Link } from "react-router-dom";
 
 function FunBreak() {
-
   const [jokes, setJokes] = useState(null);
   const [quotes, setQuotes] = useState(null);
   const [facts, setFacts] = useState(null);
@@ -21,10 +20,10 @@ function FunBreak() {
     const jokesArray = await services.getJoke(2);
     setJokes(jokesArray);
 
-    const quotesArray = await services.getQuote(2);
+    const quotesArray = await services.getQuote(1);
     setQuotes(quotesArray);
 
-    const factsArray = await services.getFacts(1);
+    const factsArray = await services.getFacts(2);
     setFacts(factsArray);
 
     const catsArray = await services.getCats(3);
@@ -37,7 +36,6 @@ function FunBreak() {
   useEffect(() => {
     getData();
   }, []);
-
 
   return (
     <div className="App">
@@ -59,9 +57,10 @@ function FunBreak() {
         cats={cats}
         dogs={dogs}
       />
-      <Link to="/funrandom">
-        <button className="funRandom">SHOW RANDOM</button>
-      </Link>
+
+      <button className="funRandom" onClick={() => getData()}>
+        SHOW RANDOM
+      </button>
     </div>
   );
 }

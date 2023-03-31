@@ -5,21 +5,22 @@ import relax from "../Illustrations/relax.png";
 import move from "../Illustrations/move.png";
 import fun from "../Illustrations/fun.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function DashBoard() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const navigateToFunBreak = () => {
-  // 	navigate("/funbreak");
-  // };
+  const navigateToFunBreak = () => {
+    navigate("/fun");
+  };
 
-  // const navigateToMoveBreak = () => {
-  // 	navigate("/movebreak");
-  // };
+  const navigateToMoveBreak = () => {
+    navigate("/movebreak");
+  };
 
-  // const navigateToRelaxBreak = () => {
-  // 	navigate("/relaxbreak");
-  // };
+  const navigateToRelaxBreak = () => {
+    navigate("/relaxbreak");
+  };
 
   return (
     <div className="App">
@@ -69,7 +70,7 @@ function DashBoard() {
           <img className="features-img" src={fun} />
           <h4>Unwind with jokes, quotes, and much more...</h4>
 
-          <Link to="/funbreak">
+          <Link to="/fun">
             <button className="button-outline">HAHAHA!</button>
           </Link>
         </div>

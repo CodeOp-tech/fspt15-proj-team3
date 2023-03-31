@@ -7,7 +7,7 @@ import "./CountDownTimer.css";
 const CountdownTimer = () => {
 
   const [start, setStart] = useState(false)
-  const [targetMin, setTargetMin] = useState(1)
+  const [targetMin, setTargetMin] = useState(0.1)
   const MIN_IN_MS = targetMin * 60 * 1000;
   const NOW_IN_MS = new Date().getTime();
   const targetTime = NOW_IN_MS + MIN_IN_MS;
@@ -71,8 +71,9 @@ const CountdownTimer = () => {
  }
 
  const resetTimer = (e) => {
-  setTargetMin(1)
-  toggleStart()
+  setTargetMin(0.2)
+  setStart(true)
+  console.log("reset")
   console.log(targetMin)
 }
 

@@ -4,6 +4,7 @@ import "./BreakEnd.css"
 import illustration from "../Illustrations/zombieing.png"
 
 const BreakEnd = ({resetTimer}) => {
+  
 
   return (
     <div className='App'>

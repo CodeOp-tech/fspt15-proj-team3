@@ -38,8 +38,6 @@ const ShowCounter = ({ minutes, seconds, targetMin, increaseMin, decreaseMin, to
   </div>
         </a>
           
-  
-  
         <button 
         className='timer-button timer-button-outline'
         onClick={toggleStart}> GO! 

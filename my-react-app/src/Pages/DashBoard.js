@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 function DashBoard() {
 
 
-	//const navigate = useNavigate();
+	/*const navigate = useNavigate();
 
 	const navigateToFunBreak = () => {
 		navigate("/fun");
@@ -23,6 +23,7 @@ function DashBoard() {
 	const navigateToRelaxBreak = () => {
 		navigate("/relax");
 	};
+	*/
 
 	return (
 		<div className="App">

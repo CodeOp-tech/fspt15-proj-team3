@@ -1,32 +1,42 @@
 import { useEffect, useState } from 'react';
 
 //function which performs countdown calculation
-//passes targetTime from breakPage
+//passes user targetMin from CountDownTimer
 const useCountdown = (targetMin) => {
 
-//Target time
+//targetMin to milliseconds
 const countDownTime = targetMin * 60 * 1000
   console.log(countDownTime)
-
-const [start, setStart] = useState(true)
-
-
-
-//Time emaining > targetTime - currentTime
-  const [timer, setTimer] = useState(countDownTime);
+//to start or pause timer
+const [start, setStart] = useState(false)
+//timer stateVar 
+const [timer, setTimer] = useState(countDownTime);
   console.log(timer)
 
+
+//Restarts break in breakEnd component. 
+//Resets countDownTime = 0.1 and start = true
   const resetTimer = (e) => {
     //setTargetMin(0.2)
     setTimer(countDownTime)
     toggleStart()
     console.log(targetMin)
+    console.log("reset clicked")
   }
 
+//Restarts break in breakEnd component. 
+//Resets countDownTime = 0.1 and start = true
+const adjustTimer = (e) => {
+  setTimer(countDownTime)
+  console.log(targetMin)
+  console.log("+/- timer")
+}
+
+//To start/stop Timer. Used in showCounter and resetTimer() func
   const toggleStart = () => {
     setStart(!start)
     console.log(start)
-    console.log("toggle works")
+    console.log("toggle clicked")
 }
 
 //setInterval browser API method to calculate the spare time every second(1000 milliseconds).
@@ -35,14 +45,13 @@ const [start, setStart] = useState(true)
       if (start)
       setTimer((timer) => timer - 1000);
       }, 1000);
-      //setStart(false)
       if (timer < 1000) setStart(false)
      return () => {
       clearInterval(interval)  
     }
   }, [countDownTime, start, targetMin, timer]);
 
-  return [...getReturnValues(timer), toggleStart, resetTimer];
+  return [...getReturnValues(timer), toggleStart, resetTimer, adjustTimer];
 };
 
 const getReturnValues = (timer) => {

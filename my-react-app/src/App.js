@@ -72,7 +72,7 @@ function App() {
             <Route path="/dashboard" element={<DashBoard />} />
             <Route path="/list" element={<List />} />
             <Route path="/break" element={<BreakPage />} />
-            <Route path="/funbreak" element={<FunBreak />} />
+            <Route path="/fun" element={<FunBreak />} />
             <Route path="/funrandom" element={<FunRandom />} />
             <Route path="/relax" element={<Relax />} />
             <Route path="/move" element={<Move />} />

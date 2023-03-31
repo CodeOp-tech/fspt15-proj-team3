@@ -3,6 +3,7 @@ import FunContainer from "../Components/FunContainer";
 import funBreakImg from "../Illustrations/funBreak.png";
 import Services from "../services";
 import "./FunBreak.css";
+import { Link } from "react-router-dom";
 
 function FunBreak() {
   const [jokes, setJokes] = useState(null);
@@ -56,7 +57,9 @@ function FunBreak() {
         cats={cats}
         dogs={dogs}
       />
-      <button className="funRandom">SHOW RANDOM</button>
+      <Link to="/funrandom">
+        <button className="funRandom">SHOW RANDOM</button>
+      </Link>
     </div>
   );
 }

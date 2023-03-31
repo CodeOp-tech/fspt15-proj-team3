@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import List from "./Pages/List";
@@ -9,10 +9,10 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
-import FunRandom from "./Pages/FunRandom";
 
 function App() {
   const services = new Services();
+  const [isShown, setIsShown] = useState(false);
 
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
@@ -26,7 +26,7 @@ function App() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
             <a class="navbar-brand" href="#">
-              BreakTime
+              <img className="logo-img" src={logo} />
             </a>
             <button
               class="navbar-toggler"
@@ -72,8 +72,7 @@ function App() {
             <Route path="/dashboard" element={<DashBoard />} />
             <Route path="/list" element={<List />} />
             <Route path="/break" element={<BreakPage />} />
-            <Route path="/fun" element={<FunBreak />} />
-            <Route path="/funrandom" element={<FunRandom />} />
+            <Route path="/funbreak" element={<FunBreak />} />
             <Route path="/relax" element={<Relax />} />
             <Route path="/move" element={<Move />} />
           </Routes>

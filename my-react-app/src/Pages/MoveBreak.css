@@ -1,0 +1,73 @@
+.blue{
+    color: #363FF2;
+}
+.title-move{
+    font-family: 'Abril Fatface', cursive;
+    margin-top: 1em;
+    text-align: right;
+    width: 40%;
+    padding-right: 3em;
+    padding-left: 2.5em;
+    line-height: 1.5em;
+}
+.title-container{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.activities-container{
+    display: flex;
+    margin-top: 3em;
+    justify-content: center;
+    width: 90%;
+}
+
+.right-container{
+margin-left: 2em;
+}
+
+.left-container{
+
+}
+.featured-activity{
+    background-color: #FDC757;
+    border-radius: 5%;
+    width: 80%;
+    height: 600px;
+}
+.title-activity{
+    color:#ffffff;
+    text-align: center;
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+
+}
+
+.img-activity{
+    border:2px solid white;
+    border-radius: 5%;
+    width:65%;
+    height: 330px;
+    margin: 0 auto;
+   
+}
+.instructions{
+    color: #363FF2;
+    text-align: center;
+    padding-top: 0.6em;
+    
+    padding-bottom: 0.8em;
+    cursor: pointer;
+}
+.instructions:hover{
+    color:#ffffff;
+}
+.btn-start{
+    color: #363FF2;
+    background-color: #ffffff;
+    border:1px solid white;
+    display: block;
+    
+    margin: 0 auto;
+}

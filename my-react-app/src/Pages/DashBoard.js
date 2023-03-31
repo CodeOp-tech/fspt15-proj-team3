@@ -7,12 +7,26 @@ import fun from "../Illustrations/fun.png";
 import { Link } from "react-router-dom";
 
 function DashBoard() {
+  // const navigate = useNavigate();
+
+  // const navigateToFunBreak = () => {
+  // 	navigate("/funbreak");
+  // };
+
+  // const navigateToMoveBreak = () => {
+  // 	navigate("/movebreak");
+  // };
+
+  // const navigateToRelaxBreak = () => {
+  // 	navigate("/relaxbreak");
+  // };
+
   return (
     <div className="App">
       <div className="wrapper">
         <div className="left-container">
           <div className="text-container">
-            <h1 className="title">Work hard, rest harder.</h1>
+            <h1 className="title-dash">Work hard, rest harder.</h1>
             <p className="p1">
               In our time-pressed and information-rich world, it can be a
               challenge to find a moment for ourselves. BreakTime is a guide to
@@ -21,7 +35,6 @@ function DashBoard() {
             <p className="p2">
               Enjoy a moment of rest and lead a more productive worklife!
             </p>
-            <button>DISCOVER MORE</button>
           </div>
         </div>
 
@@ -31,20 +44,23 @@ function DashBoard() {
       </div>
 
       <div className="features-text">
-        <h2 className="features">Our </h2>
-        <h2 className="pink-features">Features</h2>
+        <h2 className="features">
+          Our <span className="pink-features">Features</span>
+        </h2>
       </div>
       <div className="features-box">
         <div className="move-box">
           <img className="features-img move" src={move} />
           <h4>Show your body some love with our streches and exersises.</h4>
+
           <Link to="/move">
             <button className="button-outline">LET'S GO!</button>
           </Link>
         </div>
         <div className="relax-box">
-          <img className="features-img" src={relax} />
+          <img className="features-img relax" src={relax} />
           <h4>Calm your mind with unique meditations and music.</h4>
+
           <Link to="/relax">
             <button className="button-outline">OOOOM...</button>
           </Link>
@@ -52,7 +68,8 @@ function DashBoard() {
         <div className="fun-box">
           <img className="features-img" src={fun} />
           <h4>Unwind with jokes, quotes, and much more...</h4>
-          <Link to="/fun">
+
+          <Link to="/funbreak">
             <button className="button-outline">HAHAHA!</button>
           </Link>
         </div>

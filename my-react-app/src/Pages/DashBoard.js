@@ -4,7 +4,8 @@ import illustration from "../Illustrations/zombieing.png";
 import relax from "../Illustrations/relax.png";
 import move from "../Illustrations/move.png";
 import fun from "../Illustrations/fun.png";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 function DashBoard() {
 	const navigate = useNavigate();
@@ -52,17 +53,23 @@ function DashBoard() {
 				<div className="move-box">
 					<img className="features-img move" src={move} />
 					<h4>Show your body some love with our streches and exersises.</h4>
-					<button onClick={navigateToMoveBreak}>LET'S GO!</button>
+
+					<Link to="/move"><button className="button-outline">LET'S GO!</button></Link>
+
 				</div>
 				<div className="relax-box">
 					<img className="features-img relax" src={relax} />
 					<h4>Calm your mind with unique meditations and music.</h4>
-					<button onClick={navigateToRelaxBreak}>OOOOM...</button>
+
+					<Link to="/relax"><button className="button-outline">OOOOM...</button></Link>
+
 				</div>
 				<div className="fun-box">
 					<img className="features-img" src={fun} />
 					<h4>Unwind with jokes, quotes, and much more...</h4>
-					<button onClick={navigateToFunBreak}>HAHAHA!</button>
+
+					<Link to="/funbreak"><button className="button-outline">HAHAHA!</button></Link>
+
 				</div>
 			</div>
 		</div>

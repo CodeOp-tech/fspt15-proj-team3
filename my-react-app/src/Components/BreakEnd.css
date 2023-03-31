@@ -1,0 +1,127 @@
+
+.popup-wrapper {
+    margin-top: 100px;
+    width: 75%;
+    display: flex;
+    background-color: #363FF2;
+    justify-content: center;
+    color:#F9F9F9;
+    margin: 0 auto;
+    border-radius: 50px;
+}
+
+.left-container{
+    text-align: left;
+    width: 40%;
+    padding-left: 5px;
+    padding-top: 4em;
+}
+
+.right-container{
+    text-align: left;
+    width: 40%;
+    padding-left: 5px;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.title {
+    font-family: 'Abril Fatface', cursive;
+    margin-top: 1em;  
+}
+
+.p1 {
+    font-family: 'Helvetica LT Std';
+    margin-top: 3em;
+    font-weight: 300;
+    width: 80%;
+    line-height: 1.8em;
+    font-size: 1.1em;
+}
+
+.p2 {
+    font-family: 'Helvetica LT Std';
+    font-weight: 400;
+    margin-top: 1em;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.features-text{
+    display: flex;
+    justify-content: center;
+    margin-top: 4em;
+    margin-bottom: 1.5em;
+}
+
+.features{
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    padding-right: 0.4em;  
+}
+
+.yellow-features{
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #FDC758
+}
+
+.popup-button {
+    margin-top: 0.1em;
+	background-color: #363FF2;
+	border: 3px solid #FDC758;
+	border-radius: 20px;
+	padding: 10px 15px;
+	color:  #FDC758;
+	font-family: Helvetica, sans-serif;
+    font-weight: 700;
+    justify-content: center;
+}
+
+.popup-button:hover{
+    background-color:  #FDC758;
+	border: 3px solid #FDC758;
+    color: #363FF2;
+}
+
+.popup-img {
+    width: 95%;
+    height: 70%;
+    margin-top: 1em;
+}
+
+.button-box{
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 0.1em;
+    gap: 0.1em;
+    justify-content: center;
+}
+
+h4{
+    font-family: 'Helvetica LT Std';
+    font-weight: 300;
+    width: 60%;
+    font-size: 1.2rem;
+    padding-top: 1em;
+    margin: 0 auto;
+}
+
+.move{
+    width: 15%;
+}
+
+.popup-button-outline{
+    margin-top: 2.5em;
+	background-color: #363FF2;
+	border: 1px solid #FDC758;
+	color: #FDC758;
+}
+
+.button-outline:hover{
+    margin-top: 2.5em;
+	background-color: #FDC758;
+	border: 1px solid #FDC758;
+	color: #363FF2;
+}

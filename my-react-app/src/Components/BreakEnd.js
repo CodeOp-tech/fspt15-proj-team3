@@ -1,60 +1,61 @@
 import React from 'react';
 import { NavLink} from "react-router-dom";
+import "./BreakEnd.css"
+import illustration from "../Illustrations/zombieing.png"
 
-
-const BreakEnd = ({setTargetMinCB, targetMin}) => {
-
-const resetTimer = (e) => {
-  setTargetMinCB(1)
-  console.log(targetMin)
-}
-
+const BreakEnd = ({resetTimer}) => {
 
   return (
-    <div className="container card">
+    <div className='App'>
+    <div className="popup-wrapper">
 
-      <div className="row">
-      <h4> Well done! Want more? </h4>
+    <div className='left-container'>
+      <img className="popup-img" src={illustration} />
+    </div>
+
+
+      <div className="right-container">
+
+      <div className='text-container'>
+      <h2 className='title'> Well done! Want more? </h2>
+      </div>
+      
+      <div className='text-container'>
+      <p className='p2'> Find balance in your life </p>
       </div>
 
-      <div>
-      <p> Find balance in your life </p>
-      </div>
-
-      <div className='row'>
-      <div className="col-5">
-        <p>Image</p>
-      </div>
-      </div>
-
-      <div className='row'>
-      <div className='col-7'>
-
-        <div>
+       <div>
+       <div className='button-box'>
         <NavLink
         to="/dashboard">
-        <button
-        > Explore more !</button>
+        <button 
+        className='popup-button popup-button-outline'
+        > EXLORE MORE !</button>
         </NavLink>
         </div>
 
-        <div>
+        <div className='button-box'>
         <NavLink
         to="/break">
         <button
-        onClick={resetTimer}
-        > Repeat break </button>
+         className='popup-button popup-button-outline'
+         onClick={resetTimer}
+        > REPEAT BREAK </button>
         </NavLink>
         </div>
 
-        <div>
-        <button> Let me work now </button>
+        <div className='button-box'>
+        <button
+         className='popup-button popup-button-outline'
+         > Let me work now </button>
         </div>
         </div>
 
+     </div>
+
+        </div>
 
       </div>
-    </div>
   );
 };
 

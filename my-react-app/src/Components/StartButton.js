@@ -6,7 +6,7 @@ const StartButton = ({toggleStart}) => {
     <div>
     <button 
     className='timer-button timer-button-outline'
-    onClick={toggleStart}> GO! 
+    onClick={() => toggleStart()}> GO! 
     </button>
     </div>
   );

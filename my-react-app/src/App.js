@@ -11,10 +11,15 @@ import MoveBreak from "./Pages/MoveBreak";
 import BreakEnd from "./Components/BreakEnd";
 import logo from "./Illustrations/logoBreaktime.png";
 import CountdownTimer from "./Components/CountdownTimer";
+import { TimerContext } from "./Hooks/TimerContext"
 
 function App() {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
+  const [targetMin, setTargetMin] = useState(0.1)
+
+
+  let timerObj = {targetMin, setTargetMin};
 
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
@@ -69,6 +74,8 @@ function App() {
         </nav>
 
         <div className="App">
+    
+        <TimerContext.Provider value={timerObj}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<DashBoard />} />
@@ -86,6 +93,8 @@ function App() {
             <Route path="/move/welldone" element={<BreakEnd />} />
 
           </Routes>
+         </TimerContext.Provider>
+    
         </div>
       </div>
     );

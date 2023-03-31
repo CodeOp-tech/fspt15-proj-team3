@@ -13,9 +13,16 @@ import AliceCarousel from "react-alice-carousel";
 import CountdownTimer from "../Components/CountdownTimer";
 import "react-alice-carousel/lib/alice-carousel.css";
 import StartButton from "../Components/StartButton";
+import { useCountdown } from "../Hooks/useCountDown";
+import { useContext } from 'react'; 
+import { TimerContext } from "../Hooks/TimerContext";
 
-function RelaxBreak({toggleStart}) {
-	const handleDragStart = (e) => e.preventDefault();
+function RelaxBreak() {
+
+let {targetMin} = useContext(TimerContext);
+const [toggleStart] = useCountdown(targetMin);
+
+const handleDragStart = (e) => e.preventDefault();
 
 	const responsive = {
 		0: { items: 1 },
@@ -65,8 +72,10 @@ function RelaxBreak({toggleStart}) {
 					</video>
 				</div>
 
+
 				<StartButton
 				toggleStart={toggleStart}/>
+
 			</div>
             <h2 className="library">
 					Browse our library:

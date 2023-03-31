@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import FunContainer from "../Components/FunContainer";
 import funBreakImg from "../Illustrations/funBreak.png";
 import Services from "../services";
+import CountdownTimer from "../Components/CountdownTimer";
 
 function FunBreak() {
 
@@ -39,6 +40,8 @@ function FunBreak() {
 
   return (
     <div className="App">
+
+      <CountdownTimer/>
       <p className="funTitle">
         Almost everything will work again
         <br />

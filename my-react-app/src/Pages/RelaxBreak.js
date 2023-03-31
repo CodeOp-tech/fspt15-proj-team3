@@ -9,11 +9,12 @@ import video5 from "../Videos/video5.mp4";
 import video6 from "../Videos/video6.mp4";
 import video7 from "../Videos/video7.mp4";
 import video8 from "../Videos/video8.mp4";
-
 import AliceCarousel from "react-alice-carousel";
+import CountdownTimer from "../Components/CountdownTimer";
 import "react-alice-carousel/lib/alice-carousel.css";
+import StartButton from "../Components/StartButton";
 
-function RelaxBreak() {
+function RelaxBreak({toggleStart}) {
 	const handleDragStart = (e) => e.preventDefault();
 
 	const responsive = {
@@ -54,13 +55,18 @@ function RelaxBreak() {
 				Take it one <span className="pink">breath</span> at a time
 			</h1>
 			<img className="meditating" src={meditating} />
-
+			<div>
+				<CountdownTimer/>
+			</div>
 			<div className="container">
 				<div className="video">
 					<video width="750" height="500" controls>
 						<source src={video1} type="video/mp4" />
 					</video>
 				</div>
+
+				<StartButton
+				toggleStart={toggleStart}/>
 			</div>
             <h2 className="library">
 					Browse our library:

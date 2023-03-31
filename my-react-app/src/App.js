@@ -1,9 +1,6 @@
 import React, { useEffect , useState } from "react";
 import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
-import List from "./Pages/List";
-import Move from "./Pages/Move";
-import Relax  from "./Pages/Relax";
 import BreakPage from "./Pages/BreakPage";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
@@ -11,7 +8,9 @@ import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
 import RelaxBreak from "./Pages/RelaxBreak";
 import MoveBreak from "./Pages/MoveBreak";
+import BreakEnd from "./Components/BreakEnd";
 import logo from "./Illustrations/logoBreaktime.png";
+import CountdownTimer from "./Components/CountdownTimer";
 
 function App() {
   const services = new Services();
@@ -73,11 +72,18 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<DashBoard />} />
-            <Route path="/list" element={<List />} />
-            <Route path="/break" element={<BreakPage />} />
+
+            <Route path="/timer" element={<CountdownTimer />} />
+            <Route path="/welldone" element={<BreakEnd />} />
+
             <Route path="/fun" element={<FunBreak />} />
-            <Route path="/relax" element={<RelaxBreak />} /> 
+            <Route path="/fun/welldone" element={<BreakEnd />} />
+
+            <Route path="/relax" element={<RelaxBreak />} />
+            <Route path="/relax/welldone" element={<BreakEnd />} />
+
             <Route path="/move" element={<MoveBreak />} />
+            <Route path="/move/welldone" element={<BreakEnd />} />
 
           </Routes>
         </div>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 //function which performs countdown calculation
 //passes user targetMin from CountDownTimer
 const useCountdown = (targetMin) => {

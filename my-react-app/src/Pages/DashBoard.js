@@ -8,18 +8,20 @@ import { Link } from "react-router-dom";
 
 
 function DashBoard() {
-	const navigate = useNavigate();
+
+
+	//const navigate = useNavigate();
 
 	const navigateToFunBreak = () => {
-		navigate("/funbreak");
+		navigate("/fun");
 	};
 
 	const navigateToMoveBreak = () => {
-		navigate("/movebreak");
+		navigate("/move");
 	};
 
 	const navigateToRelaxBreak = () => {
-		navigate("/relaxbreak");
+		navigate("/relax");
 	};
 
 	return (

@@ -2,12 +2,14 @@ import {React, useState, useEffect} from 'react';
 import BreakEnd from './BreakEnd';
 import ShowCounter from './ShowCounter';
 import "./CountDownTimer.css";
+import { useCountdown } from '../Hooks/useCountDown';
 //Parent component that conditionally renders ShowCounter or BreakEnd
 
 const CountdownTimer = () => {
 
-  const [start, setStart] = useState(false)
   const [targetMin, setTargetMin] = useState(0.1)
+
+  /*
   const MIN_IN_MS = targetMin * 60 * 1000;
   const NOW_IN_MS = new Date().getTime();
   const targetTime = NOW_IN_MS + MIN_IN_MS;
@@ -49,33 +51,26 @@ const CountdownTimer = () => {
       return [minutes, seconds];
     };
 
-
-  const [minutes, seconds] = useCountdown(targetTime, start, targetMin);
+*/
+  const [minutes, seconds, toggleStart, resetTimer] = useCountdown(targetMin);
   //takes min and second of targetDate
 
-  const toggleStart = () => {
-    setStart(!start)
-    console.log(start)
-}
 
   const increaseMin = () => {
   console.log(targetMin)
-  setTargetMin(targetMin + 1) 
+  setTargetMin(targetMin + 1)
+  resetTimer()
   console.log(targetMin)
  }
 
   const decreaseMin = () => {
   console.log(targetMin)
-  setTargetMin(targetMin - 1) 
+  setTargetMin(targetMin - 1)
+  resetTimer()
   console.log(targetMin)
  }
 
- const resetTimer = (e) => {
-  setTargetMin(0.2)
-  setStart(true)
-  console.log("reset")
-  console.log(targetMin)
-}
+ console.log(minutes, seconds)
 
 
 if (minutes + seconds <= 0) {
@@ -92,9 +87,9 @@ if (minutes + seconds <= 0) {
         seconds={seconds}
         targetMin={targetMin}
         setTargetMin={setTargetMin}
-        start={start}
+        //start={start}
         toggleStart={toggleStart}
-        setStart={setStart}
+        //setStart={setStart}
         increaseMin={increaseMin}
         decreaseMin={decreaseMin}
       /> 

@@ -4,7 +4,8 @@ import illustration from "../Illustrations/zombieing.png";
 import relax from "../Illustrations/relax.png";
 import move from "../Illustrations/move.png";
 import fun from "../Illustrations/fun.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 
 function DashBoard() {
@@ -68,7 +69,7 @@ function DashBoard() {
 					<img className="features-img" src={fun} />
 					<h4>Unwind with jokes, quotes, and much more...</h4>
 
-					<Link to="/funbreak"><button className="button-outline">HAHAHA!</button></Link>
+					<Link to="/fun"><button className="button-outline">HAHAHA!</button></Link>
 
 				</div>
 			</div>

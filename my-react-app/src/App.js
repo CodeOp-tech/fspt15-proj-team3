@@ -2,8 +2,6 @@ import React, { useEffect , useState } from "react";
 import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import List from "./Pages/List";
-import Move from "./Pages/Move";
-import Relax  from "./Pages/Relax";
 import BreakPage from "./Pages/BreakPage";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
@@ -71,8 +69,8 @@ function App() {
 
         <div className="App">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<DashBoard />} />
+      
+            <Route path="/" element={<DashBoard />} />
             <Route path="/list" element={<List />} />
             <Route path="/break" element={<BreakPage />} />
             <Route path="/fun" element={<FunBreak />} />

@@ -4,8 +4,9 @@ import illustration from "../Illustrations/zombieing.png";
 import relax from "../Illustrations/relax.png";
 import move from "../Illustrations/move.png";
 import fun from "../Illustrations/fun.png";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 function DashBoard() {
   const navigate = useNavigate();

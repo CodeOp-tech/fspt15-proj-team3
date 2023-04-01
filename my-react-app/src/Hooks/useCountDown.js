@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 const useCountdown = (targetMin, start, setStart) => {
 
-  //calc targetMin to milliseconds
+//calc targetMin to milliseconds
 const countDownTime = targetMin * 60 * 1000
   console.log(countDownTime)
 
@@ -14,7 +14,7 @@ const [timer, setTimer] = useState(countDownTime);
 
 //Restarts break
 //Resets countDownTime (based on targetMin in App.js) and start = false
-//Used in CountDownTimer when timer runs out
+//Used in CountDownTimer comp when timer runs out
 const resetTimer = () => {
     setStart(false)
     setTimer(countDownTime)

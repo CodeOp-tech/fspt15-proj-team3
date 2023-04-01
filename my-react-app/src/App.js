@@ -19,7 +19,7 @@ function App() {
 
   //Functions & var related to timer, passed via UseContext/TimerContext
   //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
-  //TargetMin & start passed to CountdownTimer Component
+  //TargetMin & start passed to CountdownTimer comp
   const [targetMin, setTargetMin] = useState(0.1)
   const [start, setStart] = useState(false)
   const toggleStart = () => {

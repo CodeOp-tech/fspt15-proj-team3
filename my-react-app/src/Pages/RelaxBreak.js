@@ -14,66 +14,64 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 function RelaxBreak() {
-	const handleDragStart = (e) => e.preventDefault();
+  const handleDragStart = (e) => e.preventDefault();
 
-	const responsive = {
-		0: { items: 1 },
-		568: { items: 2 },
-		1024: { items: 5 },
-	};
+  const responsive = {
+    0: { items: 1 },
+    568: { items: 2 },
+    1024: { items: 5 },
+  };
 
-	const items = [
-		<video className="video" width="300">
-			<source src={video2} type="video/mp4" />
-		</video>,
-		
-		<video className="video" width="300">
-			<source src={video4} type="video/mp4" />
-		</video>,
-        <video className="video" width="300">
-        <source src={video3} type="video/mp4" />
+  const items = [
+    <video className="video" width="300">
+      <source src={video2} type="video/mp4" />
     </video>,
-		<video className="video" width="300">
-			<source src={video5} type="video/mp4" />
-		</video>,
 
-		<video className="video" width="300">
-			<source src={video6} type="video/mp4" />
-		</video>,
-		<video className="video" width="300">
-			<source src={video7} type="video/mp4" />
-		</video>,
-		<video className="video" width="300">
-			<source src={video8} type="video/mp4" />
-		</video>,
-	];
+    <video className="video" width="300">
+      <source src={video4} type="video/mp4" />
+    </video>,
+    <video className="video" width="300">
+      <source src={video3} type="video/mp4" />
+    </video>,
+    <video className="video" width="300">
+      <source src={video5} type="video/mp4" />
+    </video>,
 
-	return (
-		<div>
-			<h1 className="title-relax">
-				Take it one <span className="pink">breath</span> at a time
-			</h1>
-			<img className="meditating" src={meditating} />
+    <video className="video" width="300">
+      <source src={video6} type="video/mp4" />
+    </video>,
+    <video className="video" width="300">
+      <source src={video7} type="video/mp4" />
+    </video>,
+    <video className="video" width="300">
+      <source src={video8} type="video/mp4" />
+    </video>,
+  ];
 
-			<div className="container">
-				<div className="video">
-					<video width="750" height="500" controls>
-						<source src={video1} type="video/mp4" />
-					</video>
-				</div>
-			</div>
-            <h2 className="library">
-					Browse our library:
-				</h2>
-			<div className="carousel-wrapper">
-				<AliceCarousel
-					mouseTracking
-					responsive={responsive}
-					disableButtonsControls
-					items={items}
-				/>
-			</div>
-		</div>
-	);
+  return (
+    <div>
+      <h1 className="title-relax">
+        Take it one <span className="pink">breath</span> at a time
+      </h1>
+      <img className="meditating" src={meditating} />
+
+      <div className="container">
+        <div className="video">
+          <video width="750" height="500" controls>
+            <source src={video1} type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <h2 className="library">Browse our library:</h2>
+      <div className="carousel-wrapper">
+        <AliceCarousel
+          mouseTracking
+          responsive={responsive}
+          disableButtonsControls
+          items={items}
+        />
+      </div>
+    </div>
+  );
 }
 export default RelaxBreak;

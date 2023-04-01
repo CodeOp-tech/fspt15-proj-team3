@@ -1,16 +1,14 @@
-import React, { useEffect , useState } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import List from "./Pages/List";
-import Move from "./Pages/Move";
-import Relax  from "./Pages/Relax";
+import Move from "./Pages/MoveBreak";
+import Relax from "./Pages/RelaxBreak";
 import BreakPage from "./Pages/BreakPage";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
-import RelaxBreak from "./Pages/RelaxBreak";
-import MoveBreak from "./Pages/MoveBreak";
 import logo from "./Illustrations/logoBreaktime.png";
 
 function App() {
@@ -29,7 +27,7 @@ function App() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
             <a class="navbar-brand" href="#">
-            <img className="logo-img" src={logo} />
+              <img className="logo-img" src={logo} />
             </a>
             <button
               class="navbar-toggler"
@@ -43,27 +41,27 @@ function App() {
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <Link to="/dashboard">
-                <a className="nav-link active">Home</a>
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link to="/move">
-                <a className="nav-link active">Move</a>
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link to="/relax" >
-                <a className="nav-link active">Relax</a>
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link to="/fun">
-                <a className="nav-link active">Fun</a>
-              </Link>
-              </li>
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <Link to="/dashboard">
+                    <a className="nav-link active">Home</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/move">
+                    <a className="nav-link active">Move</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/relax">
+                    <a className="nav-link active">Relax</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/fun">
+                    <a className="nav-link active">Fun</a>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -76,9 +74,8 @@ function App() {
             <Route path="/list" element={<List />} />
             <Route path="/break" element={<BreakPage />} />
             <Route path="/fun" element={<FunBreak />} />
-            <Route path="/relax" element={<RelaxBreak />} /> 
-            <Route path="/move" element={<MoveBreak />} />
-
+            <Route path="/relax" element={<Relax />} />
+            <Route path="/move" element={<Move />} />
           </Routes>
         </div>
       </div>

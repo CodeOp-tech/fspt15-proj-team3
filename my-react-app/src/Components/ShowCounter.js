@@ -4,9 +4,8 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DateTimeDisplay from './DateTimeDisplay';
 import "./CountDownTimer.css";
-import StartButton from './StartButton';
 
-const ShowCounter = ({ minutes, seconds, targetMin, increaseMin, decreaseMin, toggleStart }) => {
+const ShowCounter = ({ minutes, seconds, targetMin, increaseMin, decreaseMin }) => {
 
     return (
       <div className="counter">
@@ -18,7 +17,7 @@ const ShowCounter = ({ minutes, seconds, targetMin, increaseMin, decreaseMin, to
 
 <div>
   <div>
-          <IconButton 
+        <IconButton 
         aria-label="delete"
         onClick={increaseMin}>
         <KeyboardArrowUpIcon
@@ -38,10 +37,6 @@ const ShowCounter = ({ minutes, seconds, targetMin, increaseMin, decreaseMin, to
     </div>
   </div>
         </a>
-          
-        <StartButton
-        toggleStart={toggleStart}/>
-        
       </div>
     );
   };

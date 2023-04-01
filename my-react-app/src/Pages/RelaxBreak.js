@@ -13,21 +13,14 @@ import AliceCarousel from "react-alice-carousel";
 import CountdownTimer from "../Components/CountdownTimer";
 import "react-alice-carousel/lib/alice-carousel.css";
 import StartButton from "../Components/StartButton";
-import { useCountdown } from "../Hooks/useCountDown";
 import { useContext } from 'react'; 
 import { TimerContext } from "../Hooks/TimerContext";
 
 function RelaxBreak() {
 
-let {setStart, start} = useContext(TimerContext);
-//const [toggleStart] = useCountdown(start);
-
-//To start/stop Timer. Used in showCounter and resetTimer() func
-const toggleStart = () => {
-    setStart(!start)
-    console.log(start)
-    console.log("toggle clicked")
-}
+//To use CountDownTimer start/pause button in StartButton comp
+//Passed from App.js as via useContext
+let {toggleStart} = useContext(TimerContext);
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -79,7 +72,6 @@ const handleDragStart = (e) => e.preventDefault();
 					</video>
 				</div>
 
-                <p> {start} </p>
 				<StartButton
 				toggleStart={toggleStart}/>
 

@@ -1,41 +1,31 @@
 import { useEffect, useState } from 'react';
 //function which performs countdown calculation
-//passes user targetMin from CountDownTimer
+//passes targetMin & start from CountDownTimer
 
 const useCountdown = (targetMin, start, setStart) => {
-//targetMin to milliseconds
+
+  //calc targetMin to milliseconds
 const countDownTime = targetMin * 60 * 1000
   console.log(countDownTime)
-
-//to start or pause timer
-//const [start, setStart] = useState(false)
 
 //timer stateVar 
 const [timer, setTimer] = useState(countDownTime);
   console.log(timer)
 
-
-//Restarts break in breakEnd component. 
-//Resets countDownTime = 0.1 and start = true
+//Restarts break
+//Resets countDownTime (based on targetMin in App.js) and start = false
+//Used in CountDownTimer when timer runs out
 const resetTimer = () => {
+    setStart(false)
     setTimer(countDownTime)
-    toggleStart()
     console.log("reset clicked")
   }
 
-//Restarts break in breakEnd component. 
-//Resets countDownTime = 0.1 and start = true
+//Resets countDownTime after in/decrease targetMin in CountDownTimer comp
 const adjustTimer = () => {
   setTimer(countDownTime)
   console.log(countDownTime)
   console.log("timing adjusted")
-}
-
-//To start/stop Timer. Used in showCounter and resetTimer() func
-  const toggleStart = () => {
-    setStart(!start)
-    console.log(start)
-    console.log("toggle clicked")
 }
 
 //setInterval browser API method to calculate the spare time every second(1000 milliseconds).
@@ -44,17 +34,17 @@ const adjustTimer = () => {
       if (start)
       setTimer((timer) => timer - 1000);
       }, 1000);
-      if (timer < 1000) setStart(false)
+      if (timer < 1000) resetTimer()
      return () => {
       clearInterval(interval)  
     }
   }, [countDownTime, start, targetMin, timer]);
 
-  return [...getReturnValues(timer), toggleStart, resetTimer, adjustTimer, start];
+  return [...getReturnValues(timer), resetTimer, adjustTimer];
 };
 
 const getReturnValues = (timer) => {
-  // calculate time left
+  //calculate time left in min & sec
   const minutes = Math.floor((timer % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timer % (1000 * 60)) / 1000);
   return [minutes, seconds];

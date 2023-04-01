@@ -17,8 +17,9 @@ function App() {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
 
-  //Related to timer. Default min, start/pause variables and toggle function
-  //Passed on to FunBreak, RelaxBreak, MoveBreak and CountdownTimer Components
+  //Functions & var related to timer, passed via UseContext/TimerContext
+  //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
+  //TargetMin & start passed to CountdownTimer Component
   const [targetMin, setTargetMin] = useState(0.1)
   const [start, setStart] = useState(false)
   const toggleStart = () => {
@@ -27,7 +28,7 @@ function App() {
     console.log("toggle clicked")
 }
 
-  let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
+let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
 
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 

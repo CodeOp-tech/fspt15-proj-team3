@@ -3,9 +3,14 @@ import IconButton from '@mui/material/IconButton';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DateTimeDisplay from './DateTimeDisplay';
+import { useContext } from 'react'; 
+import { TimerContext } from "../Hooks/TimerContext";
 import "./CountDownTimer.css";
 
-const ShowCounter = ({ minutes, seconds, targetMin, increaseMin, decreaseMin }) => {
+const ShowCounter = ({minutes, seconds, increaseMin, decreaseMin}) => {
+
+//Passed from App.js via useContext
+let {targetMin} = useContext(TimerContext);
 
     return (
       <div className="counter">

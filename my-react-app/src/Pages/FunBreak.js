@@ -18,7 +18,6 @@ function FunBreak() {
   const services = new Services();
 
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
-
   const getData = async () => {
     const jokesArray = await services.getJoke(2);
     setJokes(jokesArray);
@@ -50,7 +49,7 @@ let {toggleStart} = useContext(TimerContext);
       <CountdownTimer/>
       <StartButton
 				toggleStart={toggleStart}/>
-        
+
       <p className="funTitle">
         Almost everything will work again
         <br />

@@ -6,21 +6,23 @@ import { useCountdown } from '../Hooks/useCountDown';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react'; 
 import { TimerContext } from "../Hooks/TimerContext";
+import StartButton from './StartButton';
 //Parent component that renders ShowCounter or Navs to BreakEnd if timer < 0
 
 const CountdownTimer = () => {
   
 const navigate = useNavigate();
-let {targetMin, setTargetMin} = useContext(TimerContext);
+let {targetMin, setTargetMin, start, setStart} = useContext(TimerContext);
   //const [targetMin, setTargetMin] = useState(0.1)
-const [minutes, seconds, toggleStart, resetTimer, adjustTimer] = useCountdown(targetMin);
-  //takes min, seconds values & toggleStart, resetTimer func from useCountdown hook
+const [minutes, seconds, toggleStart, resetTimer, adjustTimer] = useCountdown(targetMin, start, setStart);
+  //takes min, seconds values & toggleStart, adjustTimer func from useCountdown hook
   //NB - need to be included in return statement useEffect
 
   const increaseMin = () => {
   console.log(targetMin)
   setTargetMin(targetMin + 1)
   adjustTimer()
+  console.log("+ min")
   console.log(targetMin)
  }
 
@@ -28,6 +30,7 @@ const [minutes, seconds, toggleStart, resetTimer, adjustTimer] = useCountdown(ta
   console.log(targetMin)
   setTargetMin(targetMin - 1)
   adjustTimer()
+  console.log("- min")
   console.log(targetMin)
  }
 

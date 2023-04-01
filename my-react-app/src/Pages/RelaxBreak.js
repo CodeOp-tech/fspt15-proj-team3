@@ -19,8 +19,15 @@ import { TimerContext } from "../Hooks/TimerContext";
 
 function RelaxBreak() {
 
-let {targetMin} = useContext(TimerContext);
-const [toggleStart] = useCountdown(targetMin);
+let {setStart, start} = useContext(TimerContext);
+//const [toggleStart] = useCountdown(start);
+
+//To start/stop Timer. Used in showCounter and resetTimer() func
+const toggleStart = () => {
+    setStart(!start)
+    console.log(start)
+    console.log("toggle clicked")
+}
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -72,7 +79,7 @@ const handleDragStart = (e) => e.preventDefault();
 					</video>
 				</div>
 
-
+                <p> {start} </p>
 				<StartButton
 				toggleStart={toggleStart}/>
 

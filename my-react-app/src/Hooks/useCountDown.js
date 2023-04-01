@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 //function which performs countdown calculation
 //passes user targetMin from CountDownTimer
 
-const useCountdown = (targetMin) => {
+const useCountdown = (targetMin, start, setStart) => {
 //targetMin to milliseconds
 const countDownTime = targetMin * 60 * 1000
   console.log(countDownTime)
+
 //to start or pause timer
-const [start, setStart] = useState(false)
+//const [start, setStart] = useState(false)
 
 //timer stateVar 
 const [timer, setTimer] = useState(countDownTime);
@@ -16,7 +17,7 @@ const [timer, setTimer] = useState(countDownTime);
 
 //Restarts break in breakEnd component. 
 //Resets countDownTime = 0.1 and start = true
-const resetTimer = (e) => {
+const resetTimer = () => {
     setTimer(countDownTime)
     toggleStart()
     console.log("reset clicked")
@@ -24,10 +25,10 @@ const resetTimer = (e) => {
 
 //Restarts break in breakEnd component. 
 //Resets countDownTime = 0.1 and start = true
-const adjustTimer = (e) => {
+const adjustTimer = () => {
   setTimer(countDownTime)
-  console.log(targetMin)
-  console.log("+/- timer")
+  console.log(countDownTime)
+  console.log("timing adjusted")
 }
 
 //To start/stop Timer. Used in showCounter and resetTimer() func

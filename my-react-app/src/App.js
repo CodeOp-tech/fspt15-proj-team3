@@ -17,9 +17,9 @@ function App() {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
   const [targetMin, setTargetMin] = useState(0.1)
+  const [start, setStart] = useState(false)
 
-
-  let timerObj = {targetMin, setTargetMin};
+  let timerObj = {targetMin, setTargetMin, start, setStart};
 
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 

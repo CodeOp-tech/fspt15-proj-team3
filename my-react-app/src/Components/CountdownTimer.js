@@ -18,16 +18,16 @@ const [minutes, seconds, resetTimer, adjustTimer] = useCountdown(targetMin, star
 
   const increaseMin = () => {
   console.log(targetMin)
-  setTargetMin(Math.floor(targetMin + 1))
-  adjustTimer()
+  setTargetMin(Math.floor(targetMin) + 1)
+  adjustTimer(targetMin)
   console.log("+ min")
   console.log(targetMin)
  }
 
   const decreaseMin = () => {
   console.log(targetMin)
-  setTargetMin(Math.floor(targetMin - 1))
-  adjustTimer()
+  setTargetMin(Math.floor(targetMin) - 1)
+  adjustTimer(targetMin)
   console.log("- min")
   console.log(targetMin)
  }

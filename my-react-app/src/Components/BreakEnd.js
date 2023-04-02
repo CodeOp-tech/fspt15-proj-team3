@@ -3,7 +3,7 @@ import { NavLink} from "react-router-dom";
 import "./BreakEnd.css"
 import illustration from "../Illustrations/zombieing.png"
 
-const BreakEnd = ({resetTimer}) => {
+const BreakEnd = () => {
 
   return (
     <div className='App'>
@@ -35,13 +35,14 @@ const BreakEnd = ({resetTimer}) => {
         </div>
 
         <div className='button-box'>
-        <NavLink
-        to="/break">
+       
+       <NavLink
+         to=".." relative="path">
         <button
          className='popup-button popup-button-outline'
-         onClick={resetTimer}
         > REPEAT BREAK </button>
         </NavLink>
+      
         </div>
 
         <div className='button-box'>

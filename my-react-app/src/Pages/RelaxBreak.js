@@ -9,12 +9,20 @@ import video5 from "../Videos/video5.mp4";
 import video6 from "../Videos/video6.mp4";
 import video7 from "../Videos/video7.mp4";
 import video8 from "../Videos/video8.mp4";
-
 import AliceCarousel from "react-alice-carousel";
+import CountdownTimer from "../Components/CountdownTimer";
 import "react-alice-carousel/lib/alice-carousel.css";
+import StartButton from "../Components/StartButton";
+import { useContext } from 'react'; 
+import { TimerContext } from "../Hooks/TimerContext";
 
 function RelaxBreak() {
-  const handleDragStart = (e) => e.preventDefault();
+
+//To use CountDownTimer start/pause button in StartButton comp
+//Passed from App.js as via useContext
+let {toggleStart} = useContext(TimerContext);
+
+const handleDragStart = (e) => e.preventDefault();
 
   const responsive = {
     0: { items: 1 },
@@ -48,30 +56,39 @@ function RelaxBreak() {
     </video>,
   ];
 
-  return (
-    <div>
-      <h1 className="title-relax">
-        Take it one <span className="pink">breath</span> at a time
-      </h1>
-      <img className="meditating" src={meditating} />
 
-      <div className="container">
-        <div className="video">
-          <video width="750" height="500" controls>
-            <source src={video1} type="video/mp4" />
-          </video>
-        </div>
-      </div>
-      <h2 className="library">Browse our library:</h2>
-      <div className="carousel-wrapper">
-        <AliceCarousel
-          mouseTracking
-          responsive={responsive}
-          disableButtonsControls
-          items={items}
-        />
-      </div>
-    </div>
-  );
+	return (
+		<div>
+			<h1 className="title-relax">
+				Take it one <span className="pink">breath</span> at a time
+			</h1>
+			<img className="meditating" src={meditating} />
+			<div>
+				<CountdownTimer/>
+			</div>
+			<div className="container">
+				<div className="video">
+					<video width="750" height="500" controls>
+						<source src={video1} type="video/mp4" />
+					</video>
+				</div>
+
+				<StartButton
+				toggleStart={toggleStart}/>
+
+			</div>
+            <h2 className="library">
+					Browse our library:
+				</h2>
+			<div className="carousel-wrapper">
+				<AliceCarousel
+					mouseTracking
+					responsive={responsive}
+					disableButtonsControls
+					items={items}
+				/>
+			</div>
+		</div>
+	);
 }
 export default RelaxBreak;

@@ -7,21 +7,21 @@ import fun from "../Illustrations/fun.png";
 import { Link, useNavigate } from "react-router-dom";
 
 
-
 function DashBoard() {
-  const navigate = useNavigate();
 
-  const navigateToFunBreak = () => {
-    navigate("/fun");
-  };
+	const navigate = useNavigate();
 
-  const navigateToMoveBreak = () => {
-    navigate("/movebreak");
-  };
+	const navigateToFunBreak = () => {
+		navigate("/fun");
+	};
 
-  const navigateToRelaxBreak = () => {
-    navigate("/relaxbreak");
-  };
+	const navigateToMoveBreak = () => {
+		navigate("/move");
+	};
+
+	const navigateToRelaxBreak = () => {
+		navigate("/relax");
+	};
 
   return (
     <div className="App">

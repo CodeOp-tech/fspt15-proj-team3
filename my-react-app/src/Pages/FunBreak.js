@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import FunContainer from "../Components/FunContainer";
 import funBreakImg from "../Illustrations/funBreak.png";
 import Services from "../services";
+import CountdownTimer from "../Components/CountdownTimer";
+import { useContext } from 'react'; 
+import { TimerContext } from "../Hooks/TimerContext";
+import StartButton from "../Components/StartButton";
 import "./FunBreak.css";
 import { Link } from "react-router-dom";
 
@@ -15,7 +19,6 @@ function FunBreak() {
   const services = new Services();
 
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
-
   const getData = async () => {
     const jokesArray = await services.getJoke(2);
     setJokes(jokesArray);
@@ -37,8 +40,18 @@ function FunBreak() {
     getData();
   }, []);
 
+
+//To use CountDownTimer start/pause button in StartButton comp
+//Passed from App.js as via useContext
+let {toggleStart} = useContext(TimerContext);
+
   return (
     <div className="App">
+
+      <CountdownTimer/>
+      <StartButton
+				toggleStart={toggleStart}/>
+
       <p className="funTitle">
         Almost everything will work again
         <br />

@@ -1,0 +1,43 @@
+.randomTitle {
+  font-family: "Abril Fatface", cursive;
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.funRandomImg {
+  width: 200px;
+  height: 140px;
+  margin-bottom: 15px;
+}
+
+.randomColor {
+  color: #fe6665;
+}
+
+.randomContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 340px;
+  width: 340px;
+  border: solid, #fdc758;
+  border-radius: 12px;
+  background-color: #fdc758;
+  color: #ffffff;
+  font-size: 30px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 600;
+}
+
+.moreRandom {
+  color: #fdc758;
+  background-color: #363ff2;
+  border: solid;
+  border-radius: 50px;
+  padding: 5px 25px;
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  margin-bottom: 20px;
+}

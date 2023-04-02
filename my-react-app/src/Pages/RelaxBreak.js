@@ -24,37 +24,38 @@ let {toggleStart} = useContext(TimerContext);
 
 const handleDragStart = (e) => e.preventDefault();
 
-	const responsive = {
-		0: { items: 1 },
-		568: { items: 2 },
-		1024: { items: 5 },
-	};
+  const responsive = {
+    0: { items: 1 },
+    568: { items: 2 },
+    1024: { items: 5 },
+  };
 
-	const items = [
-		<video className="video" width="300">
-			<source src={video2} type="video/mp4" />
-		</video>,
-		
-		<video className="video" width="300">
-			<source src={video4} type="video/mp4" />
-		</video>,
-        <video className="video" width="300">
-        <source src={video3} type="video/mp4" />
+  const items = [
+    <video className="video" width="300">
+      <source src={video2} type="video/mp4" />
     </video>,
-		<video className="video" width="300">
-			<source src={video5} type="video/mp4" />
-		</video>,
 
-		<video className="video" width="300">
-			<source src={video6} type="video/mp4" />
-		</video>,
-		<video className="video" width="300">
-			<source src={video7} type="video/mp4" />
-		</video>,
-		<video className="video" width="300">
-			<source src={video8} type="video/mp4" />
-		</video>,
-	];
+    <video className="video" width="300">
+      <source src={video4} type="video/mp4" />
+    </video>,
+    <video className="video" width="300">
+      <source src={video3} type="video/mp4" />
+    </video>,
+    <video className="video" width="300">
+      <source src={video5} type="video/mp4" />
+    </video>,
+
+    <video className="video" width="300">
+      <source src={video6} type="video/mp4" />
+    </video>,
+    <video className="video" width="300">
+      <source src={video7} type="video/mp4" />
+    </video>,
+    <video className="video" width="300">
+      <source src={video8} type="video/mp4" />
+    </video>,
+  ];
+
 
 	return (
 		<div>

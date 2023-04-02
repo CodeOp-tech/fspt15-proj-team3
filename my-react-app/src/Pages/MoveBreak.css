@@ -52,6 +52,15 @@ margin-left: 2em;
     margin: 0 auto;
    
 }
+
+.image{
+   
+    height: 100%;
+    width: 100%;
+    border-radius: 5%;
+    border:2px solid white;
+}
+
 .instructions{
     color: #363FF2;
     text-align: center;

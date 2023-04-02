@@ -1,8 +1,9 @@
 import React from "react";
 
 function FunDisplayBox(props) {
+  const classes = `displayBox ${props.className}`;
   return (
-    <div className="displayBox">
+    <div className={classes}>
       {" "}
       {props.text ? <div className="displayText"> {props.text}</div> : null}
       {props.image ? (

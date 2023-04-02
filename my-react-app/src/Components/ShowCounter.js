@@ -12,39 +12,30 @@ const ShowCounter = ({minutes, seconds, increaseMin, decreaseMin}) => {
 //Passed from App.js via useContext
 let {targetMin} = useContext(TimerContext);
 
-    return (
-      <div className="counter">
-        <a
-        className="countdown">
-          <DateTimeDisplay value={minutes} type={'Mins'}  />
-          <p> : </p>
-          <DateTimeDisplay value={seconds} type={'Seconds'} />
 
-<div>
-  <div>
-        <IconButton 
-        aria-label="delete"
-        onClick={increaseMin}>
-        <KeyboardArrowUpIcon
-        value={targetMin}
-        />
-        </IconButton>
-    </div>
+  return (
+    <div className="counter">
+      <a className="countdown">
+        <DateTimeDisplay value={minutes} type={"Mins"} />
+        <p> : </p>
+        <DateTimeDisplay value={seconds} type={"Seconds"} />
 
-   <div>
-        <IconButton 
-        aria-label="delete"
-        onClick={decreaseMin}>
-        <KeyboardArrowDownIcon
-        value={targetMin}
-        />
-        </IconButton>
-    </div>
-  </div>
-        </a>
+        <div>
+          <div>
+            <IconButton aria-label="delete" onClick={increaseMin}>
+              <KeyboardArrowUpIcon value={targetMin} />
+            </IconButton>
+          </div>
+
+          <div>
+            <IconButton aria-label="delete" onClick={decreaseMin}>
+              <KeyboardArrowDownIcon value={targetMin} />
+            </IconButton>
+          </div>
+        </div>
+      </a>
       </div>
     );
   };
-
 
 export default ShowCounter;

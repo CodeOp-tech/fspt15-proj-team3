@@ -1,4 +1,4 @@
-import React, { useEffect , useState } from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import BreakPage from "./Pages/BreakPage";
@@ -42,7 +42,7 @@ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
             <a class="navbar-brand" href="#">
-            <img className="logo-img" src={logo} />
+              <img className="logo-img" src={logo} />
             </a>
             <button
               class="navbar-toggler"
@@ -56,27 +56,27 @@ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <Link to="/dashboard">
-                <a className="nav-link active">Home</a>
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link to="/move">
-                <a className="nav-link active">Move</a>
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link to="/relax" >
-                <a className="nav-link active">Relax</a>
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link to="/fun">
-                <a className="nav-link active">Fun</a>
-              </Link>
-              </li>
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <Link to="/dashboard">
+                    <a className="nav-link active">Home</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/move">
+                    <a className="nav-link active">Move</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/relax">
+                    <a className="nav-link active">Relax</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/fun">
+                    <a className="nav-link active">Fun</a>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -86,6 +86,7 @@ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
     
         <TimerContext.Provider value={timerObj}>
           <Routes>
+
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<DashBoard />} />
 
@@ -100,6 +101,7 @@ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
 
             <Route path="/move" element={<MoveBreak />} />
             <Route path="/move/welldone" element={<BreakEnd />} />
+
 
           </Routes>
          </TimerContext.Provider>

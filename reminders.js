@@ -52,7 +52,8 @@ const reminderEveryFiveMin = cron.schedule('*/5 * * * *', () => {
       });
 
 //reminder.start()
-//reminder.stop()
+reminder.stop()
+reminderEveryFiveMin.stop()
 //reminder.destroy()
 
 module.exports = {reminder, reminderEveryFiveMin};

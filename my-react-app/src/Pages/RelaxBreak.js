@@ -20,9 +20,12 @@ function RelaxBreak() {
 
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
-let {toggleStart} = useContext(TimerContext);
+let {toggleStart, targetMin, setTargetMin} = useContext(TimerContext);
 
-const handleDragStart = (e) => e.preventDefault();
+const handleDragStart = (e) => {
+ e.preventDefault();
+ changeRelaxTimer()
+}
 
   const responsive = {
     0: { items: 1 },
@@ -30,19 +33,24 @@ const handleDragStart = (e) => e.preventDefault();
     1024: { items: 5 },
   };
 
+  let changeRelaxTimer = (e) => {
+	setTargetMin(e.target.value)
+	console.log("video timing set to:", targetMin)
+}
+
   const items = [
     <video className="video" width="300">
-      <source src={video2} type="video/mp4" />
+      <source src={video2} type="video/mp4" value={2} />
     </video>,
 
     <video className="video" width="300">
-      <source src={video4} type="video/mp4" />
+      <source src={video4} type="video/mp4" value={4} />
     </video>,
     <video className="video" width="300">
-      <source src={video3} type="video/mp4" />
+      <source src={video3} type="video/mp4" value={3} />
     </video>,
     <video className="video" width="300">
-      <source src={video5} type="video/mp4" />
+      <source src={video5} type="video/mp4" value={4} />
     </video>,
 
     <video className="video" width="300">
@@ -54,9 +62,9 @@ const handleDragStart = (e) => e.preventDefault();
     <video className="video" width="300">
       <source src={video8} type="video/mp4" />
     </video>,
-  ];
+  ]
 
-
+ 
 	return (
 		<div>
 			<h1 className="title-relax">
@@ -86,6 +94,7 @@ const handleDragStart = (e) => e.preventDefault();
 					responsive={responsive}
 					disableButtonsControls
 					items={items}
+					onClick={changeRelaxTimer}
 				/>
 			</div>
 		</div>

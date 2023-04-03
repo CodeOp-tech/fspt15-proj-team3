@@ -20,21 +20,23 @@
     display: flex;
     margin-top: 3em;
     justify-content: center;
-    width: 90%;
+    padding-bottom: 50px;
+    
+padding-left: 12em;
 }
 
-.right-container{
-margin-left: 2em;
+.right-box{
+padding-left: 4em;
+width: 40%;
 }
 
-.left-container{
-
-}
 .featured-activity{
     background-color: #FDC757;
     border-radius: 5%;
-    width: 80%;
+    width: 70%;
     height: 600px;
+    
+    margin: 0 auto;
 }
 .title-activity{
     color:#ffffff;
@@ -45,7 +47,6 @@ margin-left: 2em;
 }
 
 .img-activity{
-    border:2px solid white;
     border-radius: 5%;
     width:65%;
     height: 330px;
@@ -54,11 +55,9 @@ margin-left: 2em;
 }
 
 .image{
-   
     height: 100%;
     width: 100%;
     border-radius: 5%;
-    border:2px solid white;
 }
 
 .instructions{
@@ -79,4 +78,30 @@ margin-left: 2em;
     display: block;
     
     margin: 0 auto;
+}
+.more-ideas{
+    font-size:1em ;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    font-family: Helvetica LT Std;
+    padding-top: 15px;
+}
+.more-ideas:hover{
+    color: #363FF2;
+    font-weight: 600;
+
+}
+.box-more-ideas{
+    border-radius: 10px;
+    border: 1px solid #FDC757;
+    width: 45%;
+    height: 60px;
+    margin-bottom: 1.2em;
+}
+.more-id{
+    text-align: left;
+    padding-bottom: 20px;
+    padding-top: 50px;
+    color: #FE6665;
 }

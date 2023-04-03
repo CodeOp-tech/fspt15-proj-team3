@@ -41,9 +41,18 @@ const reminder = cron.schedule('* * * * *', () => {
       });
     });
 
+const reminderEveryFiveMin = cron.schedule('*/5 * * * *', () => {
+      transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent every 5 min:' + info.response);
+            }
+        });
+      });
+
 //reminder.start()
 //reminder.stop()
 //reminder.destroy()
 
-module.exports = reminder;
-
+module.exports = {reminder, reminderEveryFiveMin};

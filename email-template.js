@@ -54,4 +54,4 @@ const HTML_TEMPLATE = (text) => {
     `;
   }
   
-  export default HTML_TEMPLATE;
+module.exports = HTML_TEMPLATE;

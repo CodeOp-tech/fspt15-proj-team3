@@ -4,6 +4,8 @@ let HTML_TEMPLATE = require("./email-template")
 
 const message = "Time to take a break!"
 
+//Works when running Node.js & Routes in Index.js
+
 let mailOptions = {
     from: 'melecouvreur@gmail.com',
     to: 'melecouvreur@gmail.com',
@@ -31,7 +33,7 @@ transporter.sendMail(mailOptions, function(error, info){
     }
 });
 */
-const reminder = cron.schedule('* * * * *', () => {
+const reminderEveryMin = cron.schedule('* * * * *', () => {
     transporter.sendMail(mailOptions, function(error, info){
           if (error) {
             console.log(error);
@@ -41,19 +43,8 @@ const reminder = cron.schedule('* * * * *', () => {
       });
     });
 
-const reminderEveryFiveMin = cron.schedule('*/5 * * * *', () => {
-      transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('Email sent every 5 min:' + info.response);
-            }
-        });
-      });
-
-//reminder.start()
-reminder.stop()
-reminderEveryFiveMin.stop()
+//reminderEveryMin.start()
+reminderEveryMin.stop()
 //reminder.destroy()
 
-module.exports = {reminder, reminderEveryFiveMin};
+module.exports = reminderEveryMin

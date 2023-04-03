@@ -1,6 +1,6 @@
 var express = require('express');
-var reminder = require("../reminders")
-var reminderEveryFiveMin = require("../reminders")
+var reminderEveryMin = require("../ReminderEveryMin")
+var reminderEveryFiveMin = require("../ReminderEveryFiveMin")
 
 var router = express.Router();
 
@@ -9,15 +9,15 @@ router.get('/', function(req, res, next) {
   res.send('index', { title: 'Express' });
 });
 
-//Reminders each Min - START
+//Reminders each Min - START - stopped working 
 router.post('/reminders-start', async (req, res) => {
-  await reminder.start();
+  await reminderEveryMin.start();
   return res.json({ message: 'Started' });
 });
 
-//Reminders each Min - STOP
+//Reminders each Min - STOP - stopped working
 router.post('/reminders-stop', async (req, res) => {
-  await reminder.stop();
+  await reminderEveryMin.stop();
   return res.json({ message: 'Stopped' });
 });
 

@@ -4,43 +4,30 @@ import illustration from "../Illustrations/zombieing.png";
 import relax from "../Illustrations/relax.png";
 import move from "../Illustrations/move.png";
 import fun from "../Illustrations/fun.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function DashBoard() {
 
-	const navigate = useNavigate();
-
-	const navigateToFunBreak = () => {
-		navigate("/fun");
-	};
-
-	const navigateToMoveBreak = () => {
-		navigate("/move");
-	};
-
-	const navigateToRelaxBreak = () => {
-		navigate("/relax");
-	};
 
   return (
     <div className="App">
       <div className="wrapper">
-        <div className="left-container">
+        <div className="lft-container">
           <div className="text-container">
             <h1 className="title-dash">Work hard, rest harder.</h1>
-            <p className="p1">
+            <p className="text1">
               In our time-pressed and information-rich world, it can be a
               challenge to find a moment for ourselves. BreakTime is a guide to
               the simpler lives we all crave and deserve.
             </p>
-            <p className="p2">
+            <p className="text2">
               Enjoy a moment of rest and lead a more productive worklife!
             </p>
           </div>
         </div>
 
-        <div className="right-container">
+        <div className="rght-container">
           <img className="dashboard-img" src={illustration} />
         </div>
       </div>
@@ -52,11 +39,11 @@ function DashBoard() {
       </div>
       <div className="features-box">
         <div className="move-box">
-          <img className="features-img move" src={move} />
+          <img className="features-img movei" src={move} />
           <h4>Show your body some love with our streches and exersises.</h4>
 
           <Link to="/move">
-            <button className="button-outline">LET'S GO!</button>
+            <button className="button-dash">LET'S GO!</button>
           </Link>
         </div>
         <div className="relax-box">
@@ -64,7 +51,7 @@ function DashBoard() {
           <h4>Calm your mind with unique meditations and music.</h4>
 
           <Link to="/relax">
-            <button className="button-outline">OOOOM...</button>
+            <button className="button-dash">OOOOM...</button>
           </Link>
         </div>
         <div className="fun-box">
@@ -72,7 +59,7 @@ function DashBoard() {
           <h4>Unwind with jokes, quotes, and much more...</h4>
 
           <Link to="/fun">
-            <button className="button-outline">HAHAHA!</button>
+            <button className="button-dash">HAHAHA!</button>
           </Link>
         </div>
       </div>

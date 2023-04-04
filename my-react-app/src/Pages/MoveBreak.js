@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 
 import "./MoveBreak.css";
 import ballet from "../Illustrations/ballet.png";
@@ -9,6 +9,10 @@ import image4 from "../MoveImages/bandedStanding.png";
 import image5 from "../MoveImages/brandedSquats.png";
 import image6 from "../MoveImages/highKnees.png";
 import image7 from "../MoveImages/lungeJumps.png";
+import CountdownTimer from "../Components/CountdownTimer";
+import { useContext } from 'react'; 
+import { TimerContext } from "../Hooks/TimerContext";
+import StartButton from "../Components/StartButton";
 
 function MoveBreak() {
 	const [showImages, setShowImages] = useState([
@@ -82,24 +86,41 @@ function MoveBreak() {
 				"4.Repeat the exercise until set is complete.",
 		},
 	]);
-	const [currentImage, setCurrentImage] = useState(null);
+
+
+	const [currentImage, setCurrentImage] = useState({
+		id: 1,
+		src: image1,
+		name: "Plank Jacks",
+		instructions:
+			"Start in plank position with your arms extended and hands under your shoulders" +
+			"feet together. Your body should be in a straight line from your head to your heels" +
+			"Engage your abs to help protect your lower back from injury",
+	},);
 
 	const handleClick = (image) => {
 		setCurrentImage(image);
 	};
 
+	//To use CountDownTimer start/pause button in StartButton comp
+//Passed from App.js as via useContext
+let {toggleStart} = useContext(TimerContext);
+
+
 	return (
 		<div>
 			<div className="title-container">
-				<img className="meditating" src={ballet} />
+				<img className="ballet" src={ballet} />
 				<h1 className="title-move">
 					Your next great idea might be just one
 					<span className="blue"> stretch</span> away.
 				</h1>
 			</div>
-
+			<CountdownTimer/>
+      <StartButton
+				toggleStart={toggleStart}/>
 			<div className="activities-container">
-				<div className="left-container">
+				<div className="left-cont">
 					<div className="featured-activity">
 						<h3 className="title-activity">
 							{currentImage && currentImage.name}
@@ -114,7 +135,7 @@ function MoveBreak() {
 						>
 							Instructions
 						</h5>
-						<button className="btn-start">START</button>
+						
 					</div>
 				</div>
 
@@ -142,15 +163,11 @@ function MoveBreak() {
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h1 class="modal-title fs-5" id="staticBackdropLabel">
+								<h1 class="modal-title
+								modal-title-centered fs-5" id="staticBackdropLabel">
 									{currentImage && currentImage.name}
 								</h1>
-								<button
-									type="button"
-									class="btn-close"
-									data-bs-dismiss="modal"
-									aria-label="Close"
-								></button>
+								
 							</div>
 							<div class="modal-body">
 								{currentImage && currentImage.instructions}

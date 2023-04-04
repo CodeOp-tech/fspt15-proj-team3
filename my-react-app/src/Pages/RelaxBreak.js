@@ -17,9 +17,6 @@ import { useContext } from "react";
 import { TimerContext } from "../Hooks/TimerContext";
 
 function RelaxBreak() {
-	//To use CountDownTimer start/pause button in StartButton comp
-	//Passed from App.js as via useContext
-	let { toggleStart } = useContext(TimerContext);
 
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext

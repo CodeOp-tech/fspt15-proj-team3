@@ -1,7 +1,9 @@
 let nodemailer = require('nodemailer');
 let cron = require('node-cron');
 let HTML_TEMPLATE = require("./email-template")
+require("dotenv").config();
 
+const SECRET = process.env.SECRET;
 const message = "Time to take a break!"
 
 //Works when running Node.js & Routes in Index.js
@@ -20,7 +22,7 @@ let transporter = nodemailer.createTransport({
     port: 587,
     auth: {
       user: 'melecouvreur@gmail.com',
-      pass: 'ldhmabrehybxyokb'
+      pass: SECRET
     }
 });
 

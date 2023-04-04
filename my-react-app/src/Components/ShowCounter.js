@@ -22,14 +22,14 @@ let {targetMin} = useContext(TimerContext);
 
         <div>
           <div>
-            <IconButton aria-label="delete" onClick={increaseMin}>
-              <KeyboardArrowUpIcon value={targetMin} />
+            <IconButton  aria-label="delete" onClick={increaseMin}>
+              <KeyboardArrowUpIcon color="primary" value={targetMin} />
             </IconButton>
           </div>
 
           <div>
-            <IconButton aria-label="delete" onClick={decreaseMin}>
-              <KeyboardArrowDownIcon value={targetMin} />
+            <IconButton  aria-label="delete" onClick={decreaseMin}>
+              <KeyboardArrowDownIcon  color="primary"  value={targetMin} />
             </IconButton>
           </div>
         </div>

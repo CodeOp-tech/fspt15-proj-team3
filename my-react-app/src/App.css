@@ -95,3 +95,43 @@
   font-size: 0.75rem;
   line-height: 1rem;
 }
+#navbarNav{
+  padding-right: 2em;
+}
+a.nav-link:hover{
+  color: #FE6665 !important;
+  }
+
+  ul li {
+    padding: 6px 0;
+  }
+  ul li a {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: 0.5s;
+  }
+  ul li a::after {
+    position: absolute;
+    content: "";
+    width: 90%;
+    height: 3px;
+    top: 95%;
+    left: 0;
+    color: #FE6665;
+    background: #FE6665;
+    transition: transform 0.5s;
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  ul li a:hover {
+    color: #FE6665;
+  }
+  ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .bg-body-tertiary {
+    background-color: white !important;
+}

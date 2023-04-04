@@ -17,16 +17,19 @@ function App() {
 	const services = new Services();
 	const [isShown, setIsShown] = useState(false);
 
-	//Functions & var related to timer, passed via UseContext/TimerContext
-	//toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
-	//TargetMin & start passed to CountdownTimer comp
-	const [targetMin, setTargetMin] = useState(0.1);
-	const [start, setStart] = useState(false);
-	const toggleStart = () => {
-		setStart(!start);
-		console.log(start);
-		console.log("toggle clicked");
-	};
+
+  //Functions & var related to timer, passed via UseContext/TimerContext
+  //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
+  //TargetMin & start passed to CountdownTimer comp
+  const [targetMin, setTargetMin] = useState(0.17)
+  const [start, setStart] = useState(false)
+  const toggleStart = () => {
+    setStart(!start)
+    console.log(start)
+    console.log("toggle clicked")
+}
+
+
 
 	let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart };
 

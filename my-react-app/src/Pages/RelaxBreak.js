@@ -21,6 +21,15 @@ function RelaxBreak() {
 	//Passed from App.js as via useContext
 	let { toggleStart } = useContext(TimerContext);
 
+//To use CountDownTimer start/pause button in StartButton comp
+//Passed from App.js as via useContext
+let {toggleStart, targetMin, setTargetMin} = useContext(TimerContext);
+
+const handleDragStart = (e) => {
+ e.preventDefault();
+ //changeRelaxTimer()
+}
+
 	const items = [
 		<div className="item">
 			<video data-value="1" width="300" controls className="media">
@@ -53,12 +62,19 @@ function RelaxBreak() {
 			</video>
 		</div>,
 
+
 		<div className="item">
 			<video data-value="7" width="300" controls className="media">
 				<source src={video7} type="video/mp4" />
 			</video>
 		</div>,
 	];
+
+
+  let changeRelaxTimer = (e) => {
+	setTargetMin(e.target.value)
+	console.log("video timing set to:", targetMin)
+}
 
 	const [mainIndex, setMainIndex] = useState(0);
 
@@ -73,6 +89,7 @@ function RelaxBreak() {
 			setMainIndex(mainIndex - 1);
 		}
 	};
+
 
 	return (
 		<div>
@@ -97,6 +114,7 @@ function RelaxBreak() {
 					disableDotsControls
 					disableButtonsControls
 					items={items}
+					onClick={changeRelaxTimer}
 				/>
 
 				<div className="btn-prev" onClick={slidePrev}>

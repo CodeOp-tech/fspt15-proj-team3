@@ -6,7 +6,6 @@ const message = "Time to take a break!"
 
 //Works when running Node.js but not index.js
 
-
 let mailOptions = {
     from: 'melecouvreur@gmail.com',
     to: 'melecouvreur@gmail.com',

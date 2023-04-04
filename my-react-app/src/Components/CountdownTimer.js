@@ -48,6 +48,7 @@ if (minutes + seconds <= 0) {
   else { 
     return (
       <div>
+        <h4 className='set-timer'>SET TIMER</h4>
        <ShowCounter
         minutes={minutes}
         seconds={seconds}

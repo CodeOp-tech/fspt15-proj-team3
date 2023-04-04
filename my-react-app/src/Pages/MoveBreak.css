@@ -5,17 +5,19 @@
     font-family: 'Abril Fatface', cursive;
     margin-top: 1em;
     text-align: right;
-    width: 40%;
+    width: 50%;
     padding-right: 3em;
     padding-left: 2.5em;
     line-height: 1.5em;
 }
 .title-container{
-    margin-top: 100px;
+    margin-top: 2em;
     display: flex;
     justify-content: center;
 }
-
+.ballet{
+    width: 20%;
+}
 .activities-container{
     display: flex;
     margin-top: 3em;
@@ -27,15 +29,16 @@ padding-left: 12em;
 
 .right-box{
 padding-left: 4em;
-width: 40%;
+width: 50%;
 }
 
 .featured-activity{
     background-color: #FDC757;
-    border-radius: 5%;
-    width: 70%;
-    height: 600px;
-    
+    border-radius: 50px;
+    width: 75%;
+    height: 850px;
+
+    padding-bottom: 4em;
     margin: 0 auto;
 }
 .title-activity{
@@ -45,26 +48,30 @@ width: 40%;
     padding-bottom: 1em;
 
 }
+.left-cont{
+    width: 60%;
+    padding-top: 2em;
 
+    padding-bottom: 4em;
+   
+
+}
 .img-activity{
-    border-radius: 5%;
     width:65%;
-    height: 330px;
     margin: 0 auto;
    
 }
 
 .image{
-    height: 100%;
     width: 100%;
-    border-radius: 5%;
+    border-radius: 20px;
 }
 
 .instructions{
     color: #363FF2;
     text-align: center;
-    padding-top: 0.6em;
-    
+    padding-top: 1.5em;
+    font-size:1.5em ;
     padding-bottom: 0.8em;
     cursor: pointer;
 }
@@ -76,16 +83,14 @@ width: 40%;
     background-color: #ffffff;
     border:1px solid white;
     display: block;
-    
     margin: 0 auto;
 }
 .more-ideas{
-    font-size:1em ;
-    text-transform: uppercase;
+    font-size:1.2em ;
     cursor: pointer;
     text-align: center;
     font-family: Helvetica LT Std;
-    padding-top: 15px;
+    padding-top: 25px;
 }
 .more-ideas:hover{
     color: #363FF2;
@@ -94,14 +99,29 @@ width: 40%;
 }
 .box-more-ideas{
     border-radius: 10px;
-    border: 1px solid #FDC757;
-    width: 45%;
-    height: 60px;
+    border: 2px solid #FDC757;
+    width: 60%;
+    height: 80px;
     margin-bottom: 1.2em;
 }
 .more-id{
     text-align: left;
-    padding-bottom: 20px;
-    padding-top: 50px;
+    padding-bottom: 2.5em;
+    padding-top: 1em;
     color: #FE6665;
+}
+.modal-content{
+    background-color: #363FF2;
+    color: #ffffff;
+}
+
+.btn-secondary{
+    --bs-btn-bg: #FDC757 !important;
+    --bs-btn-color: #262626;
+    margin:0 auto;
+    --bs-btn-hover-bg: #262626;
+    border-radius:  50px;
+    padding: 8px 15px;
+    margin-bottom:5px;
+    margin-top:5px;
 }

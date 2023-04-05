@@ -11,7 +11,8 @@ import MoveBreak from "./Pages/MoveBreak";
 import BreakEnd from "./Components/BreakEnd";
 import logo from "./Illustrations/logoBreaktime.png";
 import CountdownTimer from "./Components/CountdownTimer";
-import { TimerContext } from "./Hooks/TimerContext"
+import { TimerContext } from "./Hooks/TimerContext";
+import FunRandom from "./Pages/FunRandom";
 
 function App() {
   const services = new Services();
@@ -20,15 +21,15 @@ function App() {
   //Functions & var related to timer, passed via UseContext/TimerContext
   //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
   //TargetMin & start passed to CountdownTimer comp
-  const [targetMin, setTargetMin] = useState(0.1)
-  const [start, setStart] = useState(false)
+  const [targetMin, setTargetMin] = useState(0.1);
+  const [start, setStart] = useState(false);
   const toggleStart = () => {
-    setStart(!start)
-    console.log(start)
-    console.log("toggle clicked")
-}
+    setStart(!start);
+    console.log(start);
+    console.log("toggle clicked");
+  };
 
-let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
+  let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart };
 
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
@@ -83,29 +84,25 @@ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
         </nav>
 
         <div className="App">
-    
-        <TimerContext.Provider value={timerObj}>
-          <Routes>
+          <TimerContext.Provider value={timerObj}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard" element={<DashBoard />} />
 
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<DashBoard />} />
+              <Route path="/timer" element={<CountdownTimer />} />
+              <Route path="/welldone" element={<BreakEnd />} />
 
-            <Route path="/timer" element={<CountdownTimer />} />
-            <Route path="/welldone" element={<BreakEnd />} />
+              <Route path="/fun" element={<FunBreak />} />
+              <Route path="/fun/welldone" element={<BreakEnd />} />
+              <Route path="/funrandom" element={<FunRandom />} />
 
-            <Route path="/fun" element={<FunBreak />} />
-            <Route path="/fun/welldone" element={<BreakEnd />} />
+              <Route path="/relax" element={<RelaxBreak />} />
+              <Route path="/relax/welldone" element={<BreakEnd />} />
 
-            <Route path="/relax" element={<RelaxBreak />} />
-            <Route path="/relax/welldone" element={<BreakEnd />} />
-
-            <Route path="/move" element={<MoveBreak />} />
-            <Route path="/move/welldone" element={<BreakEnd />} />
-
-
-          </Routes>
-         </TimerContext.Provider>
-    
+              <Route path="/move" element={<MoveBreak />} />
+              <Route path="/move/welldone" element={<BreakEnd />} />
+            </Routes>
+          </TimerContext.Provider>
         </div>
       </div>
     );

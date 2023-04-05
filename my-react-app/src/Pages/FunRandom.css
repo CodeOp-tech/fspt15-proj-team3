@@ -20,7 +20,7 @@
   align-items: center;
   margin: 0 auto;
   height: 340px;
-  width: 340px;
+  width: 440px;
   border: solid, #fdc758;
   border-radius: 12px;
   background-color: #fdc758;
@@ -31,13 +31,42 @@
 }
 
 .moreRandom {
-  color: #fdc758;
-  background-color: #363ff2;
+  color: white;
+  background-color: #fe6665;
   border: solid;
   border-radius: 50px;
   padding: 5px 25px;
-  font-size: 15px;
+  font-size: 22px;
   font-family: "Inter", sans-serif;
   font-weight: 600;
   margin-bottom: 20px;
+}
+
+.selectContainer {
+  position: absolute;
+  left: 995px;
+  top: 410px;
+  font-family: "Inter", sans-serif;
+}
+.option {
+  background-color: #fe6665;
+  border-radius: 10px;
+  border: 1px solid #fdc757;
+  margin-bottom: 1.2em;
+  font-size: 15px;
+  width: 90px;
+}
+
+.optionLink {
+  text-decoration: none;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+.option:hover {
+  background-color: black;
+}
+
+.optionLink:hover {
+  color: white;
 }

@@ -3,7 +3,7 @@ import FunContainer from "../Components/FunContainer";
 import funBreakImg from "../Illustrations/funBreak.png";
 import Services from "../services";
 import CountdownTimer from "../Components/CountdownTimer";
-import { useContext } from 'react'; 
+import { useContext } from "react";
 import { TimerContext } from "../Hooks/TimerContext";
 import StartButton from "../Components/StartButton";
 import "./FunBreak.css";
@@ -40,17 +40,14 @@ function FunBreak() {
     getData();
   }, []);
 
-
-//To use CountDownTimer start/pause button in StartButton comp
-//Passed from App.js as via useContext
-let {toggleStart} = useContext(TimerContext);
+  //To use CountDownTimer start/pause button in StartButton comp
+  //Passed from App.js as via useContext
+  let { toggleStart } = useContext(TimerContext);
 
   return (
     <div className="App">
-
-      <CountdownTimer/>
-      <StartButton
-				toggleStart={toggleStart}/>
+      <CountdownTimer />
+      <StartButton toggleStart={toggleStart} />
 
       <p className="funTitle">
         Almost everything will work again
@@ -70,10 +67,14 @@ let {toggleStart} = useContext(TimerContext);
         cats={cats}
         dogs={dogs}
       />
-
-      <button className="funRandom" onClick={() => getData()}>
-        SHOW RANDOM
-      </button>
+      <span>
+        <button className="funRandom" onClick={() => getData()}>
+          SHOW RANDOM
+        </button>
+        <Link to="/funrandom">
+          <button className="funSelect">SELECT</button>
+        </Link>
+      </span>
     </div>
   );
 }

@@ -12,11 +12,39 @@ export default function FunRandom() {
       </p>
       <img src={funRandomImg} className="funRandomImg" />
 
+      <container className="selectContainer">
+        <div className="option">
+          <a href="#" className="optionLink">
+            Jokes
+          </a>
+        </div>
+        <div className="option">
+          <a href="#" className="optionLink">
+            Facts
+          </a>
+        </div>
+        <div className="option">
+          <a href="#" className="optionLink">
+            Quotes
+          </a>
+        </div>
+        <div className="option">
+          <a href="#" className="optionLink">
+            Cats
+          </a>
+        </div>
+        <div className="option">
+          <a href="#" className="optionLink">
+            Dogs
+          </a>
+        </div>
+      </container>
+
       <container>
         <div className="randomContainer">Hello</div>
       </container>
 
-      <button className="moreRandom">SHOW MORE</button>
+      <button className="moreRandom">↻</button>
     </div>
   );
 }

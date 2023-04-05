@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import BreakPage from "./Pages/BreakPage";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
 import RelaxBreak from "./Pages/RelaxBreak";
 import MoveBreak from "./Pages/MoveBreak";
 import BreakEnd from "./Components/BreakEnd";
+import Login from "./Components/Login";
 import logo from "./Illustrations/logoBreaktime.png";
 import CountdownTimer from "./Components/CountdownTimer";
 import { TimerContext } from "./Hooks/TimerContext";
 
 function App() {
-	const services = new Services();
-	const [isShown, setIsShown] = useState(false);
+  const services = new Services();
+  const [isShown, setIsShown] = useState(false);
+  const location = useLocation();
 
 
   //Functions & var related to timer, passed via UseContext/TimerContext
@@ -40,58 +41,59 @@ function App() {
 	//   services.getFacts();
 	// }, []);
 
+  {
+    return (
+      <div>
+        <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">
+              <img className="logo-img" src={logo} />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <Link to="/dashboard">
+                    <a className="nav-link active">Home</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/move">
+                    <a className="nav-link active">Move</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/relax">
+                    <a className="nav-link active">Relax</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/fun">
+                    <a className="nav-link active">Fun</a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
 
-	{
-		return (
-			<div>
-				<nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
-					<div className="container-fluid">
-						<a className="navbar-brand" href="#">
-							<img className="logo-img" src={logo} />
-						</a>
-						<button
-							class="navbar-toggler"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#navbarNav"
-							aria-controls="navbarNav"
-							aria-expanded="false"
-							aria-label="Toggle navigation"
-						>
-							<span className="navbar-toggler-icon"></span>
-						</button>
-						<div className="collapse navbar-collapse" id="navbarNav">
-							<ul className="navbar-nav ms-auto">
-								<li className="nav-item">
-									<Link to="/dashboard">
-										<a className="nav-link active">Home</a>
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link to="/move">
-										<a className="nav-link active">Move</a>
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link to="/relax">
-										<a className="nav-link active">Relax</a>
-									</Link>
-								</li>
-								<li className="nav-item">
-									<Link to="/fun">
-										<a className="nav-link active">Fun</a>
-									</Link>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
+        <div className="App">
+    
+        <TimerContext.Provider value={timerObj}>
+          <Routes>
 
-				<div className="App">
-					<TimerContext.Provider value={timerObj}>
-						<Routes>
-							<Route path="/" element={<Home />} />
-							<Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/dashboard" element={<DashBoard />} />
 
 							<Route path="/timer" element={<CountdownTimer />} />
 							<Route path="/welldone" element={<BreakEnd />} />

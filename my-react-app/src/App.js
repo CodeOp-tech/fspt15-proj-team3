@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DashBoard from "./Pages/DashBoard";
 import BreakPage from "./Pages/BreakPage";
+import Home from "./Pages/Home"
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
@@ -106,6 +107,7 @@ function logOut(){
           <Routes>
 
             <Route path="/" element={<Login />} />
+            <Route path="/test" element={<Home/>} />
             <Route path="/dashboard" element={<DashBoard />} />
 
 							<Route path="/timer" element={<CountdownTimer />} />

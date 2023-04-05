@@ -1,13 +1,13 @@
 let nodemailer = require('nodemailer');
 let cron = require('node-cron');
-let HTML_TEMPLATE = require("./email-template")
 require("dotenv").config();
 
-const SECRET = process.env.SECRET;
+//Moved this into index.js as I want to fetch email from db and insert into mailOptions
+let HTML_TEMPLATE = require("./email-template")
+const EM_PASS = process.env.EM_PASS;
 const message = "Time to take a break!"
 
-//Works when running Node.js & Routes in Index.js
-
+//Moved this directy as an object into reminderEveryMin so I can insert email later
 let mailOptions = {
     from: 'melecouvreur@gmail.com',
     to: 'melecouvreur@gmail.com',
@@ -22,31 +22,27 @@ let transporter = nodemailer.createTransport({
     port: 587,
     auth: {
       user: 'melecouvreur@gmail.com',
-      pass: SECRET
+      pass: EM_PASS
     }
-});
+}); 
 
-/*
-transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('One off Email sent:' + info.response);
-    }
-});
-*/
 const reminderEveryMin = cron.schedule('* * * * *', () => {
-    transporter.sendMail(mailOptions, function(error, info){
+    transporter.sendMail({
+      from: 'melecouvreur@gmail.com',
+      to: 'melecouvreur@gmail.com',
+      subject: 'Hello - Break Reminder!',
+      text: message,
+      html: HTML_TEMPLATE(message),
+  }, function(error, info){
           if (error) {
             console.log(error);
           } else {
-            console.log('Email sent every min:' + info.response);
+            console.log('Reminder email sent every min:' + info.response);
           }
       });
     });
 
 //reminderEveryMin.start()
-reminderEveryMin.stop()
-//reminder.destroy()
+//reminderEveryMin.stop()
 
 module.exports = reminderEveryMin

@@ -3,11 +3,9 @@ let cron = require('node-cron');
 let HTML_TEMPLATE = require("./email-template")
 require("dotenv").config();
 
-const SECRET = process.env.SECRET;
+const EM_PASS = process.env.EM_PASS;
 
 const message = "Time to take a break!"
-
-//Stop works when running Node.js but not index.js
 
 let mailOptions = {
     from: 'melecouvreur@gmail.com',
@@ -23,7 +21,7 @@ let transporter = nodemailer.createTransport({
     port: 587,
     auth: {
       user: 'melecouvreur@gmail.com',
-      pass: SECRET
+      pass: EM_PASS
     }
 });
 
@@ -40,8 +38,7 @@ const reminderEveryFiveMin = cron.schedule('*/10 * * * *', () => {
 
 //reminderEveryFiveMin.start()
 reminderEveryFiveMin.stop()
-//reminderEveryFiveMin.destroy()
-//reminder.destroy()
+
 
 module.exports = reminderEveryFiveMin;
  

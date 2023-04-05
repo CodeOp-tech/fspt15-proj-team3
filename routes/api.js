@@ -44,7 +44,7 @@ router.post("/users/login", async (req, res) =>{
     }else{
       res.status(401).send({message:"Authentication failed"})
     }
-  }catch(err){
+  } catch(err){
    res.status(500).send({error: err});
   }
 })

@@ -3,6 +3,7 @@ var reminderEveryMin = require("../ReminderEveryMin")
 var reminderEveryFiveMin = require("../ReminderEveryFiveMin")
 //const fetch = require("node-fetch");
 var router = express.Router();
+var cors = require('cors')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

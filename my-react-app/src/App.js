@@ -11,17 +11,18 @@ import BreakEnd from "./Components/BreakEnd";
 import Login from "./Components/Login";
 import logo from "./Illustrations/logoBreaktime.png";
 import CountdownTimer from "./Components/CountdownTimer";
-import { TimerContext } from "./Hooks/TimerContext"
+import { TimerContext } from "./Hooks/TimerContext";
 
 function App() {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
   const location = useLocation();
 
+
   //Functions & var related to timer, passed via UseContext/TimerContext
   //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
   //TargetMin & start passed to CountdownTimer comp
-  const [targetMin, setTargetMin] = useState(0.1)
+  const [targetMin, setTargetMin] = useState(0.17)
   const [start, setStart] = useState(false)
   const toggleStart = () => {
     setStart(!start)
@@ -29,20 +30,23 @@ function App() {
     console.log("toggle clicked")
 }
 
-let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
 
-  //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
-  // useEffect(() => {
-  //   services.getFacts();
-  // }, []);
+	let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart };
+
+
+	//Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
+
+	// useEffect(() => {
+	//   services.getFacts();
+	// }, []);
 
   {
-    return ( 
-      <div> {location.pathname != "/" ? 
+    return (
+      <div>
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a className="navbar-brand" href="#">
               <img className="logo-img" src={logo} />
             </a>
             <button
@@ -81,7 +85,7 @@ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
               </ul>
             </div>
           </div>
-        </nav> : null }
+        </nav>
 
         <div className="App">
     
@@ -91,25 +95,22 @@ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
             <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<DashBoard />} />
 
-            <Route path="/timer" element={<CountdownTimer />} />
-            <Route path="/welldone" element={<BreakEnd />} />
+							<Route path="/timer" element={<CountdownTimer />} />
+							<Route path="/welldone" element={<BreakEnd />} />
 
-            <Route path="/fun" element={<FunBreak />} />
-            <Route path="/fun/welldone" element={<BreakEnd />} />
+							<Route path="/fun" element={<FunBreak />} />
+							<Route path="/fun/welldone" element={<BreakEnd />} />
 
-            <Route path="/relax" element={<RelaxBreak />} />
-            <Route path="/relax/welldone" element={<BreakEnd />} />
+							<Route path="/relax" element={<RelaxBreak />} />
+							<Route path="/relax/welldone" element={<BreakEnd />} />
 
-            <Route path="/move" element={<MoveBreak />} />
-            <Route path="/move/welldone" element={<BreakEnd />} />
-
-
-          </Routes>
-         </TimerContext.Provider>
-    
-        </div>
-      </div>
-    );
-  }
+							<Route path="/move" element={<MoveBreak />} />
+							<Route path="/move/welldone" element={<BreakEnd />} />
+						</Routes>
+					</TimerContext.Provider>
+				</div>
+			</div>
+		);
+	}
 }
 export default App;

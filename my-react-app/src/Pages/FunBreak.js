@@ -48,21 +48,22 @@ let {toggleStart} = useContext(TimerContext);
   return (
     <div className="App">
 
+    <div className="wrapper2">
+      <p className="funTitle">
+        Almost everything will work again
+        if you unplug it for a few minutes.
+        <br />
+      Including
+          <span className="fontColor"> you</span>.
+      
+      </p>
+      <img className="funBreakImg" src={funBreakImg} />
+      </div>
+
       <CountdownTimer/>
       <StartButton
 				toggleStart={toggleStart}/>
 
-      <p className="funTitle">
-        Almost everything will work again
-        <br />
-        if you unplug it for a few minutes.
-        <br />
-        <div className="funTitle2">
-          Including
-          <span className="fontColor"> you</span>.
-        </div>
-      </p>
-      <img className="funBreakImg" src={funBreakImg} />
       <FunContainer
         jokes={jokes}
         quotes={quotes}

@@ -21,18 +21,17 @@ function MoveBreak() {
 			src: image1,
 			name: "Plank Jacks",
 			instructions:
-				"Start in plank position with your arms extended and hands under your shoulders" +
-				"feet together. Your body should be in a straight line from your head to your heels" +
-				"Engage your abs to help protect your lower back from injury.",
+				"1. Start in plank position with your arms extended and hands under your shoulders, feet together. Your body should be in a straight line from your head to your heels. \n" +
+				"2. Engage your abs to help protect your lower back from injury.",
 		},
 		{
 			id: 2,
 			src: image2,
 			name: "Lunges",
 			instructions:
-				"1. Stand with your feet hip-width apart, keep your back straight, your shoulders back, and your abs tight."+
-				"2. Take a step forward and slowly bend both knees, until your back knee is just above the floor.<br/>" +
-				"3. Stand back up and repeat the movement.." +
+				"1. Stand with your feet hip-width apart, keep your back straight, your shoulders back, and your abs tight.\n"+
+				"2. Take a step forward and slowly bend both knees, until your back knee is just above the floor. \n"  +
+				"3. Stand back up and repeat the movement.\n" +
 				"4. Alternate legs until the set is complete.",
 		},
 
@@ -41,9 +40,9 @@ function MoveBreak() {
 			src: image3,
 			name: "Raised Arms Circles",
 			instructions:
-				"1. Stand straight with your feet shoulder-width apart." +
-				"2. Raise and extend your arms to the sides without bending the elbows." +
-				"3. Slowly rotate your arms forward, making small circles of about 1 foot in diameter." +
+				"1. Stand straight with your feet shoulder-width apart. \n "  +
+				"2. Raise and extend your arms to the sides without bending the elbows. \n " +
+				"3. Slowly rotate your arms forward, making small circles of about 1 foot in diameter. \n" +
 				"4. Complete a set in one direction and then switch, rotating backward.",
 		},
 
@@ -52,8 +51,8 @@ function MoveBreak() {
 			src: image4,
 			name: "Banded Standing Leg Abduction",
 			instructions:
-				"Loop one end of resistance band around a sturdy object and the other end around your ankle. Stand tall with the looped ankle farthest from the opposite end of the band"+
-			    "while holding the sturdy object with your inside arm. Lift your outer leg up and straight out to side as far as possible. Pause, then return your leg to the starting position.",
+				"1. Loop one end of resistance band around a sturdy object and the other end around your ankle. Stand tall with the looped ankle farthest from the opposite end of the band.\n "+
+			    "2. While holding the sturdy object with your inside arm. Lift your outer leg up and straight out to side as far as possible. Pause, then return your leg to the starting position.",
 		},
 
 		{
@@ -61,9 +60,9 @@ function MoveBreak() {
 			src: image5,
 			name: "Bunded Squats",
 			instructions:
-				"1. Stand with your feet slightly more than hip-width apart with a loop or mini loop band just above your knees." +
-				"2. Slowly push your hips back into a sitting position while bending your knees." +
-				"3. Continue to lower yourself until your thighs are parallel to the floor." +
+				"1. Stand with your feet slightly more than hip-width apart with a loop or mini loop band just above your knees.\n" +
+				"2. Slowly push your hips back into a sitting position while bending your knees.\n" +
+				"3. Continue to lower yourself until your thighs are parallel to the floor.\n" +
 				"4. Alternate legs until the set is complete..Perform 8–12 reps.",
 		},
 
@@ -72,8 +71,8 @@ function MoveBreak() {
 			src: image6,
 			name: "High Knees",
 			instructions:
-				"1.Stand with your feet hip-width apart. Lift up your left knee to your chest." +
-				"Switch to lift your right knee to your chest. Continue the movement, alternating legs and moving at a sprinting or running pace.",
+				"1. Stand with your feet hip-width apart. Lift up your left knee to your chest.\n" +
+				"2. Switch to lift your right knee to your chest. Continue the movement, alternating legs and moving at a sprinting or running pace.",
 		},
 
 		{
@@ -81,10 +80,10 @@ function MoveBreak() {
 			src: image7,
 			name: "Lunge Jumps",
 			instructions:
-				"1.Take a large step backward and lower your hips, so that your back knee is just above the floor, and your front thigh is parallel to the floor." +
-				"2.Jump into the air and switch leg positions." +
-				"3.Jump again and return to the starting position." +
-				"4.Repeat the exercise until set is complete.",
+				"1. Take a large step backward and lower your hips, so that your back knee is just above the floor, and your front thigh is parallel to the floor.\n" +
+				"2. Jump into the air and switch leg positions.\n" +
+				"3. Jump again and return to the starting position.\n" +
+				"4. Repeat the exercise until set is complete.",
 		},
 	]);
 
@@ -94,9 +93,8 @@ function MoveBreak() {
 		src: image1,
 		name: "Plank Jacks",
 		instructions:
-			"Start in plank position with your arms extended and hands under your shoulders" +
-			"feet together. Your body should be in a straight line from your head to your heels" +
-			"Engage your abs to help protect your lower back from injury.",
+			"1. Start in plank position with your arms extended and hands under your shoulders, feet together. Your body should be in a straight line from your head to your heels \n" +
+			"2. Engage your abs to help protect your lower back from injury.",
 	},);
 
 	const handleClick = (image) => {

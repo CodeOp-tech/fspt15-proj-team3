@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Home from "./Pages/Home";
 import DashBoard from "./Pages/DashBoard";
 import BreakPage from "./Pages/BreakPage";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
 import RelaxBreak from "./Pages/RelaxBreak";
 import MoveBreak from "./Pages/MoveBreak";
 import BreakEnd from "./Components/BreakEnd";
+import Login from "./Components/Login";
 import logo from "./Illustrations/logoBreaktime.png";
 import CountdownTimer from "./Components/CountdownTimer";
 import { TimerContext } from "./Hooks/TimerContext"
@@ -16,6 +16,7 @@ import { TimerContext } from "./Hooks/TimerContext"
 function App() {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
+  const location = useLocation();
 
   //Functions & var related to timer, passed via UseContext/TimerContext
   //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
@@ -37,8 +38,8 @@ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
   // }, []);
 
   {
-    return (
-      <div>
+    return ( 
+      <div> {location.pathname != "/" ? 
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
             <a class="navbar-brand" href="#">
@@ -80,14 +81,14 @@ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart};
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> : null }
 
         <div className="App">
     
         <TimerContext.Provider value={timerObj}>
           <Routes>
 
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<DashBoard />} />
 
             <Route path="/timer" element={<CountdownTimer />} />

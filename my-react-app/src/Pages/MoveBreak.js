@@ -23,16 +23,16 @@ function MoveBreak() {
 			instructions:
 				"Start in plank position with your arms extended and hands under your shoulders" +
 				"feet together. Your body should be in a straight line from your head to your heels" +
-				"Engage your abs to help protect your lower back from injury",
+				"Engage your abs to help protect your lower back from injury.",
 		},
 		{
 			id: 2,
 			src: image2,
 			name: "Lunges",
 			instructions:
-				"1. Stand with your feet hip-width apart, keep your back straight, your shoulders back, and your abs tight." +
-				"2. Take a step forward and slowly bend both knees, until your back knee is just above the floor." +
-				"3. Stand back up and repeat the movement." +
+				"1. Stand with your feet hip-width apart, keep your back straight, your shoulders back, and your abs tight."+
+				"2. Take a step forward and slowly bend both knees, until your back knee is just above the floor.<br/>" +
+				"3. Stand back up and repeat the movement.." +
 				"4. Alternate legs until the set is complete.",
 		},
 
@@ -52,7 +52,8 @@ function MoveBreak() {
 			src: image4,
 			name: "Banded Standing Leg Abduction",
 			instructions:
-				"Loop one end of resistance band around a sturdy object and the other end around your ankle. Stand tall with the looped ankle farthest from the opposite end of the band while holding the sturdy object with your inside arm. Lift your outer leg up and straight out to side as far as possible. Pause, then return your leg to the starting position.",
+				"Loop one end of resistance band around a sturdy object and the other end around your ankle. Stand tall with the looped ankle farthest from the opposite end of the band"+
+			    "while holding the sturdy object with your inside arm. Lift your outer leg up and straight out to side as far as possible. Pause, then return your leg to the starting position.",
 		},
 
 		{
@@ -95,7 +96,7 @@ function MoveBreak() {
 		instructions:
 			"Start in plank position with your arms extended and hands under your shoulders" +
 			"feet together. Your body should be in a straight line from your head to your heels" +
-			"Engage your abs to help protect your lower back from injury",
+			"Engage your abs to help protect your lower back from injury.",
 	},);
 
 	const handleClick = (image) => {

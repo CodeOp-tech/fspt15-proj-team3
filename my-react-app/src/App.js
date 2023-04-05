@@ -12,8 +12,9 @@ import Login from "./Components/Login";
 import logo from "./Illustrations/logoBreaktime.png";
 import CountdownTimer from "./Components/CountdownTimer";
 import { TimerContext } from "./Hooks/TimerContext";
+import { useNavigate } from "react-router-dom";
 
-function App() {
+function App(props) {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
   const location = useLocation();
@@ -30,6 +31,15 @@ function App() {
     console.log("toggle clicked")
 }
 
+const navigate = useNavigate(); 
+let[token, setToken] = useState(null);
+
+function logOut(){
+  localStorage.removeItem("token");
+  setToken(null);
+  navigate("/");
+}
+
 
 
 	let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart };
@@ -43,14 +53,14 @@ function App() {
 
   {
     return (
-      <div>
+      <div>{location.pathname != "/" ?
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
               <img className="logo-img" src={logo} />
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNav"
@@ -82,10 +92,13 @@ function App() {
                     <a className="nav-link active">Fun</a>
                   </Link>
                 </li>
+                <li class="nav-item"> 
+                  <a  onClick={()=> logOut()} class="bi bi-box-arrow-right">Log Out</a>
+                </li>
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> :null}
 
         <div className="App">
     

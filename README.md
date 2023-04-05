@@ -4,7 +4,6 @@
 
 The "name App" is an application build with ...
 
-
 ## Setup
 
 ### Dependencies
@@ -15,16 +14,18 @@ The "name App" is an application build with ...
 ### Database Prep
 
 - Access the MySQL interface in your terminal by running `mysql -u root -p` or use the MySQL CLI.
-- Create a new database called TBD: `create database TBD`
+- Create a new database called TBD: `create database breaktime`
 - Add a `.env` file to the project folder of this repository containing the MySQL authentication information for MySQL user. For example:
 
 ```bash
   DB_HOST=localhost
   DB_USER=root
-  DB_NAME=TBD
+  DB_NAME=breaktime
   DB_PASS=YOURPASSWORD
   SUPER_SECRET=shhhhhhhhh
 ```
+
+- Run `npm run migrate` in the main folder of this repository, in a new terminal window. This will create a table called 'users' and 'messages' in your database.
 
 ### Development
 

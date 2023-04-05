@@ -2,11 +2,12 @@ let nodemailer = require('nodemailer');
 let cron = require('node-cron');
 require("dotenv").config();
 
-
+//Moved this into index.js as I want to fetch email from db and insert into mailOptions
 let HTML_TEMPLATE = require("./email-template")
 const EM_PASS = process.env.EM_PASS;
 const message = "Time to take a break!"
 
+//Moved this directy as an object into reminderEveryMin so I can insert email later
 let mailOptions = {
     from: 'melecouvreur@gmail.com',
     to: 'melecouvreur@gmail.com',
@@ -24,7 +25,6 @@ let transporter = nodemailer.createTransport({
       pass: EM_PASS
     }
 }); 
-
 
 const reminderEveryMin = cron.schedule('* * * * *', () => {
     transporter.sendMail({

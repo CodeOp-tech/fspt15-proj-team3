@@ -1,14 +1,14 @@
 var express = require('express');
-//var reminderEveryMin = require("../ReminderEveryMin")
 var router = express.Router();
 let nodemailer = require('nodemailer');
+//var reminderEveryMin = require("../ReminderEveryMin")
 let cron = require('node-cron');
 const db = require("../model/helper");
 require("dotenv").config();
 let HTML_TEMPLATE = require("../email-template")
 var cors = require('cors')
 
-const EM_PASS = process.env.EM_PASS;
+const EM_PASS = process.env.EM_PASS; // this is the app password key to use my google account as "sender"
 const message = "Time to take a break!"
 
 let transporter = nodemailer.createTransport({
@@ -37,7 +37,6 @@ const reminderEveryMin = cron.schedule('* * * * *', () => {
     });
   });
 
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.send('index', { title: 'Express' });
@@ -55,7 +54,7 @@ router.post('/reminders-stop', async (req, res) => {
   return res.json({ message: 'Stopped' });
 });
 
-//Test route to see if is connectin to db  
+//Test route to see if connection to db is working
 router.get('/test', async (res) => {
   try {
     const result = await db(`SELECT * FROM users;`)
@@ -67,7 +66,7 @@ router.get('/test', async (res) => {
     }
   })
 
-//Reminders each Min for logged in user - START  
+//Reminders each Min for registered/logged-in user - START  
 router.post('/test-start', async (req, res) => {
   const {id} = req.body
   try {

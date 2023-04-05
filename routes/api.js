@@ -12,7 +12,6 @@ router.get('/', function(req, res, next) {
 });
 
 //API Login
-
 router.post("/users/register", async (req, res) =>{
   const {firstname, lastname, username, password, email} = req.body;
   const hashedPWD = await bcrypt.hash(password, saltRounds); 
@@ -28,7 +27,7 @@ router.post("/users/register", async (req, res) =>{
 
 router.post("/users/login", async (req, res) =>{
   const {username, password} = req.body;
- 
+
 
   try{
     let sql = `SELECT * FROM users WHERE username ="${username}";  `;

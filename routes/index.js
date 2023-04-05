@@ -1,7 +1,7 @@
 var express = require('express');
 var reminderEveryMin = require("../ReminderEveryMin")
 var reminderEveryFiveMin = require("../ReminderEveryFiveMin")
-
+//const fetch = require("node-fetch");
 var router = express.Router();
 
 /* GET home page. */

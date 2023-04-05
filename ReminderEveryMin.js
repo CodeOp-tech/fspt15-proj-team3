@@ -24,7 +24,7 @@ let transporter = nodemailer.createTransport({
       user: 'melecouvreur@gmail.com',
       pass: SECRET
     }
-});
+}); 
 
 /*
 transporter.sendMail(mailOptions, function(error, info){

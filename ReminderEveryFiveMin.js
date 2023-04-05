@@ -7,7 +7,7 @@ const SECRET = process.env.SECRET;
 
 const message = "Time to take a break!"
 
-//Works when running Node.js but not index.js
+//Stop works when running Node.js but not index.js
 
 let mailOptions = {
     from: 'melecouvreur@gmail.com',
@@ -27,7 +27,7 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-const reminderEveryFiveMin = cron.schedule('*/5 * * * *', () => {
+const reminderEveryFiveMin = cron.schedule('*/10 * * * *', () => {
       transporter.sendMail(mailOptions, function(error, info){
             if (error) {
               console.log(error);
@@ -39,6 +39,7 @@ const reminderEveryFiveMin = cron.schedule('*/5 * * * *', () => {
 
 //reminderEveryFiveMin.start()
 reminderEveryFiveMin.stop()
+//reminderEveryFiveMin.destroy()
 //reminder.destroy()
 
 module.exports = reminderEveryFiveMin;

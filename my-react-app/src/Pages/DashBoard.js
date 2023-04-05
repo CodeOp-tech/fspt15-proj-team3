@@ -9,23 +9,6 @@ import { Link } from "react-router-dom";
 
 function DashBoard() {
 
-  const setReminders = async () => {
-    try {
-      let options = {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json"},
-      }
-      let results = await fetch("/reminders-start", options)
-      let notification = await results.json();
-      console.log(notification.message)
-      }
-      catch (error) {
-      console.log(error)
-    } 
-  };
-  
-
   return (
     <div className="App">
       <div className="wrapper">
@@ -78,8 +61,6 @@ function DashBoard() {
             <button className="button-dash">HAHAHA!</button>
           </Link>
         </div>
-
-        <button onClick={setReminders}> Reminders </button>
         
       </div>
     </div>

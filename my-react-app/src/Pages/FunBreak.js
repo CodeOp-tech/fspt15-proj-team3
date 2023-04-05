@@ -46,20 +46,19 @@ function FunBreak() {
 
   return (
     <div className="App">
+      <div className="wrapper2">
+        <p className="funTitle">
+          Almost everything will work again if you unplug it for a few minutes.
+          <br />
+          Including
+          <span className="fontColor"> you</span>.
+        </p>
+        <img className="funBreakImg" src={funBreakImg} />
+      </div>
+
       <CountdownTimer />
       <StartButton toggleStart={toggleStart} />
 
-      <p className="funTitle">
-        Almost everything will work again
-        <br />
-        if you unplug it for a few minutes.
-        <br />
-        <div className="funTitle2">
-          Including
-          <span className="fontColor"> you</span>.
-        </div>
-      </p>
-      <img className="funBreakImg" src={funBreakImg} />
       <FunContainer
         jokes={jokes}
         quotes={quotes}
@@ -67,14 +66,18 @@ function FunBreak() {
         cats={cats}
         dogs={dogs}
       />
+
       <span>
-        <button className="funRandom" onClick={() => getData()}>
-          SHOW RANDOM
-        </button>
-        <Link to="/funrandom">
-          <button className="funSelect">SELECT</button>
-        </Link>
+        <button className="funButtons">Jokes</button>
+        <button className="funButtons">Facts</button>
+        <button className="funButtons">Quotes</button>
+        <button className="funButtons">Cats</button>
+        <button className="funButtons">Dogs</button>
       </span>
+      <br />
+      <button className="funRandom" onClick={() => getData()}>
+        SHOW RANDOM
+      </button>
     </div>
   );
 }

@@ -21,7 +21,7 @@ function App() {
   //Functions & var related to timer, passed via UseContext/TimerContext
   //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
   //TargetMin & start passed to CountdownTimer comp
-  const [targetMin, setTargetMin] = useState(0.1);
+  const [targetMin, setTargetMin] = useState(0.17);
   const [start, setStart] = useState(false);
   const toggleStart = () => {
     setStart(!start);
@@ -42,7 +42,7 @@ function App() {
       <div>
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a className="navbar-brand" href="#">
               <img className="logo-img" src={logo} />
             </a>
             <button
@@ -54,26 +54,26 @@ function App() {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
                   <Link to="/dashboard">
                     <a className="nav-link active">Home</a>
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <Link to="/move">
                     <a className="nav-link active">Move</a>
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <Link to="/relax">
                     <a className="nav-link active">Relax</a>
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <Link to="/fun">
                     <a className="nav-link active">Fun</a>
                   </Link>

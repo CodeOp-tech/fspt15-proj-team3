@@ -1,10 +1,17 @@
 @import "react-alice-carousel/lib/alice-carousel.css";
+.container-relax{
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: center;
+}
 .title-relax{
     font-family: 'Abril Fatface', cursive;
-    margin-top: 1em;
+    margin-top: 2em;
+    margin-left: 2em;
 }
 .meditating{
-    width: 13%;
+    width: 15%;
+    padding-bottom: 10px;
 }
 
 .pink{
@@ -12,24 +19,38 @@
 }
 
 
-.container
-{
 
-}
-.video {
-margin-top: 2em;
-margin-bottom: 2em;
-cursor: pointer;
-
-    
+.media {
+    width: 90%;
+    height: 30rem;
+    object-fit: contain;
   }
+  
+  .carousel {
+    position: relative;
+    width: 60%;
+    margin:0 auto;
+    padding-top: 3em;
+    padding-bottom: 4em;
+  }
+  
+  .item {
+    background-color: #ffffff;
+  }
+  
 
-.carousel-wrapper{
-   
-margin-bottom: 2em;
-}
-
-.library{
-    margin-top: 2em;
-    color: #FE6665;
-}
+  .btn-prev,
+  .btn-next {
+    position: absolute;
+    font-size: 50px;
+    color:#FE6665;
+    cursor: pointer;
+    top: 13rem;
+  }
+  .btn-prev {
+    left: 0.5rem;
+  }
+  .btn-next {
+    right: 0.5rem;
+  }
+  

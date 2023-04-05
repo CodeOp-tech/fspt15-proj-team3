@@ -18,16 +18,16 @@ const [minutes, seconds, resetTimer, adjustTimer] = useCountdown(targetMin, star
 
   const increaseMin = () => {
   console.log(targetMin)
-  setTargetMin(Math.floor(targetMin + 1))
-  adjustTimer()
+  setTargetMin(Math.floor(targetMin) + 1)
+  adjustTimer(targetMin)
   console.log("+ min")
   console.log(targetMin)
  }
 
   const decreaseMin = () => {
   console.log(targetMin)
-  setTargetMin(Math.floor(targetMin - 1))
-  adjustTimer()
+  setTargetMin(Math.floor(targetMin) - 1)
+  adjustTimer(targetMin)
   console.log("- min")
   console.log(targetMin)
  }
@@ -48,6 +48,7 @@ if (minutes + seconds <= 0) {
   else { 
     return (
       <div>
+        <h4 className='set-timer'>SET TIMER</h4>
        <ShowCounter
         minutes={minutes}
         seconds={seconds}

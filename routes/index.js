@@ -1,14 +1,12 @@
 var express = require('express');
 var router = express.Router();
 let nodemailer = require('nodemailer');
-//var reminderEveryMin = require("../ReminderEveryMin")
 let cron = require('node-cron');
 const db = require("../model/helper");
 require("dotenv").config();
 let HTML_TEMPLATE = require("../email-template")
 var cors = require('cors')
 var ensureUserLoggedIn = require("../EnsureUserLoggedIn")
-var ensureUserExists = require("../EnsureUserExists")
 
 const EM_PASS = process.env.EM_PASS; // this is the app password key to use my google account as "sender"
 const message = "Time to take a break!"
@@ -23,6 +21,7 @@ let transporter = nodemailer.createTransport({
   }
 }); 
 
+/*
 const reminderEveryMin = cron.schedule('* * * * *', () => {
   transporter.sendMail({
     from: 'melecouvreur@gmail.com',
@@ -38,32 +37,33 @@ const reminderEveryMin = cron.schedule('* * * * *', () => {
         }
     });
   });
+*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.send('index', { title: 'Express' });
 });
-
-//Reminders each Min - START  
+/*
+//START Reminders. Old Route.
 router.post('/reminders-start', async (req, res) => {
   reminderEveryMin.start();
   return res.json({ message: 'Started' });
 });
 
-//Reminders each Min - STOP 
+//STOP Reminders. Old Route. 
 router.post('/reminders-stop', async (req, res) => {
   reminderEveryMin.stop();
   return res.json({ message: 'Stopped' });
 });
-
-//Private route for logged in users only. For testing purposes.
+*/
+//Private route for logged in users only. To test ensureUserLoggedin. Not working
 router.get("/private", ensureUserLoggedIn, (req, res) => {
   let id = req.user_id
   res.status(200).send({
     message: "here is your protected data " , id })
 })
 
-//START Reminders
+//START Reminders by passing used_id & email on back-end. Not working
 router.post('/test-start', ensureUserLoggedIn, async (req, res, next) => {
   let id = req.user_id
   //let id = res.locals.user 
@@ -95,7 +95,7 @@ router.post('/test-start', ensureUserLoggedIn, async (req, res, next) => {
     }
   })
 
-//STOP Reminders
+//STOP Reminders by passing used_id & email on back-end. Not working
 router.post('/test-stop', ensureUserLoggedIn, async (req, res, next) => {
   let id = req.user_id
   //let id = res.locals.user 
@@ -127,7 +127,7 @@ router.post('/test-stop', ensureUserLoggedIn, async (req, res, next) => {
     }
   })
 
-//Reminders each Min for registered/logged-in user - START  
+//Start Reminders by passing userId via useContext on front-end. Working
 router.post('/reminders-start/:id', async (req, res, next) => {
   let id = req.params.id
   //let id = res.locals.user 
@@ -159,7 +159,7 @@ router.post('/reminders-start/:id', async (req, res, next) => {
     }
   })
 
-//Reminders each Min for registered/logged-in user - START  
+//STOP Reminders Reminders by passing userId via useContext on front-end. Working  
 router.post('/reminders-stop/:id', async (req, res, next) => {
   let id = req.params.id
   //let id = res.locals.user 

@@ -2,9 +2,8 @@
   "name": "my-express-app.",
   "version": "0.0.0",
   "private": true,
-
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "migrate": "node model/database.js"
   },
   "dependencies": {
@@ -21,7 +20,7 @@
     "node-cron": "^3.0.2",
     "node-schedule": "^2.1.1",
     "nodemailer": "^6.9.1",
-    "nodemon": "^2.0.20",
+    "nodemon": "^2.0.22",
     "react-alice-carousel": "^2.7.0"
   }
 }

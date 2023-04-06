@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 let nodemailer = require('nodemailer');
-//var reminderEveryMin = require("../ReminderEveryMin")
 let cron = require('node-cron');
 const db = require("../model/helper");
 require("dotenv").config();
 let HTML_TEMPLATE = require("../email-template")
 var cors = require('cors')
+var ensureUserLoggedIn = require("../EnsureUserLoggedIn")
 
 const EM_PASS = process.env.EM_PASS; // this is the app password key to use my google account as "sender"
 const message = "Time to take a break!"
@@ -21,6 +21,7 @@ let transporter = nodemailer.createTransport({
   }
 }); 
 
+/*
 const reminderEveryMin = cron.schedule('* * * * *', () => {
   transporter.sendMail({
     from: 'melecouvreur@gmail.com',
@@ -36,65 +37,155 @@ const reminderEveryMin = cron.schedule('* * * * *', () => {
         }
     });
   });
+*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.send('index', { title: 'Express' });
 });
-
-//Reminders each Min - START  
+/*
+//START Reminders. Old Route.
 router.post('/reminders-start', async (req, res) => {
-  await reminderEveryMin.start();
+  reminderEveryMin.start();
   return res.json({ message: 'Started' });
 });
 
-//Reminders each Min - STOP 
+//STOP Reminders. Old Route. 
 router.post('/reminders-stop', async (req, res) => {
-  await reminderEveryMin.stop();
+  reminderEveryMin.stop();
   return res.json({ message: 'Stopped' });
 });
+*/
+//Private route for logged in users only. To test ensureUserLoggedin. Not working
+router.get("/private", ensureUserLoggedIn, (req, res) => {
+  let id = req.user_id
+  res.status(200).send({
+    message: "here is your protected data " , id })
+})
 
-//Test route to see if connection to db is working
-router.get('/test', async (res) => {
+//START Reminders by passing used_id & email on back-end. Not working
+router.post('/test-start', ensureUserLoggedIn, async (req, res, next) => {
+  let id = req.user_id
+  //let id = res.locals.user 
+  console.log(id)
   try {
-    const result = await db(`SELECT * FROM users;`)
-    //console.log(result.data)
-    res.status(200).send(result.data)
-  }
+    let sql = `SELECT email FROM users WHERE id =${id};`
+    let result = await db(sql)
+    console.log(result.data[0].email)
+    
+    const reminder = cron.schedule('* * * * *', () => {
+      transporter.sendMail({
+        from: 'melecouvreur@gmail.com',
+        to: `${result.data[0].email}`,
+        subject: 'Hello - Break Reminder!',
+        text: message,
+        html: HTML_TEMPLATE(message),
+        }, function(error, info){
+            if (error) {
+            console.log(error);
+            } else {
+            console.log('Started reminder email to:' + info.response)
+            }
+        });
+      }).start()
+      res.status(200).send("success")
+    }
     catch(err){
     res.status(400).send({error: err.message});
     }
   })
 
-//Reminders each Min for registered/logged-in user - START  
-router.post('/test-start', async (req, res) => {
-  const {id} = req.body
+//STOP Reminders by passing used_id & email on back-end. Not working
+router.post('/test-stop', ensureUserLoggedIn, async (req, res, next) => {
+  let id = req.user_id
+  //let id = res.locals.user 
+  console.log(id)
   try {
-    let sql = `SELECT email FROM users WHERE id = 1;`
+    let sql = `SELECT email FROM users WHERE id = ${id};`
     let result = await db(sql)
-    console.log(result.data)
-    res.status(200).send(result.data)
-  }
-    /*
-     const reminder = cron.schedule('* * * * *', () => {
+    console.log(result.data[0].email)
+    const reminder = cron.schedule('* * * * *', () => {
       transporter.sendMail({
         from: 'melecouvreur@gmail.com',
-        to: `${result.data}`,
+        to: `${result.data[0].email}`,
         subject: 'Hello - Break Reminder!',
         text: message,
         html: HTML_TEMPLATE(message),
-    }, function(error, info){
+        }, function(error, info){
             if (error) {
-              console.log(error);
+            console.log(error);
             } else {
-              console.log('Reminder email sent every min:' + info.response);
+            console.log(`Stopped reminder email to` + result.data[0].email)
             }
         });
-      });
-      await reminder.start()
-      res.status(200).send({message: "email sent"})
-    };
-    */
+      }).stop()
+
+      res.status(200).send("success")
+    }
+    catch(err){
+    res.status(400).send({error: err.message});
+    }
+  })
+
+//Start Reminders by passing userId via useContext on front-end. Working
+router.post('/reminders-start/:id', async (req, res, next) => {
+  let id = req.params.id
+  //let id = res.locals.user 
+  //console.log(id)
+  try {
+    let sql = `SELECT email FROM users WHERE id = ${id};`
+    let result = await db(sql)
+    console.log(result.data[0].email)
+    const reminder = cron.schedule('* * * * *', () => {
+      transporter.sendMail({
+        from: 'melecouvreur@gmail.com',
+        to: `${result.data[0].email}`,
+        subject: 'Hello - Break Reminder!',
+        text: message,
+        html: HTML_TEMPLATE(message),
+        }, function(error, info){
+            if (error) {
+            console.log(error);
+            } else {
+            console.log('Reminder email sent every min:' + info.response)
+            }
+        });
+      }).start()
+
+      res.status(200).send({message:`reminder to ${result.data[0].email} started`})
+    }
+    catch(err){
+    res.status(400).send({error: err.message});
+    }
+  })
+
+//STOP Reminders Reminders by passing userId via useContext on front-end. Working  
+router.post('/reminders-stop/:id', async (req, res, next) => {
+  let id = req.params.id
+  //let id = res.locals.user 
+  //console.log(id)
+  try {
+    let sql = `SELECT email FROM users WHERE id = ${id};`
+    let result = await db(sql)
+    console.log(result.data[0].email)
+    const reminder = cron.schedule('* * * * *', () => {
+      transporter.sendMail({
+        from: 'melecouvreur@gmail.com',
+        to: `${result.data[0].email}`,
+        subject: 'Hello - Break Reminder!',
+        text: message,
+        html: HTML_TEMPLATE(message),
+        }, function(error, info){
+            if (error) {
+            console.log(error);
+            } else {
+            console.log('Reminder email sent every min:' + info.response)
+            }
+        });
+      }).stop()
+
+      res.status(200).send({message: `reminder to ${result.data[0].email} stopped`})
+    }
     catch(err){
     res.status(400).send({error: err.message});
     }

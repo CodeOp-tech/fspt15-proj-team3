@@ -15,27 +15,25 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import StartButton from "../Components/StartButton";
 import { useContext } from "react";
 import { TimerContext } from "../Hooks/TimerContext";
+import { useCountdown } from "../Hooks/useCountDown";
 
 function RelaxBreak() {
 
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
-let {toggleStart, targetMin, setTargetMin} = useContext(TimerContext);
+let {toggleStart, targetMin, start, setTargetMin} = useContext(TimerContext);
 
-const handleDragStart = (e) => {
- e.preventDefault();
- //changeRelaxTimer()
-}
+const [adjustTimer] = useCountdown(targetMin, start);
 
 	const items = [
 		<div className="item" key={1}>
 			<video data-value="1" width="300" controls className="media">
-				<source src={video1} type="video/mp4" key={1} />
+				<source src={video1} type="video/mp4" />
 			</video>
 		</div>,
 		<div className="item" key={2}>
 			<video data-value="2" width="300" controls className="media">
-				<source src={video2} type="video/mp4" value={2} />
+				<source src={video2} type="video/mp4" />
 			</video>
 		</div>,
 		<div className="item" key= {3}>
@@ -59,7 +57,6 @@ const handleDragStart = (e) => {
 			</video>
 		</div>,
 
-
 		<div className="item">
 			<video data-value="7" width="300" controls className="media">
 				<source src={video7} type="video/mp4" />
@@ -67,18 +64,24 @@ const handleDragStart = (e) => {
 		</div>,
 	];
 
-	let changeRelaxTimer = (e) => {
-		setTargetMin(e.target.value)
-		console.log("video timing set to:", targetMin)
-	}
-	
-	function test(item) {
-		console.log(`Clicked ${item.key}`);
+	function matchTimer(mainIndex) {
+		console.log("MainIndex" + mainIndex)
+		if (mainIndex <= 5) {
+			//console.log(targetMin)
+			setTargetMin(5)
+			//adjustTimer(targetMin)
+			console.log(targetMin)
+		}
+
+		else {
+			setTargetMin(8)
+			//console.log(targetMin)
+			//adjustTimer(8)
+			console.log(targetMin)
 	  }
-	  
+	}
 
-	items.map((item) => (<AliceCarousel onClick={test(item)}/>) )
-
+	//items.map((item) => (<AliceCarousel onClick={matchTimer(item)}/>))
   
 	const [mainIndex, setMainIndex] = useState(0);
 
@@ -118,7 +121,8 @@ const handleDragStart = (e) => {
 					disableDotsControls
 					disableButtonsControls
 					items={items}
-					onSlideChange={console.log("test")}
+					//onSlideChanged={console.log(mainIndex)}
+					onSlideChanged={matchTimer(mainIndex)}
 				/>
 
 				<div className="btn-prev" onClick={slidePrev}>

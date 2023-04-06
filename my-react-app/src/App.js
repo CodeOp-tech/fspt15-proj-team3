@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DashBoard from "./Pages/DashBoard";
 import BreakPage from "./Pages/BreakPage";
 import Home from "./Pages/Home"
-import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
@@ -14,12 +14,15 @@ import logo from "./Illustrations/logoBreaktime.png";
 import CountdownTimer from "./Components/CountdownTimer";
 import { TimerContext } from "./Hooks/TimerContext";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./Hooks/UserContext";
 
 function App(props) {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
   const location = useLocation();
-
+  const navigate = useNavigate(); 
+  let [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(0)
 
   //Functions & var related to timer, passed via UseContext/TimerContext
   //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
@@ -32,19 +35,50 @@ function App(props) {
     console.log("toggle clicked")
 }
 
-const navigate = useNavigate(); 
-let[token, setToken] = useState(null);
-
 function logOut(){
   localStorage.removeItem("token");
   setToken(null);
+  stopReminders()
+  console.log("logged out")
   navigate("/");
 }
 
+ let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart };
+ let userObj = {userId, setUserId};
 
+ const startReminders = async () => {
+  try {
+    let id = userId
+    let options = {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json"},
+    }
+    let results = await fetch(`/reminders-start/${id}`, options)
+    let notification = await results.json();
+    console.log(notification)
+    }
+    catch (error) {
+    console.log(error)
+  } 
+};
 
-	let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart };
-
+const stopReminders = async () => {
+  try {
+    let id = userId
+    let options = {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json"},
+    }
+    let results = await fetch(`/reminders-stop//${id}`, options)
+    let notification = await results.json();
+    console.log(notification)
+    }
+    catch (error) {
+    console.log(error)
+  } 
+};
 
 	//Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
@@ -99,12 +133,16 @@ function logOut(){
               </ul>
             </div>
           </div>
+          <button onClick={startReminders}> Start </button>
+          <button onClick={stopReminders}> Stop </button>
+
         </nav> :null}
 
         <div className="App">
     
         <TimerContext.Provider value={timerObj}>
-          <Routes>
+        <UserContext.Provider value={userObj}>
+           <Routes>
 
             <Route path="/" element={<Login />} />
             <Route path="/test" element={<Home/>} />
@@ -122,6 +160,7 @@ function logOut(){
 							<Route path="/move" element={<MoveBreak />} />
 							<Route path="/move/welldone" element={<BreakEnd />} />
 						</Routes>
+          </UserContext.Provider>
 					</TimerContext.Provider>
 				</div>
 			</div>

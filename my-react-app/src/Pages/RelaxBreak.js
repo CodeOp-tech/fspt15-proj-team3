@@ -73,6 +73,7 @@ const handleDragStart = (e) => {
 	}
 	
 	function test(item) {
+		
 		console.log(`Clicked ${item.key}`);
 	  }
 	  

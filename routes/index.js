@@ -44,22 +44,22 @@ router.get('/', function(req, res, next) {
 
 //Reminders each Min - START  
 router.post('/reminders-start', async (req, res) => {
-  await reminderEveryMin.start();
+  reminderEveryMin.start();
   return res.json({ message: 'Started' });
 });
 
 //Reminders each Min - STOP 
 router.post('/reminders-stop', async (req, res) => {
-  await reminderEveryMin.stop();
+  reminderEveryMin.stop();
   return res.json({ message: 'Stopped' });
 });
 
 //Test route to see if connection to db is working
-router.get('/test', async (res) => {
+router.get('/test', async (req, res, next) => {
   try {
     const result = await db(`SELECT * FROM users;`)
-    //console.log(result.data)
-    res.status(200).send(result.data)
+    console.log(result.data)
+    res.status(200).send(result.data.email)
   }
     catch(err){
     res.status(400).send({error: err.message});
@@ -67,34 +67,32 @@ router.get('/test', async (res) => {
   })
 
 //Reminders each Min for registered/logged-in user - START  
-router.post('/test-start', async (req, res) => {
-  const {id} = req.body
+router.post('/test-start', async (req, res, next) => {
+  //const {id} = req.body
   try {
     let sql = `SELECT email FROM users WHERE id = 1;`
     let result = await db(sql)
-    console.log(result.data)
-    res.status(200).send(result.data)
-  }
-    /*
-     const reminder = cron.schedule('* * * * *', () => {
+    console.log(result.data[0].email)
+    
+ 
+    const reminder = cron.schedule('* * * * *', () => {
       transporter.sendMail({
         from: 'melecouvreur@gmail.com',
-        to: `${result.data}`,
+        to: `${result.data[0].email}`,
         subject: 'Hello - Break Reminder!',
         text: message,
         html: HTML_TEMPLATE(message),
-    }, function(error, info){
+        }, function(error, info){
             if (error) {
-              console.log(error);
+            console.log(error);
             } else {
-              console.log('Reminder email sent every min:' + info.response);
+            console.log('Reminder email sent every min:' + info.response)
             }
         });
-      });
-      await reminder.start()
-      res.status(200).send({message: "email sent"})
-    };
-    */
+      }).start()
+
+      res.status(200).send("success")
+    }
     catch(err){
     res.status(400).send({error: err.message});
     }

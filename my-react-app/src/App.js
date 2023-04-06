@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DashBoard from "./Pages/DashBoard";
 import BreakPage from "./Pages/BreakPage";
 import Home from "./Pages/Home"
-import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";

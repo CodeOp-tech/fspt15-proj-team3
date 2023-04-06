@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from 'react'; 
+import { UserContext }  from '../Hooks/UserContext'
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -14,15 +16,16 @@ function Login() {
     email: "",
   });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
 
-  const handleChange = (e) => {
+  const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
    
   };
 
-  const handleChange2 = (e) => {
+  const handleRegisterChange = (e) => {
     const { name, value } = e.target;
     setRegisterUser({ ...registerUser, [name]: value });
    
@@ -33,9 +36,8 @@ function Login() {
   };
 
   
+let {userId, setUserId} = useContext(UserContext);
 
-
-  const navigate = useNavigate();
 
   //user registered
   const login = async () => {
@@ -50,14 +52,17 @@ function Login() {
       if (!result.ok) setError(data.error);
       else {
         //store token locally
-        console.log("login succeed", data.token);
+        console.log("login succeed", data.token, data.user_id)
         localStorage.setItem("token", data.token);
+        console.log(data.user_id)
+        setUserId(data.user_id)
+        console.log(userId)
         navigate("/dashboard");
       }
     } catch (error) {
       console.log(error);
     }
-  };
+  }; 
 
   //create new user
   const register = async () => {
@@ -85,7 +90,7 @@ function Login() {
     <>
       <input
         value={credentials.username}
-        onChange={handleChange}
+        onChange={handleLoginChange}
         name="username"
         type="text"
         className="form-control mb-2"
@@ -93,7 +98,7 @@ function Login() {
       />
       <input
         value={credentials.password}
-        onChange={handleChange}
+        onChange={handleLoginChange}
         name="password"
         type="password"
         className="form-control mb-2"
@@ -134,10 +139,10 @@ function Login() {
                     Name
                   </label>
                   <input
-                    value={registerUser.first_name}
+                    value={registerUser.firstname}
                     type="name"
                     class="form-control"
-                    onChange={ handleChange2}
+                    onChange={handleRegisterChange}
                     name="firstname"
                     id="nameSign"
                     
@@ -148,10 +153,10 @@ function Login() {
                   LastName
                   </label>
                   <input
-                     value={registerUser.last_name}
+                     value={registerUser.lastname}
                     type="name"
                     class="form-control"
-                    onChange={handleChange2}
+                    onChange={handleRegisterChange}
                     name="lastname"
                     id="lastNameSign"
                     
@@ -165,7 +170,7 @@ function Login() {
                     value={registerUser.username}
                     type="name"
                     class="form-control"
-                    onChange={handleChange2}
+                    onChange={handleRegisterChange}
                     name="username"
                     id="userNameSign"
                     
@@ -179,7 +184,7 @@ function Login() {
                     value={registerUser.password}
                     type="password"
                     class="form-control"
-                    onChange={handleChange2}
+                    onChange={handleRegisterChange}
                     name="password"
                     id="passwordSign"
                    
@@ -193,7 +198,7 @@ function Login() {
                    value={registerUser.email}
                     type="email"
                     class="form-control"
-                    onChange={handleChange2}
+                    onChange={handleRegisterChange}
                     name="email"
                     id="emailSign"
                     

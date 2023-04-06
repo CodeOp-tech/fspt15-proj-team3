@@ -1,13 +1,22 @@
 import React from "react";
+import { useContext } from 'react'; 
+import {UserContext}  from '../Hooks/UserContext'
+
+
+
+function Home() {
+
+  let {userId} = useContext(UserContext);
 
 const startReminders = async () => {
   try {
+    let id = userId
     let options = {
       method: "POST",
       headers: {
       "Content-Type": "application/json"},
     }
-    let results = await fetch("/reminders-start", options)
+    let results = await fetch(`/reminders-start/${id}`, options)
     let notification = await results.json();
     console.log(notification.message)
     }
@@ -32,8 +41,6 @@ const stopReminders = async () => {
   } 
 };
 
-
-function Home() {
   return (
     <div className="App">
 

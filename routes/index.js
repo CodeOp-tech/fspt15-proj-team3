@@ -56,18 +56,6 @@ router.post('/reminders-stop', async (req, res) => {
   return res.json({ message: 'Stopped' });
 });
 
-//Test route to see if connection to db is working
-router.get('/test', async (req, res, next) => {
-  try {
-    const result = await db(`SELECT * FROM users;`)
-    console.log(result.data)
-    res.status(200).send(result.data.email)
-  }
-    catch(err){
-    res.status(400).send({error: err.message});
-    }
-  })
-
 //Private route for logged in users only. For testing purposes.
 router.get("/private", ensureUserLoggedIn, (req, res) => {
   let id = req.user_id
@@ -75,7 +63,7 @@ router.get("/private", ensureUserLoggedIn, (req, res) => {
     message: "here is your protected data " , id })
 })
 
-//Reminders each Min for registered/logged-in user - START  
+//START Reminders
 router.post('/test-start', ensureUserLoggedIn, async (req, res, next) => {
   let id = req.user_id
   //let id = res.locals.user 
@@ -96,10 +84,41 @@ router.post('/test-start', ensureUserLoggedIn, async (req, res, next) => {
             if (error) {
             console.log(error);
             } else {
-            console.log('Reminder email sent every min:' + info.response)
+            console.log('Started reminder email to:' + info.response)
             }
         });
       }).start()
+      res.status(200).send("success")
+    }
+    catch(err){
+    res.status(400).send({error: err.message});
+    }
+  })
+
+//STOP Reminders
+router.post('/test-stop', ensureUserLoggedIn, async (req, res, next) => {
+  let id = req.user_id
+  //let id = res.locals.user 
+  console.log(id)
+  try {
+    let sql = `SELECT email FROM users WHERE id = ${id};`
+    let result = await db(sql)
+    console.log(result.data[0].email)
+    const reminder = cron.schedule('* * * * *', () => {
+      transporter.sendMail({
+        from: 'melecouvreur@gmail.com',
+        to: `${result.data[0].email}`,
+        subject: 'Hello - Break Reminder!',
+        text: message,
+        html: HTML_TEMPLATE(message),
+        }, function(error, info){
+            if (error) {
+            console.log(error);
+            } else {
+            console.log(`Stopped reminder email to` + result.data[0].email)
+            }
+        });
+      }).stop()
 
       res.status(200).send("success")
     }
@@ -108,12 +127,43 @@ router.post('/test-start', ensureUserLoggedIn, async (req, res, next) => {
     }
   })
 
+//Reminders each Min for registered/logged-in user - START  
+router.post('/reminders-start/:id', async (req, res, next) => {
+  let id = req.params.id
+  //let id = res.locals.user 
+  //console.log(id)
+  try {
+    let sql = `SELECT email FROM users WHERE id = ${id};`
+    let result = await db(sql)
+    console.log(result.data[0].email)
+    const reminder = cron.schedule('* * * * *', () => {
+      transporter.sendMail({
+        from: 'melecouvreur@gmail.com',
+        to: `${result.data[0].email}`,
+        subject: 'Hello - Break Reminder!',
+        text: message,
+        html: HTML_TEMPLATE(message),
+        }, function(error, info){
+            if (error) {
+            console.log(error);
+            } else {
+            console.log('Reminder email sent every min:' + info.response)
+            }
+        });
+      }).start()
+
+      res.status(200).send({message:`reminder to ${result.data[0].email} started`})
+    }
+    catch(err){
+    res.status(400).send({error: err.message});
+    }
+  })
 
 //Reminders each Min for registered/logged-in user - START  
-router.post('/test-stop/:id', ensureUserExists, async (req, res, next) => {
-  //let id = req.user_id
-  let id = res.locals.user 
-  console.log(id)
+router.post('/reminders-stop/:id', async (req, res, next) => {
+  let id = req.params.id
+  //let id = res.locals.user 
+  //console.log(id)
   try {
     let sql = `SELECT email FROM users WHERE id = ${id};`
     let result = await db(sql)
@@ -134,7 +184,7 @@ router.post('/test-stop/:id', ensureUserExists, async (req, res, next) => {
         });
       }).stop()
 
-      res.status(200).send("success")
+      res.status(200).send({message: `reminder to ${result.data[0].email} stopped`})
     }
     catch(err){
     res.status(400).send({error: err.message});

@@ -35,17 +35,18 @@ router.post("/users/login", async (req, res) =>{
     console.log(result)
     if(result.data.length != 1) res.status(404).send({error: "Authentication failed"})
     let user = result.data[0];
+    let user_id = user.id;
     if(!user) res.status(404).send({error: "Authentication failed"})
     let doMatch = await bcrypt.compare(password, user.password);
     if(doMatch){
-      const token = jwt.sign({userID: user.id}, process.env.SUPER_SECRET);
-      res.status(200).send({message: "Logged in Successfull", token});
+      const token = jwt.sign({user_id: user.id}, process.env.SUPER_SECRET);
+      res.status(200).send({message: "Logged in Successfull", token, user_id});
     }else{
       res.status(401).send({message:"Authentication failed"})
     }
   } catch(err){
    res.status(500).send({error: err});
   }
-})
+}) 
 
-module.exports = router;
+module.exports = router; 

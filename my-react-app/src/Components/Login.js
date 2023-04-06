@@ -50,7 +50,7 @@ function Login() {
       if (!result.ok) setError(data.error);
       else {
         //store token locally
-        console.log("login succeed");
+        console.log("login succeed", data.token);
         localStorage.setItem("token", data.token);
         navigate("/dashboard");
       }

@@ -7,6 +7,8 @@ const db = require("../model/helper");
 require("dotenv").config();
 let HTML_TEMPLATE = require("../email-template")
 var cors = require('cors')
+var ensureUserLoggedIn = require("../EnsureUserLoggedIn")
+var ensureUserExists = require("../EnsureUserExists")
 
 const EM_PASS = process.env.EM_PASS; // this is the app password key to use my google account as "sender"
 const message = "Time to take a break!"
@@ -66,15 +68,23 @@ router.get('/test', async (req, res, next) => {
     }
   })
 
+//Private route for logged in users only. For testing purposes.
+router.get("/private", ensureUserLoggedIn, (req, res) => {
+  let id = req.user_id
+  res.status(200).send({
+    message: "here is your protected data " , id })
+})
+
 //Reminders each Min for registered/logged-in user - START  
-router.post('/test-start', async (req, res, next) => {
-  //const {id} = req.body
+router.post('/test-start', ensureUserLoggedIn, async (req, res, next) => {
+  let id = req.user_id
+  //let id = res.locals.user 
+  console.log(id)
   try {
-    let sql = `SELECT email FROM users WHERE id = 1;`
+    let sql = `SELECT email FROM users WHERE id =${id};`
     let result = await db(sql)
     console.log(result.data[0].email)
     
- 
     const reminder = cron.schedule('* * * * *', () => {
       transporter.sendMail({
         from: 'melecouvreur@gmail.com',
@@ -90,6 +100,39 @@ router.post('/test-start', async (req, res, next) => {
             }
         });
       }).start()
+
+      res.status(200).send("success")
+    }
+    catch(err){
+    res.status(400).send({error: err.message});
+    }
+  })
+
+
+//Reminders each Min for registered/logged-in user - START  
+router.post('/test-stop/:id', ensureUserExists, async (req, res, next) => {
+  //let id = req.user_id
+  let id = res.locals.user 
+  console.log(id)
+  try {
+    let sql = `SELECT email FROM users WHERE id = ${id};`
+    let result = await db(sql)
+    console.log(result.data[0].email)
+    const reminder = cron.schedule('* * * * *', () => {
+      transporter.sendMail({
+        from: 'melecouvreur@gmail.com',
+        to: `${result.data[0].email}`,
+        subject: 'Hello - Break Reminder!',
+        text: message,
+        html: HTML_TEMPLATE(message),
+        }, function(error, info){
+            if (error) {
+            console.log(error);
+            } else {
+            console.log('Reminder email sent every min:' + info.response)
+            }
+        });
+      }).stop()
 
       res.status(200).send("success")
     }

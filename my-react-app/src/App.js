@@ -51,7 +51,7 @@ function logOut(){
   navigate("/");
 }
 
- let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart, timer, setTimer, countDownTime };
+ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart, timer, setTimer, countDownTime };
  let userObj = {userId, setUserId};
 
  const startReminders = async () => {

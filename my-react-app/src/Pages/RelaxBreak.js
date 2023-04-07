@@ -64,22 +64,30 @@ const [adjustTimer, resetTimer] = useCountdown(targetMin, start, setStart);
 		</div>,
 	];
 
+	const [run, setRun] = useState(true)
+
+	console.log(run)
 	
 	function matchTimer(mainIndex) {
 		console.log("MainIndex" + mainIndex)
 		if (mainIndex <= 5) {
 			//console.log(targetMin)
 			setTargetMin(5)
+			setTimer(targetMin * 60 * 1000)
+			//setRun(false)
+			console.log(run)
 			//changeMin()
 			//adjustTimer(targetMin)
-			console.log(targetMin)
+			//console.log(targetMin)
 		}
 
-		else {
+		if  (mainIndex > 5) {
 			setTargetMin(8)
 			//console.log(targetMin)
 			//adjustTimer(8)
-			console.log(targetMin)
+			setTimer(targetMin * 60 * 1000) 
+			//setRun(false)
+			console.log(targetMin) 
 	  }
 	}
 

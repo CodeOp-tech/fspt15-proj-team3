@@ -16,28 +16,35 @@ const [minutes, seconds, resetTimer] = useCountdown(targetMin, start, setStart, 
 //takes min, seconds values, set & resetTimer func from useCountdown hook
 //NB - need to be included in return statement useEffect
 
+const asyncIncrease = () => {
+  setTimeout(() => {
+    setTimer((timer) => timer + (1 * 60 * 1000));
+  }, 1);
+  console.log("* min")
+};
+
+const asynDescrease = () => {
+  setTimeout(() => {
+    setTimer((timer) => timer - (1 * 60 *1000));
+  }, 1);
+  console.log("- min")
+};
+
+/*
   const increaseMin = () => {
-  console.log(targetMin)
-  console.log(timer)
   //setTargetMin(Math.floor(targetMin) + 1)
   //adjustTimer(targetMin)
-  setTimer(timer + (1* 60* 1000))
+  setTimer(timer + (1 * 60 * 1000))
   console.log("+ min")
-  console.log(targetMin)
-  console.log(countDownTime)
-  console.log(timer)
  }
 
   const decreaseMin = () => {
-  console.log(targetMin)
   //setTargetMin(Math.floor(targetMin) - 1)
   //adjustTimer(targetMin)
-  setTimer(timer - (1* 60* 1000))
+  setTimer(timer - (1 * 60 * 1000))
   console.log("- min")
-  console.log(targetMin)
-  console.log(countDownTime)
-  console.log(timer)
  }
+ */
 
  //when timer runs out triggers resetTimer() from useCountDown hook
  //& navigates to pop-up
@@ -62,8 +69,8 @@ if (minutes + seconds <= 0) {
        <ShowCounter
         minutes={minutes}
         seconds={seconds}
-        increaseMin={increaseMin}
-        decreaseMin={decreaseMin}
+        increaseMin={asyncIncrease}
+        decreaseMin={asynDescrease}
       /> 
      </div>
     );

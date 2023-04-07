@@ -40,7 +40,7 @@ const adjustTimer = () => {
      return () => {
       clearInterval(interval)  
     }
-  }, [countDownTime, start, targetMin, timer]);
+  }, [countDownTime, start, targetMin]);
 
   return [...getReturnValues(timer), resetTimer, adjustTimer, setTimer, countDownTime, timer];
 };

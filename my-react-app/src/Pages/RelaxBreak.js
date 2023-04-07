@@ -21,7 +21,7 @@ function RelaxBreak() {
 
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
-let {toggleStart, targetMin, start, setTargetMin, setStart, setTimer} = useContext(TimerContext);
+let {toggleStart, targetMin, start, setTargetMin, setStart, setTimer, timer} = useContext(TimerContext);
 
 const [adjustTimer, resetTimer] = useCountdown(targetMin, start, setStart);
 
@@ -64,32 +64,47 @@ const [adjustTimer, resetTimer] = useCountdown(targetMin, start, setStart);
 		</div>,
 	];
 
-	const [run, setRun] = useState(true)
-
-	console.log(run)
 	
+	function asyncUpdate(targetMin) {
+		setTimeout(() => {
+		  setTimer(targetMin * 60 * 1000);
+		}, 1)
+	}
+
+
 	function matchTimer(mainIndex) {
 		console.log("MainIndex" + mainIndex)
 		if (mainIndex <= 5) {
-			//console.log(targetMin)
 			setTargetMin(5)
+			//asyncUpdate(targetMin)
 			setTimer(targetMin * 60 * 1000)
-			//setRun(false)
-			console.log(run)
-			//changeMin()
+			console.log("timer", timer)
 			//adjustTimer(targetMin)
-			//console.log(targetMin)
 		}
 
 		if  (mainIndex > 5) {
 			setTargetMin(8)
-			//console.log(targetMin)
-			//adjustTimer(8)
-			setTimer(targetMin * 60 * 1000) 
-			//setRun(false)
-			console.log(targetMin) 
+			setTimer(targetMin * 60 * 1000)  
 	  }
 	}
+
+	function matchTimer(mainIndex) {
+		console.log("MainIndex" + mainIndex)
+		if (mainIndex <= 5) {
+			setTargetMin(5)
+			setTimer(targetMin * 60 * 1000)
+			console.log("timer", timer)
+			//adjustTimer(targetMin)
+		}
+
+		if  (mainIndex > 5) {
+			setTargetMin(8)
+			setTimer(targetMin * 60 * 1000)  
+	  }
+	}
+
+
+	
 
 	//items.map((item) => (<AliceCarousel onClick={matchTimer(item)}/>))
   
@@ -132,7 +147,7 @@ const [adjustTimer, resetTimer] = useCountdown(targetMin, start, setStart);
 					disableButtonsControls
 					items={items}
 					//onSlideChanged={console.log(mainIndex)}
-					onSlideChanged={matchTimer(mainIndex)}
+					onSlideChange={matchTimer(mainIndex)}
 				/>
 
 				<div className="btn-prev" onClick={slidePrev}>

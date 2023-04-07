@@ -34,6 +34,14 @@ function App(props) {
     console.log(start)
     console.log("toggle clicked")
 }
+ //calc targetMin to milliseconds
+ const countDownTime = targetMin * 60 * 1000
+  console.log(countDownTime)
+
+ //timer stateVar 
+ const [timer, setTimer] = useState(countDownTime);
+  console.log(timer)
+
 
 function logOut(){
   localStorage.removeItem("token");
@@ -43,7 +51,7 @@ function logOut(){
   navigate("/");
 }
 
- let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart };
+ let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart, timer, setTimer, countDownTime };
  let userObj = {userId, setUserId};
 
  const startReminders = async () => {

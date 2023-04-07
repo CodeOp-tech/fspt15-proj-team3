@@ -21,9 +21,9 @@ function RelaxBreak() {
 
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
-let {toggleStart, targetMin, start, setTargetMin, setStart} = useContext(TimerContext);
+let {toggleStart, targetMin, start, setTargetMin, setStart, setTimer} = useContext(TimerContext);
 
-const [adjustTimer, setTimer, countDownTime, resetTimer, timer] = useCountdown(targetMin, start, setStart);
+const [adjustTimer, resetTimer] = useCountdown(targetMin, start, setStart);
 
 	const items = [
 		<div className="item" key={1}>
@@ -64,10 +64,7 @@ const [adjustTimer, setTimer, countDownTime, resetTimer, timer] = useCountdown(t
 		</div>,
 	];
 
-	function changeMin() {
-		countDownTime = targetMin * 60 * 100
-	}
-
+	
 	function matchTimer(mainIndex) {
 		console.log("MainIndex" + mainIndex)
 		if (mainIndex <= 5) {

@@ -10,10 +10,10 @@ import { TimerContext } from "../Hooks/TimerContext";
 const CountdownTimer = () => {
   
 const navigate = useNavigate();
-let {targetMin, setTargetMin, start, setStart} = useContext(TimerContext);
+let {targetMin, setTargetMin, start, setStart, timer, setTimer, countDownTime} = useContext(TimerContext);
 
-const [minutes, seconds, resetTimer, adjustTimer, setTimer, countDownTime, timer] = useCountdown(targetMin, start, setStart);
-//takes min, seconds values adjustTimer func from useCountdown hook
+const [minutes, seconds, resetTimer] = useCountdown(targetMin, start, setStart, timer, setTimer, countDownTime);
+//takes min, seconds values, set & resetTimer func from useCountdown hook
 //NB - need to be included in return statement useEffect
 
   const increaseMin = () => {

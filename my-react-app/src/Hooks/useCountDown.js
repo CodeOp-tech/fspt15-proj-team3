@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 //function which performs countdown calculation
 //passes targetMin & start from CountDownTimer
 
-const useCountdown = (targetMin, start, setStart) => {
+const useCountdown = (targetMin, start, setStart, timer, setTimer, countDownTime) => {
 
 //calc targetMin to milliseconds
-const countDownTime = targetMin * 60 * 1000
-  console.log(countDownTime)
+//const countDownTime = targetMin * 60 * 1000
+ // console.log(countDownTime)
 
 //timer stateVar 
-const [timer, setTimer] = useState(countDownTime);
-  console.log(timer)
+//const [timer, setTimer] = useState(countDownTime);
+ // console.log(timer)
 
 //Restarts break
 //Resets countDownTime (based on targetMin in App.js) and start = false

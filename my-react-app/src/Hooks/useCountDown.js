@@ -17,12 +17,14 @@ const [timer, setTimer] = useState(countDownTime);
 //Used in CountDownTimer comp when timer runs out
 const resetTimer = () => {
     setStart(false)
+    console.log(countDownTime)
     setTimer(countDownTime)
-    console.log("reset clicked")
+    console.log("timer reset", countDownTime)
   }
 
 //Resets countDownTime after in/decrease targetMin in CountDownTimer comp
 const adjustTimer = () => {
+  console.log(countDownTime)
   setTimer(countDownTime)
   console.log(countDownTime)
   console.log("timing adjusted")
@@ -40,7 +42,7 @@ const adjustTimer = () => {
     }
   }, [countDownTime, start, targetMin, timer]);
 
-  return [...getReturnValues(timer), resetTimer, adjustTimer];
+  return [...getReturnValues(timer), resetTimer, adjustTimer, setTimer, countDownTime, timer];
 };
 
 const getReturnValues = (timer) => {

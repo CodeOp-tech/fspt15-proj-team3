@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashBoard from "./Pages/DashBoard";
 import BreakPage from "./Pages/BreakPage";
 import Home from "./Pages/Home"
@@ -20,7 +20,7 @@ import { useCountdown } from "./Hooks/useCountDown";
 function App(props) {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
-  const location = useLocation();
+  let location = useLocation();
   const navigate = useNavigate(); 
   let [token, setToken] = useState(null);
 
@@ -47,12 +47,7 @@ function App(props) {
 
 //const [resetTimer] = useCountdown(targetMin, start, setStart, setTimer, timer, countDownTime);
 
-const reRenderTimer = () => {
-  setStart(false)
-  setTargetMin(1)
-  setTimer(targetMin * 60 * 1000)
-  console.log("timer reset", countDownTime)
-}
+
 
 function logOut(){
   localStorage.removeItem("token");
@@ -99,6 +94,17 @@ const stopReminders = async () => {
   } 
 };
 
+   useEffect(() => {
+ if (location.pathname == "/move" || location.pathname == "/fun") {
+      setStart(false)
+      setTargetMin(1)
+      setTimer(targetMin * 60 * 1000)
+      console.log("timer reset", countDownTime)}
+   }, [location, targetMin])
+
+
+   console.log(location.pathname)
+
 	//Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
 	// useEffect(() => {
@@ -133,7 +139,7 @@ const stopReminders = async () => {
                 </li>
                 <li class="nav-item">
                   <Link to="/move" >
-                    <a className="nav-link active" onClick={()=> reRenderTimer()}>Move</a>
+                    <a className="nav-link active">Move</a>
                   </Link>
                 </li>
                 <li class="nav-item">

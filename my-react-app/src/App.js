@@ -22,6 +22,8 @@ function App(props) {
   const location = useLocation();
   const navigate = useNavigate(); 
   let [token, setToken] = useState(null);
+
+  //Used to fetch email of loggedIn user to start/stopReminder function
   const [userId, setUserId] = useState(0)
 
   //Functions & var related to timer, passed via UseContext/TimerContext

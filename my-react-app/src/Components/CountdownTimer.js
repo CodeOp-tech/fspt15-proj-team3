@@ -10,17 +10,17 @@ import { TimerContext } from "../Hooks/TimerContext";
 const CountdownTimer = () => {
   
 const navigate = useNavigate();
-let {targetMin, setTargetMin, start, setStart, timer, setTimer, countDownTime} = useContext(TimerContext);
+let {targetMin, start, setStart, timer, setTimer, countDownTime} = useContext(TimerContext);
 
 const [minutes, seconds, resetTimer] = useCountdown(targetMin, start, setStart, timer, setTimer, countDownTime);
-//takes min, seconds values, set & resetTimer func from useCountdown hook
+//takes min, seconds values, resetTimer func from useCountdown hook
 //NB - need to be included in return statement useEffect
 
 const asyncIncrease = () => {
   setTimeout(() => {
     setTimer((timer) => timer + (1 * 60 * 1000));
   }, 1);
-  console.log("* min")
+  console.log("+ min")
 };
 
 const asynDescrease = () => {

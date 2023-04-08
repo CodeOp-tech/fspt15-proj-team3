@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 //function which performs countdown calculation
-//passes targetMin & start from CountDownTimer
+//passes targetMin, start, setTimer, CountDownTime from CountDownTimer
 
 const useCountdown = (targetMin, start, setStart, timer, setTimer, countDownTime) => {
 
+//Moved to App.js so siblinh comp can also access
 //calc targetMin to milliseconds
 //const countDownTime = targetMin * 60 * 1000
  // console.log(countDownTime)
@@ -17,20 +18,23 @@ const useCountdown = (targetMin, start, setStart, timer, setTimer, countDownTime
 //Used in CountDownTimer comp when timer runs out
 const resetTimer = () => {
     setStart(false)
-    console.log(countDownTime)
     setTimer(countDownTime)
     console.log("timer reset", countDownTime)
   }
 
-//Resets countDownTime after in/decrease targetMin in CountDownTimer comp
+
+/*
+//Adjusts countDownTime after in/decrease targetMin in CountDownTimer comp
 const adjustTimer = () => {
   console.log(countDownTime)
   setTimer(countDownTime)
   console.log(countDownTime)
   console.log("timing adjusted")
 }
+*/
 
 //setInterval browser API method to calculate the spare time every second(1000 milliseconds).
+//returns time left i.e. timer in min & sec
   useEffect(() => {
     const interval = setInterval(() => {
       if (start)
@@ -42,7 +46,7 @@ const adjustTimer = () => {
     }
   }, [countDownTime, start, targetMin]);
 
-  return [...getReturnValues(timer), resetTimer, adjustTimer, setTimer, countDownTime, timer];
+  return [...getReturnValues(timer), resetTimer, setTimer, timer];
 };
 
 const getReturnValues = (timer) => {

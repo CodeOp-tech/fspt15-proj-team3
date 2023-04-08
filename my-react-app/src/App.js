@@ -15,6 +15,7 @@ import CountdownTimer from "./Components/CountdownTimer";
 import { TimerContext } from "./Hooks/TimerContext";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./Hooks/UserContext";
+import { useCountdown } from "./Hooks/useCountDown";
 
 function App(props) {
   const services = new Services();
@@ -44,6 +45,14 @@ function App(props) {
  const [timer, setTimer] = useState(countDownTime);
   console.log(timer)
 
+//const [resetTimer] = useCountdown(targetMin, start, setStart, setTimer, timer, countDownTime);
+
+const reRenderTimer = () => {
+  setStart(false)
+  setTargetMin(1)
+  setTimer(targetMin * 60 * 1000)
+  console.log("timer reset", countDownTime)
+}
 
 function logOut(){
   localStorage.removeItem("token");
@@ -123,8 +132,8 @@ const stopReminders = async () => {
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link to="/move">
-                    <a className="nav-link active">Move</a>
+                  <Link to="/move" >
+                    <a className="nav-link active" onClick={()=> reRenderTimer()}>Move</a>
                   </Link>
                 </li>
                 <li class="nav-item">

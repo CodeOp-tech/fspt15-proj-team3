@@ -21,7 +21,7 @@ function RelaxBreak() {
 
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
-let {toggleStart, targetMin, start, setTargetMin, setStart, setTimer, timer, countDownTime} = useContext(TimerContext);
+let {toggleStart, targetMin, setTargetMin, setTimer, timer} = useContext(TimerContext);
 
 //const [resetTimer] = useCountdown(targetMin, start, setStart, setTimer, timer, countDownTime);
 
@@ -64,41 +64,35 @@ let {toggleStart, targetMin, start, setTargetMin, setStart, setTimer, timer, cou
 		</div>,
 	];
 
+	//matches targetMin with timing of each video
 	function matchTimer(mainIndex) {
 		console.log("MainIndex" + mainIndex)
 		if (mainIndex === 0) {
 			setTargetMin(4.02)
-			//adjustTimer(targetMin)
 		}
 
 		if (mainIndex === 1) {
 			setTargetMin(5.648)
-			//adjustTimer(targetMin)
 		}
 
 		if (mainIndex === 2) {
 			setTargetMin(5.339)
-			//adjustTimer(targetMin)
 		}
 
 		if (mainIndex === 3) {
 			setTargetMin(4.89)
-			//adjustTimer(targetMin)
 		}
 
 		if (mainIndex === 4) {
 			setTargetMin(2.85)
-			//adjustTimer(targetMin)
 		}
 
 		if (mainIndex === 5) {
 			setTargetMin(3.2)
-			//adjustTimer(targetMin)
 		}
 
 		if (mainIndex === 6) {
 			setTargetMin(8)
-			//adjustTimer(targetMin)
 		}
 	}
 
@@ -118,10 +112,10 @@ let {toggleStart, targetMin, start, setTargetMin, setStart, setTimer, timer, cou
 	};
 
 
+	//updates timer with targetMin set in matchTimer
 	useEffect(()=> {
 			setTimer(targetMin * 60 * 1000)
 			console.log("timer", timer)
-			//adjustTimer(targetMin)
 		}, [mainIndex, targetMin])
 
 	/*

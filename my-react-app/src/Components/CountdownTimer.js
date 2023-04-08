@@ -30,21 +30,6 @@ const asynDescrease = () => {
   console.log("- min")
 };
 
-/*
-  const increaseMin = () => {
-  //setTargetMin(Math.floor(targetMin) + 1)
-  //adjustTimer(targetMin)
-  setTimer(timer + (1 * 60 * 1000))
-  console.log("+ min")
- }
-
-  const decreaseMin = () => {
-  //setTargetMin(Math.floor(targetMin) - 1)
-  //adjustTimer(targetMin)
-  setTimer(timer - (1 * 60 * 1000))
-  console.log("- min")
- }
- */
 
  //when timer runs out triggers resetTimer() from useCountDown hook
  //& navigates to pop-up

@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 //function which performs countdown calculation
-//passes targetMin & start from CountDownTimer
+//passes targetMin, start, setTimer, CountDownTime from CountDownTimer
 
-const useCountdown = (targetMin, start, setStart) => {
+const useCountdown = (targetMin, start, setStart, timer, setTimer, countDownTime) => {
 
+//Moved to App.js so siblinh comp can also access
 //calc targetMin to milliseconds
-const countDownTime = targetMin * 60 * 1000
-  console.log(countDownTime)
+//const countDownTime = targetMin * 60 * 1000
+ // console.log(countDownTime)
 
 //timer stateVar 
-const [timer, setTimer] = useState(countDownTime);
-  console.log(timer)
+//const [timer, setTimer] = useState(countDownTime);
+ // console.log(timer)
 
 //Restarts break
 //Resets countDownTime (based on targetMin in App.js) and start = false
@@ -18,17 +19,22 @@ const [timer, setTimer] = useState(countDownTime);
 const resetTimer = () => {
     setStart(false)
     setTimer(countDownTime)
-    console.log("reset clicked")
+    console.log("timer reset", countDownTime)
   }
 
-//Resets countDownTime after in/decrease targetMin in CountDownTimer comp
+
+/*
+//Adjusts countDownTime after in/decrease targetMin in CountDownTimer comp
 const adjustTimer = () => {
+  console.log(countDownTime)
   setTimer(countDownTime)
   console.log(countDownTime)
   console.log("timing adjusted")
 }
+*/
 
 //setInterval browser API method to calculate the spare time every second(1000 milliseconds).
+//returns time left i.e. timer in min & sec
   useEffect(() => {
     const interval = setInterval(() => {
       if (start)
@@ -38,9 +44,9 @@ const adjustTimer = () => {
      return () => {
       clearInterval(interval)  
     }
-  }, [countDownTime, start, targetMin, timer]);
+  }, [countDownTime, start, targetMin]);
 
-  return [...getReturnValues(timer), resetTimer, adjustTimer];
+  return [...getReturnValues(timer), resetTimer, setTimer, timer];
 };
 
 const getReturnValues = (timer) => {

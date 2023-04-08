@@ -10,27 +10,26 @@ import { TimerContext } from "../Hooks/TimerContext";
 const CountdownTimer = () => {
   
 const navigate = useNavigate();
-let {targetMin, setTargetMin, start, setStart} = useContext(TimerContext);
+let {targetMin, start, setStart, timer, setTimer, countDownTime} = useContext(TimerContext);
 
-const [minutes, seconds, resetTimer, adjustTimer] = useCountdown(targetMin, start, setStart);
-//takes min, seconds values adjustTimer func from useCountdown hook
+const [minutes, seconds, resetTimer] = useCountdown(targetMin, start, setStart, timer, setTimer, countDownTime);
+//takes min, seconds values, resetTimer func from useCountdown hook
 //NB - need to be included in return statement useEffect
 
-  const increaseMin = () => {
-  console.log(targetMin)
-  setTargetMin(Math.floor(targetMin) + 1)
-  adjustTimer(targetMin)
+const asyncIncrease = () => {
+  setTimeout(() => {
+    setTimer((timer) => timer + (1 * 60 * 1000));
+  }, 1);
   console.log("+ min")
-  console.log(targetMin)
- }
+};
 
-  const decreaseMin = () => {
-  console.log(targetMin)
-  setTargetMin(Math.floor(targetMin) - 1)
-  adjustTimer(targetMin)
+const asynDescrease = () => {
+  setTimeout(() => {
+    setTimer((timer) => timer - (1 * 60 *1000));
+  }, 1);
   console.log("- min")
-  console.log(targetMin)
- }
+};
+
 
  //when timer runs out triggers resetTimer() from useCountDown hook
  //& navigates to pop-up
@@ -39,7 +38,10 @@ const [minutes, seconds, resetTimer, adjustTimer] = useCountdown(targetMin, star
   navigate("welldone")
  }
 
- console.log(minutes, seconds)
+ console.log("targetmin" , targetMin)
+ console.log("min & sec" , minutes, seconds)
+ console.log("countdowntime", countDownTime)
+ console.log("timer", timer)
 
 
 if (minutes + seconds <= 0) {
@@ -52,8 +54,8 @@ if (minutes + seconds <= 0) {
        <ShowCounter
         minutes={minutes}
         seconds={seconds}
-        increaseMin={increaseMin}
-        decreaseMin={decreaseMin}
+        increaseMin={asyncIncrease}
+        decreaseMin={asynDescrease}
       /> 
      </div>
     );

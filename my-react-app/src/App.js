@@ -15,6 +15,7 @@ import CountdownTimer from "./Components/CountdownTimer";
 import { TimerContext } from "./Hooks/TimerContext";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./Hooks/UserContext";
+import { useCountdown } from "./Hooks/useCountDown";
 
 function App(props) {
   const services = new Services();
@@ -22,6 +23,8 @@ function App(props) {
   const location = useLocation();
   const navigate = useNavigate(); 
   let [token, setToken] = useState(null);
+
+  //Used to fetch email of loggedIn user to start/stopReminder function
   const [userId, setUserId] = useState(0)
 
   //Functions & var related to timer, passed via UseContext/TimerContext
@@ -34,6 +37,22 @@ function App(props) {
     console.log(start)
     console.log("toggle clicked")
 }
+ //calc targetMin to milliseconds
+ const countDownTime = targetMin * 60 * 1000
+  console.log(countDownTime)
+
+ //timer stateVar 
+ const [timer, setTimer] = useState(countDownTime);
+  console.log(timer)
+
+//const [resetTimer] = useCountdown(targetMin, start, setStart, setTimer, timer, countDownTime);
+
+const reRenderTimer = () => {
+  setStart(false)
+  setTargetMin(1)
+  setTimer(targetMin * 60 * 1000)
+  console.log("timer reset", countDownTime)
+}
 
 function logOut(){
   localStorage.removeItem("token");
@@ -43,7 +62,7 @@ function logOut(){
   navigate("/");
 }
 
- let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart };
+ let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart, timer, setTimer, countDownTime };
  let userObj = {userId, setUserId};
 
  const startReminders = async () => {
@@ -113,8 +132,8 @@ const stopReminders = async () => {
                   </Link>
                 </li>
                 <li class="nav-item">
-                  <Link to="/move">
-                    <a className="nav-link active">Move</a>
+                  <Link to="/move" >
+                    <a className="nav-link active" onClick={()=> reRenderTimer()}>Move</a>
                   </Link>
                 </li>
                 <li class="nav-item">

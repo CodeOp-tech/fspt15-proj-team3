@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import meditating from "../Illustrations/meditating.png";
 import "./RelaxBreak.css";
 import video1 from "../Videos/video1.mp4";
@@ -21,32 +21,32 @@ function RelaxBreak() {
 
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
-let {toggleStart, targetMin, start, setTargetMin} = useContext(TimerContext);
+let {toggleStart, targetMin, setTargetMin, setTimer, timer} = useContext(TimerContext);
 
-const [adjustTimer] = useCountdown(targetMin, start);
+//const [resetTimer] = useCountdown(targetMin, start, setStart, setTimer, timer, countDownTime);
 
 	const items = [
-		<div className="item" key={1}>
+		<div className="item" >
 			<video data-value="1" width="300" controls className="media">
 				<source src={video1} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item" key={2}>
+		<div className="item" >
 			<video data-value="2" width="300" controls className="media">
 				<source src={video2} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item" key= {3}>
+		<div className="item" >
 			<video data-value="3" width="300" controls className="media">
 				<source src={video3} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item" key={4}>
+		<div className="item" >
 			<video data-value="4" width="300" controls className="media">
 				<source src={video4} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item" key={5}>
+		<div className="item" >
 			<video data-value="5" width="300" controls className="media">
 				<source src={video5} type="video/mp4" />
 			</video>
@@ -64,25 +64,39 @@ const [adjustTimer] = useCountdown(targetMin, start);
 		</div>,
 	];
 
+	//matches targetMin with timing of each video
 	function matchTimer(mainIndex) {
 		console.log("MainIndex" + mainIndex)
-		if (mainIndex <= 5) {
-			//console.log(targetMin)
-			setTargetMin(5)
-			//adjustTimer(targetMin)
-			console.log(targetMin)
+		if (mainIndex === 0) {
+			setTargetMin(4.02)
 		}
 
-		else {
+		if (mainIndex === 1) {
+			setTargetMin(5.648)
+		}
+
+		if (mainIndex === 2) {
+			setTargetMin(5.339)
+		}
+
+		if (mainIndex === 3) {
+			setTargetMin(4.89)
+		}
+
+		if (mainIndex === 4) {
+			setTargetMin(2.85)
+		}
+
+		if (mainIndex === 5) {
+			setTargetMin(3.2)
+		}
+
+		if (mainIndex === 6) {
 			setTargetMin(8)
-			//console.log(targetMin)
-			//adjustTimer(8)
-			console.log(targetMin)
-	  }
+		}
 	}
 
-	//items.map((item) => (<AliceCarousel onClick={matchTimer(item)}/>))
-  
+	
 	const [mainIndex, setMainIndex] = useState(0);
 
 	const slideNext = () => {
@@ -98,6 +112,58 @@ const [adjustTimer] = useCountdown(targetMin, start);
 	};
 
 
+	//updates timer with targetMin set in matchTimer
+	useEffect(()=> {
+			setTimer(targetMin * 60 * 1000)
+			console.log("timer", timer)
+		}, [mainIndex, targetMin])
+
+	/*
+	useEffect(()=> {
+		if (mainIndex === 0) {
+			setTargetMin(4.02)
+			setTimer(targetMin * 60 * 1000)
+			console.log("timer", timer)
+			//adjustTimer(targetMin)
+		}
+
+		if (mainIndex === 1) {
+			setTargetMin(5.648)
+			setTimer(targetMin * 60 * 1000)
+			console.log("timer", timer)
+			//adjustTimer(targetMin)
+		}
+
+		if (mainIndex === 2) {
+			setTargetMin(5.339)
+			setTimer(targetMin * 60 * 1000)
+			console.log("timer", timer)
+			//adjustTimer(targetMin)
+		}
+
+		if (mainIndex === 3) {
+			setTargetMin(4.89)
+			setTimer(targetMin * 60 * 1000)
+			console.log("timer", timer)
+			//adjustTimer(targetMin)
+		}
+
+		if (mainIndex === 4) {
+			setTargetMin(2.85)
+			setTimer(targetMin * 60 * 1000)
+			console.log("timer", timer)
+			//adjustTimer(targetMin)
+		}
+
+		if (mainIndex === 5) {
+			setTargetMin(8)
+			setTimer(targetMin * 60 * 1000)
+			console.log("timer", timer)
+			//adjustTimer(targetMin)
+		}
+	}, [mainIndex])
+	
+*/
 	return (
 		<div>
 			<div className="container-relax">
@@ -121,8 +187,7 @@ const [adjustTimer] = useCountdown(targetMin, start);
 					disableDotsControls
 					disableButtonsControls
 					items={items}
-					//onSlideChanged={console.log(mainIndex)}
-					onSlideChanged={matchTimer(mainIndex)}
+					onSlideChange={matchTimer(mainIndex)}
 				/>
 
 				<div className="btn-prev" onClick={slidePrev}>

@@ -157,8 +157,11 @@ const stopReminders = async () => {
               </ul>
             </div>
           </div>
+
+          <div> {userId !== 0 && ( <div> 
           <button onClick={startReminders}> Start </button>
-          <button onClick={stopReminders}> Stop </button>
+          <button onClick={stopReminders}> Stop </button> </div>) }
+          </div>
 
         </nav> :null}
 

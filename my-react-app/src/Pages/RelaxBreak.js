@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import meditating from "../Illustrations/meditating.png";
 import "./RelaxBreak.css";
 import video1 from "../Videos/video1.mp4";
@@ -15,40 +15,38 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import StartButton from "../Components/StartButton";
 import { useContext } from "react";
 import { TimerContext } from "../Hooks/TimerContext";
+import { useCountdown } from "../Hooks/useCountDown";
 
-function RelaxBreak() {
-
+function RelaxBreak() { 
+ 
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
-let {toggleStart, targetMin, setTargetMin} = useContext(TimerContext);
+let {toggleStart, targetMin, setTargetMin, setTimer, timer} = useContext(TimerContext);
 
-const handleDragStart = (e) => {
- e.preventDefault();
- //changeRelaxTimer()
-}
+//const [resetTimer] = useCountdown(targetMin, start, setStart, setTimer, timer, countDownTime);
 
 	const items = [
-		<div className="item" key={1}>
+		<div className="item" >
 			<video data-value="1" width="300" controls className="media">
-				<source src={video1} type="video/mp4" key={1} />
+				<source src={video1} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item" key={2}>
+		<div className="item" >
 			<video data-value="2" width="300" controls className="media">
-				<source src={video2} type="video/mp4" value={2} />
+				<source src={video2} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item" key= {3}>
+		<div className="item" >
 			<video data-value="3" width="300" controls className="media">
 				<source src={video3} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item" key={4}>
+		<div className="item" >
 			<video data-value="4" width="300" controls className="media">
 				<source src={video4} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item" key={5}>
+		<div className="item" >
 			<video data-value="5" width="300" controls className="media">
 				<source src={video5} type="video/mp4" />
 			</video>
@@ -59,7 +57,6 @@ const handleDragStart = (e) => {
 			</video>
 		</div>,
 
-
 		<div className="item">
 			<video data-value="7" width="300" controls className="media">
 				<source src={video7} type="video/mp4" />
@@ -67,19 +64,39 @@ const handleDragStart = (e) => {
 		</div>,
 	];
 
-	let changeRelaxTimer = (e) => {
-		setTargetMin(e.target.value)
-		console.log("video timing set to:", targetMin)
+	//matches targetMin with timing of each video
+	function matchTimer(mainIndex) {
+		console.log("MainIndex" + mainIndex)
+		if (mainIndex === 0) {
+			setTargetMin(4.02)
+		}
+
+		if (mainIndex === 1) {
+			setTargetMin(5.648)
+		}
+
+		if (mainIndex === 2) {
+			setTargetMin(5.339)
+		}
+
+		if (mainIndex === 3) {
+			setTargetMin(4.89)
+		}
+
+		if (mainIndex === 4) {
+			setTargetMin(2.85)
+		}
+
+		if (mainIndex === 5) {
+			setTargetMin(3.2)
+		}
+
+		if (mainIndex === 6) {
+			setTargetMin(8)
+		}
 	}
+
 	
-	function test(item) {
-		console.log(`Clicked ${item.key}`);
-	  }
-	  
-
-	items.map((item) => (<AliceCarousel onClick={test(item)}/>) )
-
-  
 	const [mainIndex, setMainIndex] = useState(0);
 
 	const slideNext = () => {
@@ -95,6 +112,13 @@ const handleDragStart = (e) => {
 	};
 
 
+	//updates timer with targetMin set in matchTimer
+	useEffect(()=> {
+			setTimer(targetMin * 60 * 1000)
+			console.log("timer", timer)
+		}, [mainIndex, targetMin])
+
+	
 	return (
 		<div>
 			<div className="container-relax">
@@ -118,7 +142,7 @@ const handleDragStart = (e) => {
 					disableDotsControls
 					disableButtonsControls
 					items={items}
-					onSlideChange={console.log("test")}
+					onSlideChange={matchTimer(mainIndex)}
 				/>
 
 				<div className="btn-prev" onClick={slidePrev}>

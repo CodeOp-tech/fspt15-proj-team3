@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+import loginimg from "../Illustrations/moshing.png";
+import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../Hooks/UserContext";
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -14,13 +18,14 @@ function Login() {
     email: "",
   });
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setCredentials({ ...credentials, [name]: value });
   };
 
-  const handleChange2 = (e) => {
+  const handleRegisterChange = (e) => {
     const { name, value } = e.target;
     setRegisterUser({ ...registerUser, [name]: value });
   };
@@ -29,7 +34,7 @@ function Login() {
     register();
   };
 
-  const navigate = useNavigate();
+  let { userId, setUserId } = useContext(UserContext);
 
   //user registered
   const login = async () => {
@@ -44,8 +49,11 @@ function Login() {
       if (!result.ok) setError(data.error);
       else {
         //store token locally
-        console.log("login succeed");
+        console.log("login succeed", data.token, data.user_id);
         localStorage.setItem("token", data.token);
+        console.log(data.user_id);
+        setUserId(data.user_id);
+        console.log(userId);
         navigate("/dashboard");
       }
     } catch (error) {
@@ -73,37 +81,51 @@ function Login() {
   };
 
   return (
-    <>
-      <input
-        value={credentials.username}
-        onChange={handleChange}
-        name="username"
-        type="text"
-        className="form-control mb-2"
-        placeholder="Username"
-      />
-      <input
-        value={credentials.password}
-        onChange={handleChange}
-        name="password"
-        type="password"
-        className="form-control mb-2"
-        placeholder="Password"
-      />
-      <button className="btn btn-primary" onClick={login}>
-        Log in
-      </button>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Sign up
-      </button>
+    <div className="container-login">
+      <h4 className="nameapp">BreakTime</h4>
+      <div className="flex">
+        <img className="loginimg" src={loginimg} />
+        <div className="texts">
+          <h1 className="h1login">Log in / Sign Up Now </h1>
+          <h3 className="h3login">Find balance in your life. </h3>
+
+          <input
+            value={credentials.username}
+            onChange={handleLoginChange}
+            name="username"
+            type="text"
+            className="form-control mb-4 inputlogin"
+            placeholder="Username"
+          />
+          <input
+            value={credentials.password}
+            onChange={handleLoginChange}
+            name="password"
+            type="password"
+            className="form-control mb-4 inputlogin"
+            placeholder="Password"
+          />
+
+          <button className="btn btn-primary loginbtn" onClick={login}>
+            Log in
+          </button>
+        </div>
+      </div>
+
+      <div className="container-signup">
+        <h5 className="h5login">Don't have an account? </h5>
+        <button
+          type="button"
+          className="btn btn-primary signupbtn"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Sign up
+        </button>
+      </div>
       <div>
         <div
-          class="modal fade"
+          className="modal fade"
           id="exampleModal"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
@@ -111,77 +133,77 @@ function Login() {
           aria-labelledby="staticBackdropLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body">
-                <div class="mb-3">
-                  <label class="form-label">Name</label>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label className="form-label">Name</label>
                   <input
-                    value={registerUser.first_name}
+                    value={registerUser.firstname}
                     type="name"
-                    class="form-control"
-                    onChange={handleChange2}
+                    className="form-control"
+                    onChange={handleRegisterChange}
                     name="firstname"
                     id="nameSign"
                   />
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">LastName</label>
+                <div className="mb-3">
+                  <label className="form-label">Last Name</label>
                   <input
-                    value={registerUser.last_name}
+                    value={registerUser.lastname}
                     type="name"
-                    class="form-control"
-                    onChange={handleChange2}
+                    className="form-control"
+                    onChange={handleRegisterChange}
                     name="lastname"
                     id="lastNameSign"
                   />
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Username</label>
+                <div className="mb-3">
+                  <label className="form-label">Username</label>
                   <input
                     value={registerUser.username}
                     type="name"
-                    class="form-control"
-                    onChange={handleChange2}
+                    className="form-control"
+                    onChange={handleRegisterChange}
                     name="username"
                     id="userNameSign"
                   />
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Password</label>
+                <div className="mb-3">
+                  <label className="form-label">Password</label>
                   <input
                     value={registerUser.password}
                     type="password"
-                    class="form-control"
-                    onChange={handleChange2}
+                    className="form-control"
+                    onChange={handleRegisterChange}
                     name="password"
                     id="passwordSign"
                   />
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Email address</label>
+                <div className="mb-3">
+                  <label className="form-label">Email address</label>
                   <input
                     value={registerUser.email}
                     type="email"
-                    class="form-control"
-                    onChange={handleChange2}
+                    className="form-control"
+                    onChange={handleRegisterChange}
                     name="email"
                     id="emailSign"
                   />
                 </div>
               </div>
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   onClick={handleSubmit}
                   data-bs-dismiss="modal"
                 >
@@ -192,7 +214,7 @@ function Login() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

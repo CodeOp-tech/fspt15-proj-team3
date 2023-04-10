@@ -1,15 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import DashBoard from "./Pages/DashBoard";
 import BreakPage from "./Pages/BreakPage";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useLocation,
-} from "react-router-dom";
 import Home from "./Pages/Home";
-
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
 import FunBreak from "./Pages/FunBreak";
@@ -21,32 +14,101 @@ import logo from "./Illustrations/logoBreaktime.png";
 import CountdownTimer from "./Components/CountdownTimer";
 import { TimerContext } from "./Hooks/TimerContext";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./Hooks/UserContext";
 
 function App(props) {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
-  const location = useLocation();
-
-  //Functions & var related to timer, passed via UseContext/TimerContext
-  //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
-  //TargetMin & start passed to CountdownTimer comp
-  const [targetMin, setTargetMin] = useState(0.17);
-  const [start, setStart] = useState(false);
-  const toggleStart = () => {
-    setStart(!start);
-    console.log(start);
-    console.log("toggle clicked");
-  };
-
-  let timerObj = { targetMin, setTargetMin, start, setStart, toggleStart };
+  let location = useLocation();
   const navigate = useNavigate();
   let [token, setToken] = useState(null);
+
+  //Used to fetch email of loggedIn user to start/stopReminder function
+  const [userId, setUserId] = useState(0);
+
+  //Functions & var related to timer, passed on to children via UseContext/TimerContext
+  //toggleStart > FunBreak, RelaxBreak, MoveBreak to use StartButton comp
+  //TargetMin, start, countDownTime, timer > CountdownTimer comp for useCountDown hook
+
+  const [targetMin, setTargetMin] = useState(0.17);
+  //calc targetMin to milliseconds
+  const countDownTime = targetMin * 60 * 1000;
+
+  //timer stateVar
+  const [timer, setTimer] = useState(countDownTime);
+
+  const [start, setStart] = useState(false);
+
+  const toggleStart = () => {
+    setStart(!start);
+    console.log("toggle clicked", start);
+  };
+
+  let timerObj = {
+    targetMin,
+    setTargetMin,
+    start,
+    setStart,
+    toggleStart,
+    timer,
+    setTimer,
+    countDownTime,
+  };
+  let userObj = { userId, setUserId };
+
+  //resets timer when user navs to different page (not for relaxbreak as timer is custom set to match video length)
+  useEffect(() => {
+    if (location.pathname == "/move" || location.pathname == "/fun") {
+      setStart(false);
+      setTargetMin(0.17);
+      setTimer(targetMin * 60 * 1000);
+      console.log("timer reset", countDownTime);
+    }
+  }, [location, targetMin]);
+
+  console.log(location.pathname);
 
   function logOut() {
     localStorage.removeItem("token");
     setToken(null);
+    stopReminders();
+    console.log("logged out");
     navigate("/");
   }
+
+  const startReminders = async () => {
+    try {
+      let id = userId;
+      let options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      let results = await fetch(`/reminders-start/${id}`, options);
+      let notification = await results.json();
+      console.log(notification);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const stopReminders = async () => {
+    try {
+      let id = userId;
+      let options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      let results = await fetch(`/reminders-stop//${id}`, options);
+      let notification = await results.json();
+      console.log(notification);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
@@ -72,16 +134,16 @@ function App(props) {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav ms-auto">
+                  <li className="nav-item">
                     <Link to="/dashboard">
                       <a className="nav-link active">Home</a>
                     </Link>
                   </li>
-                  <li class="nav-item">
+                  <li className="nav-item">
                     <Link to="/move">
                       <a className="nav-link active">Move</a>
                     </Link>
@@ -91,43 +153,76 @@ function App(props) {
                       <a className="nav-link active">Relax</a>
                     </Link>
                   </li>
-                  <li class="nav-item">
+                  <li className="nav-item">
                     <Link to="/fun">
                       <a className="nav-link active">Fun</a>
                     </Link>
                   </li>
-                  <li class="nav-item">
-                    <a onClick={() => logOut()} class="bi bi-box-arrow-right">
-                      Log Out
-                    </a>
-                  </li>
+                  {userId !== 0 ? (
+                    <div>
+                      <li className="nav-item">
+                        <a
+                          onClick={() => logOut()}
+                          class="bi bi-box-arrow-right"
+                        >
+                          Log Out
+                        </a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link active" onClick={startReminders}>
+                          {" "}
+                          Start{" "}
+                        </a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link active" onClick={stopReminders}>
+                          {" "}
+                          Stop{" "}
+                        </a>
+                      </li>{" "}
+                    </div>
+                  ) : (
+                    <div>
+                      <li className="nav-item">
+                        <Link to="/">
+                          <a class="bi bi-box-arrow-right">Log In</a>
+                        </Link>
+                      </li>
+                    </div>
+                  )}
+                  )
                 </ul>
               </div>
             </div>
+
+            <div></div>
           </nav>
         ) : null}
 
         <div className="App">
           <TimerContext.Provider value={timerObj}>
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/dashboard" element={<DashBoard />} />
+            <UserContext.Provider value={userObj}>
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/test" element={<Home />} />
+                <Route path="/dashboard" element={<DashBoard />} />
 
-              <Route path="/timer" element={<CountdownTimer />} />
-              <Route path="/welldone" element={<BreakEnd />} />
-              <Route path="/" element={<Login />} />
-              <Route path="/test" element={<Home />} />
-              <Route path="/dashboard" element={<DashBoard />} />
+                <Route path="/timer" element={<CountdownTimer />} />
+                <Route path="/welldone" element={<BreakEnd />} />
+                <Route path="/" element={<Login />} />
+                <Route path="/test" element={<Home />} />
+                <Route path="/dashboard" element={<DashBoard />} />
 
-              <Route path="/fun" element={<FunBreak />} />
-              <Route path="/fun/welldone" element={<BreakEnd />} />
+                <Route path="/fun" element={<FunBreak />} />
+                <Route path="/fun/welldone" element={<BreakEnd />} />
 
-              <Route path="/relax" element={<RelaxBreak />} />
-              <Route path="/relax/welldone" element={<BreakEnd />} />
+                <Route path="/relax" element={<RelaxBreak />} />
+                <Route path="/relax/welldone" element={<BreakEnd />} />
 
-              <Route path="/move" element={<MoveBreak />} />
-              <Route path="/move/welldone" element={<BreakEnd />} />
-            </Routes>
+                <Route path="/move" element={<MoveBreak />} />
+                <Route path="/move/welldone" element={<BreakEnd />} />
+              </Routes>
+            </UserContext.Provider>
           </TimerContext.Provider>
         </div>
       </div>

@@ -114,7 +114,7 @@ const stopReminders = async () => {
       <div>{location.pathname != "/" ?
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/dashboard">
               <img className="logo-img" src={logo} />
             </a>
             <button

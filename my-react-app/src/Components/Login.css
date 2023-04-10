@@ -63,7 +63,7 @@
 .container-signup{
     display: flex;
     justify-content: right;
-    padding-right: 17.5em;
+    padding-right: 15em;
     align-items: baseline;
     
 }
@@ -80,4 +80,19 @@
     border: 1px solid #FDC757;
     color: #262626;
 
+}
+.alogin{
+    color: #FDC757;
+    font-family: 'Inter', sans-serif;  
+    font-weight: 400;
+    font-size: 1.05em;
+    cursor: pointer;
+    display: block;
+    text-align: left;
+    margin-top: 1.2em;
+    margin-left:5.2em;
+   
+}
+.alogin:hover{
+    color: #ffffff;
 }

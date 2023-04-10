@@ -113,7 +113,7 @@ function Login() {
       </div>
 
       <div className="container-signup">
-        <h5 className="h5login">Don't have an account? </h5>
+        <h5 className="h5login">Not a user yet? </h5>
         <button
           type="button"
           className="btn btn-primary signupbtn"
@@ -123,6 +123,10 @@ function Login() {
           Sign up
         </button>
       </div>
+      <Link to="/dashboard">
+        <a className="alogin">Skip for now</a>
+      </Link>
+
       <div>
         <div
           className="modal fade"

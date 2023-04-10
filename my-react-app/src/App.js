@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import DashBoard from "./Pages/DashBoard";
-import BreakPage from "./Pages/BreakPage";
 import Home from "./Pages/Home"
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
@@ -168,10 +167,11 @@ const stopReminders = async () => {
                <div>
                  <li className="nav-item"> 
                  <Link to="/">
-                  <a  class="bi bi-box-arrow-right">Log In</a>
+                  <a  class="bi bi-box-arrow-right login-dash">Log In</a>
                 </Link>
                 </li>
-               </div>})
+               </div>}
+      
               </ul>
             </div>
           </div>

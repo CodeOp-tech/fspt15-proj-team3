@@ -4,6 +4,7 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../Hooks/UserContext";
+import {Link } from "react-router-dom";
 
 function Login() {
 	const [credentials, setCredentials] = useState({
@@ -113,7 +114,7 @@ function Login() {
 			</div>
 
 			<div className="container-signup">
-				<h5 className="h5login">Don't have an account? </h5>
+				<h5 className="h5login">Not a user yet? </h5>
 				<button
 					type="button"
 					className="btn btn-primary signupbtn"
@@ -123,6 +124,11 @@ function Login() {
 					Sign up
 				</button>
 			</div>
+			<Link to="/dashboard">
+			<a className="alogin">Skip for now</a> 
+                  </Link>
+			
+
 			<div>
 				<div
 					className="modal fade"

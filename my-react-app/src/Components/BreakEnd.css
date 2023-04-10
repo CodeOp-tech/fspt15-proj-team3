@@ -1,7 +1,8 @@
 
 .popup-wrapper {
     margin-top: 100px;
-    width: 75%;
+    width: 75vw;
+    height: 75vh;
     display: flex;
     background-color: #363FF2;
     justify-content: center;
@@ -27,7 +28,9 @@
 
 .title {
     font-family: 'Abril Fatface', cursive;
-    margin-top: 1em;  
+    margin-top: 2em; 
+    text-align:center; 
+    font-size: 2.4em;
 }
 
 .p1 {
@@ -40,10 +43,10 @@
 }
 
 .p2 {
-    font-family: 'Helvetica LT Std';
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;  
+    font-weight: 200;
     margin-top: 1em;
-    font-size: 1.1em;
+    font-size: 1.3em;
     text-align: center;
 }
 
@@ -67,10 +70,9 @@
 }
 
 .popup-button {
-    margin-top: 0.1em;
 	background-color: #363FF2;
 	border: 3px solid #FDC758;
-	border-radius: 20px;
+	border-radius: 50px;
 	padding: 10px 15px;
 	color:  #FDC758;
 	font-family: Helvetica, sans-serif;
@@ -80,14 +82,13 @@
 
 .popup-button:hover{
     background-color:  #FDC758;
-	border: 3px solid #FDC758;
+	border: 1px solid #FDC758;
     color: #363FF2;
 }
 
 .popup-img {
     width: 95%;
-    height: 70%;
-    margin-top: 1em;
+    margin-top: 3em;
 }
 
 .button-box{

@@ -31,7 +31,7 @@ function DashBoard() {
         </div>
       </div>
 
-      <div className="features-text">
+      <div className="features-text1">
         <h2 className="features">
           Our <span className="pink-features">Features</span>
         </h2>

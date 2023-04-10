@@ -17,7 +17,7 @@ import { useContext } from "react";
 import { TimerContext } from "../Hooks/TimerContext";
 import { useCountdown } from "../Hooks/useCountDown";
 
-function RelaxBreak() {
+function RelaxBreak() { 
 
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
@@ -118,52 +118,7 @@ let {toggleStart, targetMin, setTargetMin, setTimer, timer} = useContext(TimerCo
 			console.log("timer", timer)
 		}, [mainIndex, targetMin])
 
-	/*
-	useEffect(()=> {
-		if (mainIndex === 0) {
-			setTargetMin(4.02)
-			setTimer(targetMin * 60 * 1000)
-			console.log("timer", timer)
-			//adjustTimer(targetMin)
-		}
-
-		if (mainIndex === 1) {
-			setTargetMin(5.648)
-			setTimer(targetMin * 60 * 1000)
-			console.log("timer", timer)
-			//adjustTimer(targetMin)
-		}
-
-		if (mainIndex === 2) {
-			setTargetMin(5.339)
-			setTimer(targetMin * 60 * 1000)
-			console.log("timer", timer)
-			//adjustTimer(targetMin)
-		}
-
-		if (mainIndex === 3) {
-			setTargetMin(4.89)
-			setTimer(targetMin * 60 * 1000)
-			console.log("timer", timer)
-			//adjustTimer(targetMin)
-		}
-
-		if (mainIndex === 4) {
-			setTargetMin(2.85)
-			setTimer(targetMin * 60 * 1000)
-			console.log("timer", timer)
-			//adjustTimer(targetMin)
-		}
-
-		if (mainIndex === 5) {
-			setTargetMin(8)
-			setTimer(targetMin * 60 * 1000)
-			console.log("timer", timer)
-			//adjustTimer(targetMin)
-		}
-	}, [mainIndex])
 	
-*/
 	return (
 		<div>
 			<div className="container-relax">

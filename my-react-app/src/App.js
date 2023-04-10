@@ -15,7 +15,6 @@ import CountdownTimer from "./Components/CountdownTimer";
 import { TimerContext } from "./Hooks/TimerContext";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./Hooks/UserContext";
-import { useCountdown } from "./Hooks/useCountDown";
 
 function App(props) {
   const services = new Services();
@@ -27,29 +26,41 @@ function App(props) {
   //Used to fetch email of loggedIn user to start/stopReminder function
   const [userId, setUserId] = useState(0)
 
-  //Functions & var related to timer, passed via UseContext/TimerContext
-  //toggleStart passed to FunBreak, RelaxBreak, MoveBreak to use StartButton comp
-  //TargetMin & start passed to CountdownTimer comp
+  //Functions & var related to timer, passed on to children via UseContext/TimerContext
+  //toggleStart > FunBreak, RelaxBreak, MoveBreak to use StartButton comp
+  //TargetMin, start, countDownTime, timer > CountdownTimer comp for useCountDown hook
+  
   const [targetMin, setTargetMin] = useState(0.17)
+  //calc targetMin to milliseconds
+  const countDownTime = targetMin * 60 * 1000
+
+  //timer stateVar 
+  const [timer, setTimer] = useState(countDownTime);
+
   const [start, setStart] = useState(false)
+  
   const toggleStart = () => {
     setStart(!start)
-    console.log(start)
-    console.log("toggle clicked")
-}
- //calc targetMin to milliseconds
- const countDownTime = targetMin * 60 * 1000
-  console.log(countDownTime)
+    console.log("toggle clicked", start)
+  }
 
- //timer stateVar 
- const [timer, setTimer] = useState(countDownTime);
-  console.log(timer)
+  let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart, timer, setTimer, countDownTime };
+  let userObj = {userId, setUserId};
 
-//const [resetTimer] = useCountdown(targetMin, start, setStart, setTimer, timer, countDownTime);
+  //resets timer when user navs to different page (not for relaxbreak as timer is custom set to match video length)
+  useEffect(() => {
+    if (location.pathname == "/move" || location.pathname == "/fun") {
+         setStart(false)
+         setTargetMin(0.17)
+         setTimer(targetMin * 60 * 1000)
+         console.log("timer reset", countDownTime)}
+      }, [location, targetMin])
+   
+   
+  console.log(location.pathname)
+   
 
-
-
-function logOut(){
+ function logOut(){
   localStorage.removeItem("token");
   setToken(null);
   stopReminders()
@@ -57,8 +68,6 @@ function logOut(){
   navigate("/");
 }
 
- let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart, timer, setTimer, countDownTime };
- let userObj = {userId, setUserId};
 
  const startReminders = async () => {
   try {
@@ -94,16 +103,6 @@ const stopReminders = async () => {
   } 
 };
 
-   useEffect(() => {
- if (location.pathname == "/move" || location.pathname == "/fun") {
-      setStart(false)
-      setTargetMin(1)
-      setTimer(targetMin * 60 * 1000)
-      console.log("timer reset", countDownTime)}
-   }, [location, targetMin])
-
-
-   console.log(location.pathname)
 
 	//Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 

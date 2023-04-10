@@ -127,16 +127,16 @@ const stopReminders = async () => {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
                   <Link to="/dashboard">
                     <a className="nav-link active">Home</a>
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <Link to="/move" >
                     <a className="nav-link active">Move</a>
                   </Link>
@@ -146,19 +146,38 @@ const stopReminders = async () => {
                     <a className="nav-link active">Relax</a>
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                   <Link to="/fun">
                     <a className="nav-link active">Fun</a>
                   </Link>
                 </li>
-                <li class="nav-item"> 
+               
+                
+                {userId !== 0 ? (
+                <div>
+                <li className="nav-item"> 
                   <a  onClick={()=> logOut()} class="bi bi-box-arrow-right">Log Out</a>
                 </li>
+
+                <li className="nav-item"> 
+                  <a className="nav-link active" onClick={startReminders}> Start </a> 
+               </li>
+               <li className="nav-item">
+                 <a className="nav-link active" onClick={stopReminders}> Stop </a> 
+               </li> </div>) : 
+               <div>
+                 <li className="nav-item"> 
+                 <Link to="/">
+                  <a  class="bi bi-box-arrow-right">Log In</a>
+                </Link>
+                </li>
+               </div>})
               </ul>
             </div>
           </div>
-          <button onClick={startReminders}> Start </button>
-          <button onClick={stopReminders}> Stop </button>
+
+          <div> 
+          </div>
 
         </nav> :null}
 

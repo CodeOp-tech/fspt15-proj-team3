@@ -1,8 +1,8 @@
-#CodeOp Group Project
+#CodeOp Group Project 3 BreakTime
 
 ## Introduction
 
-The "name App" is an application build with ...
+The "BreakTime " s a guide to the simpler lives we all crave and deserve. is an application build with Express for the backend server, MySQL is the database to hold the information and React 18 for the front end.
 
 ## Setup
 
@@ -27,10 +27,15 @@ The "name App" is an application build with ...
 
 - Run `npm run migrate` in the main folder of this repository, in a new terminal window. This will create a table called 'users' and 'messages' in your database.
 
+### Database schema 
+![Database schema](UsersTable.png)
+
 ### Development
 
 ## Code & Functionality Overview
 
 - **Front End**
+We have 4 pages, First is the home page, and the other three are for different topics in our system, Move = exercises, Relax = meditation videos and Fun we have a Api for funy images and jokes. we have the Log out function to remove the token created and we have timer for each topic
 
 - **Back End**
+We have  Users table, this one we used for create the new users and the users can logIn in our system, our Back end is developed with Express, the other part for back we have reminder for the users in their emails.

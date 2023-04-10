@@ -28,32 +28,32 @@ const handleDragStart = (e) => {
 }
 
 	const items = [
-		<div className="item">
+		<div className="item" key={1}>
 			<video data-value="1" width="300" controls className="media">
-				<source src={video1} type="video/mp4" />
+				<source src={video1} type="video/mp4" key={1} />
 			</video>
 		</div>,
-		<div className="item">
+		<div className="item" key={2}>
 			<video data-value="2" width="300" controls className="media">
-				<source src={video2} type="video/mp4" />
+				<source src={video2} type="video/mp4" value={2} />
 			</video>
 		</div>,
-		<div className="item">
+		<div className="item" key= {3}>
 			<video data-value="3" width="300" controls className="media">
 				<source src={video3} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item">
+		<div className="item" key={4}>
 			<video data-value="4" width="300" controls className="media">
 				<source src={video4} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item">
+		<div className="item" key={5}>
 			<video data-value="5" width="300" controls className="media">
 				<source src={video5} type="video/mp4" />
 			</video>
 		</div>,
-		<div className="item">
+		<div className="item" key={6}>
 			<video data-value="6" width="300" controls className="media">
 				<source src={video6} type="video/mp4" />
 			</video>
@@ -67,12 +67,19 @@ const handleDragStart = (e) => {
 		</div>,
 	];
 
+	let changeRelaxTimer = (e) => {
+		setTargetMin(e.target.value)
+		console.log("video timing set to:", targetMin)
+	}
+	
+	function test(item) {
+		console.log(`Clicked ${item.key}`);
+	  }
+	  
 
-  let changeRelaxTimer = (e) => {
-	setTargetMin(e.target.value)
-	console.log("video timing set to:", targetMin)
-}
+	items.map((item) => (<AliceCarousel onClick={test(item)}/>) )
 
+  
 	const [mainIndex, setMainIndex] = useState(0);
 
 	const slideNext = () => {
@@ -111,7 +118,7 @@ const handleDragStart = (e) => {
 					disableDotsControls
 					disableButtonsControls
 					items={items}
-					onClick={changeRelaxTimer}
+					onSlideChange={console.log("test")}
 				/>
 
 				<div className="btn-prev" onClick={slidePrev}>

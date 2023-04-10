@@ -36,7 +36,7 @@ width: 50%;
     background-color: #FDC757;
     border-radius: 50px;
     width: 75%;
-    height: 850px;
+    height: 100%;
 
     padding-bottom: 4em;
     margin: 0 auto;
@@ -124,4 +124,7 @@ width: 50%;
     padding: 8px 15px;
     margin-bottom:5px;
     margin-top:5px;
+}
+.modal-body{
+    white-space: pre-wrap;
 }

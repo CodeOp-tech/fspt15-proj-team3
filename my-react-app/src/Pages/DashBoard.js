@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 function DashBoard() {
 
-
   return (
     <div className="App">
       <div className="wrapper">
@@ -62,6 +61,7 @@ function DashBoard() {
             <button className="button-dash">HAHAHA!</button>
           </Link>
         </div>
+        
       </div>
     </div>
   );

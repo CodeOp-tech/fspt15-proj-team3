@@ -1,17 +1,33 @@
 import React from "react";
 
-const setReminders = async () => {
+const startReminders = async () => {
   try {
-    let results = await fetch("/reminders-start", {
+    let options = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    let notification = await results.json();
-    console.log(notification)
+      "Content-Type": "application/json"},
     }
-  catch (error) {
+    let results = await fetch("/reminders-start", options)
+    let notification = await results.json();
+    console.log(notification.message)
+    }
+    catch (error) {
+    console.log(error)
+  } 
+};
+
+const stopReminders = async () => {
+  try {
+    let options = {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json"},
+    }
+    let results = await fetch("/reminders-stop", options)
+    let notification = await results.json();
+    console.log(notification.message)
+    }
+    catch (error) {
     console.log(error)
   } 
 };
@@ -23,7 +39,8 @@ function Home() {
 
       <p> Home Page </p>
       
-      <button onClick={setReminders}> Reminders </button>
+      <button onClick={startReminders}> Start Reminders </button>
+      <button onClick={stopReminders}> Stop Reminders </button>
 
 
     </div>

@@ -67,13 +67,6 @@ function FunBreak() {
         dogs={dogs}
       />
 
-      <span>
-        <button className="funButtons">Jokes</button>
-        <button className="funButtons">Facts</button>
-        <button className="funButtons">Quotes</button>
-        <button className="funButtons">Cats</button>
-        <button className="funButtons">Dogs</button>
-      </span>
       <br />
       <button className="funRandom" onClick={() => getData()}>
         SHOW RANDOM

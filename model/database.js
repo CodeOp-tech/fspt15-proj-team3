@@ -9,7 +9,7 @@ const DB_NAME = process.env.DB_NAME;
 const con = mysql.createConnection({
   host: DB_HOST || "127.0.0.1",
   user: DB_USER || "root",
-  port: 3307,
+  port: 3306,
   password: DB_PASS,
   database: DB_NAME || "project",
   multipleStatements: true,
@@ -36,8 +36,6 @@ con.connect(function (err) {
   image VARCHAR(5000) not null,
   api VARCHAR(5000) not null,
   PRIMARY KEY (id));`;
-
- 
 
   con.query(usersSql, function (err, result) {
     if (err) throw err;

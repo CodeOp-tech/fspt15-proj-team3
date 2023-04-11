@@ -71,6 +71,7 @@ function App(props) {
     localStorage.removeItem("token");
     setToken(null);
     stopReminders();
+    setUserId(0)
     console.log("logged out");
     navigate("/");
   }

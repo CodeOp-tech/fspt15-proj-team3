@@ -155,15 +155,18 @@ const stopReminders = async () => {
                 {userId !== 0 ? (
                 <div>
                 <li className="nav-item"> 
-                  <a  onClick={()=> logOut()} class="bi bi-box-arrow-right">Log Out</a>
+                  <a  onClick={()=> logOut()} class="bi bi-box-arrow-right logout-dash">Log Out</a>
                 </li>
 
-                <li className="nav-item"> 
-                  <a className="nav-link active" onClick={startReminders}> Start </a> 
-               </li>
-               <li className="nav-item">
-                 <a className="nav-link active" onClick={stopReminders}> Stop </a> 
-               </li> </div>) : 
+                <div className="reminders">
+                  <p>REMINDERS:</p>
+
+                 
+                  <a className="nav-link active reminder" onClick={startReminders}> START </a> /
+               
+               
+                 <a className="nav-link active reminder" onClick={stopReminders}>STOP </a> 
+                </div></div>) : 
                <div>
                  <li className="nav-item"> 
                  <Link to="/">

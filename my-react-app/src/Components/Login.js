@@ -213,7 +213,7 @@ function Login() {
 									onClick={handleSubmit}
 									data-bs-dismiss="modal"
 								>
-									Create Acount
+									Create Account
 								</button>
 							</div>
 						</div>

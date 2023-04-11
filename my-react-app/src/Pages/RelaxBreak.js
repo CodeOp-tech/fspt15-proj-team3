@@ -68,7 +68,7 @@ let {toggleStart, targetMin, setTargetMin, setTimer, timer} = useContext(TimerCo
 	function matchTimer(mainIndex) {
 		console.log("MainIndex" + mainIndex)
 		if (mainIndex === 0) {
-			setTargetMin(4.02)
+			setTargetMin(4.017)
 		}
 
 		if (mainIndex === 1) {
@@ -80,7 +80,7 @@ let {toggleStart, targetMin, setTargetMin, setTimer, timer} = useContext(TimerCo
 		}
 
 		if (mainIndex === 3) {
-			setTargetMin(4.89)
+			setTargetMin(4.82)
 		}
 
 		if (mainIndex === 4) {
@@ -88,11 +88,11 @@ let {toggleStart, targetMin, setTargetMin, setTimer, timer} = useContext(TimerCo
 		}
 
 		if (mainIndex === 5) {
-			setTargetMin(3.2)
+			setTargetMin(3.34)
 		}
 
 		if (mainIndex === 6) {
-			setTargetMin(8)
+			setTargetMin(8.819)
 		}
 	}
 

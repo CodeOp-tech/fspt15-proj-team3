@@ -117,81 +117,73 @@ function App(props) {
 
   {
     return (
-      <div>
-        {location.pathname != "/" ? (
-          <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
-            <div className="container-fluid">
-              <a className="navbar-brand" href="/dashboard">
-                <img className="logo-img" src={logo} />
-              </a>
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav ms-auto">
-                  <li className="nav-item">
-                    <Link to="/dashboard">
-                      <a className="nav-link active">Home</a>
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/move">
-                      <a className="nav-link active">Move</a>
-                    </Link>
-                  </li>
-                  <li class="nav-item">
-                    <Link to="/relax">
-                      <a className="nav-link active">Relax</a>
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/fun">
-                      <a className="nav-link active">Fun</a>
-                    </Link>
-                  </li>
 
-                  {userId !== 0 ? (
-                    <div>
-                      <li className="nav-item">
-                        <a
-                          onClick={() => logOut()}
-                          class="bi bi-box-arrow-right"
-                        >
-                          Log Out
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link active" onClick={startReminders}>
-                          {" "}
-                          Start{" "}
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link active" onClick={stopReminders}>
-                          {" "}
-                          Stop{" "}
-                        </a>
-                      </li>{" "}
-                    </div>
-                  ) : (
-                    <div>
-                      <li className="nav-item">
-                        <Link to="/">
-                          <a class="bi bi-box-arrow-right login-dash">Log In</a>
-                        </Link>
-                      </li>
-                    </div>
-                  )}
-                </ul>
-              </div>
+      <div>{location.pathname != "/" ?
+        <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="/dashboard">
+              <img className="logo-img" src={logo} />
+            </a>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                  <Link to="/dashboard">
+                    <a className="nav-link active">Home</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/move" >
+                    <a className="nav-link active">Move</a>
+                  </Link>
+                </li>
+                <li class="nav-item">
+                  <Link to="/relax">
+                    <a className="nav-link active">Relax</a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/fun">
+                    <a className="nav-link active">Fun</a>
+                  </Link>
+                </li>
+               
+                
+                {userId !== 0 ? (
+                <div>
+                <li className="nav-item"> 
+                  <a  onClick={()=> logOut()} class="bi bi-box-arrow-right logout-dash">Log Out</a>
+                </li>
+
+                <div className="reminders">
+                  <p>REMINDERS:</p>
+
+                 
+                  <a className="nav-link active reminder" onClick={startReminders}> START </a> /
+               
+               
+                 <a className="nav-link active reminder" onClick={stopReminders}>STOP </a> 
+                </div></div>) : 
+               <div>
+                 <li className="nav-item"> 
+                 <Link to="/">
+                  <a  class="bi bi-box-arrow-right login-dash">Log In</a>
+                </Link>
+                </li>
+               </div>}
+      
+              </ul>
+
             </div>
 
             <div></div>

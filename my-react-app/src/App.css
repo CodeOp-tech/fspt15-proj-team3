@@ -137,6 +137,7 @@ a.nav-link:hover{
 }
 .login-dash{
   padding: 8px 6px;
+  cursor:pointer;
   color: #FE6665;
   font-size: 1em;
   position: relative;
@@ -155,3 +156,39 @@ a.nav-link:hover{
   left: 0;
 }
 
+.logout-dash{
+  cursor:pointer;
+  padding: 8px 6px;
+  color: #FE6665;
+  font-size: 1.2em;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  transition: 0.5s;
+
+}
+.logout-dash::after{
+    content: "";
+    width: 90%;
+  top: 95%;
+  height: 3px;
+
+}
+
+.reminders{
+  position: absolute;
+  right: 0;
+  padding-right: 2.6em;
+  display: flex;
+  font-weight: 600;
+  color: #262626;
+}
+.reminder{
+  color: #363FF2 !important;
+
+  text-decoration: none;
+  position: relative;
+  display: block;
+  padding-top: 0px;
+  cursor:pointer;
+}

@@ -127,99 +127,101 @@ function Login() {
         <a className="alogin">Skip for now</a>
       </Link>
 
-      <div>
-        <div
-          className="modal fade"
-          id="exampleModal"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body">
-                <div className="mb-3">
-                  <label className="form-label">Name</label>
-                  <input
-                    value={registerUser.firstname}
-                    type="name"
-                    className="form-control"
-                    onChange={handleRegisterChange}
-                    name="firstname"
-                    id="nameSign"
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Last Name</label>
-                  <input
-                    value={registerUser.lastname}
-                    type="name"
-                    className="form-control"
-                    onChange={handleRegisterChange}
-                    name="lastname"
-                    id="lastNameSign"
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Username</label>
-                  <input
-                    value={registerUser.username}
-                    type="name"
-                    className="form-control"
-                    onChange={handleRegisterChange}
-                    name="username"
-                    id="userNameSign"
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Password</label>
-                  <input
-                    value={registerUser.password}
-                    type="password"
-                    className="form-control"
-                    onChange={handleRegisterChange}
-                    name="password"
-                    id="passwordSign"
-                  />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Email address</label>
-                  <input
-                    value={registerUser.email}
-                    type="email"
-                    className="form-control"
-                    onChange={handleRegisterChange}
-                    name="email"
-                    id="emailSign"
-                  />
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={handleSubmit}
-                  data-bs-dismiss="modal"
-                >
-                  Create Acount
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+
+			<div>
+				<div
+					className="modal fade"
+					id="exampleModal"
+					data-bs-backdrop="static"
+					data-bs-keyboard="false"
+					tabindex="-1"
+					aria-labelledby="staticBackdropLabel"
+					aria-hidden="true"
+				>
+					<div className="modal-dialog">
+						<div className="modal-content">
+							<div className="modal-header">
+								<button
+									type="button"
+									className="btn-close"
+									data-bs-dismiss="modal"
+									aria-label="Close"
+								></button>
+							</div>
+							<div className="modal-body">
+								<div className="mb-3">
+									<label className="form-label">Name</label>
+									<input
+										value={registerUser.firstname}
+										type="name"
+										className="form-control"
+										onChange={handleRegisterChange}
+										name="firstname"
+										id="nameSign"
+									/>
+								</div>
+								<div className="mb-3">
+									<label className="form-label">Last Name</label>
+									<input
+										value={registerUser.lastname}
+										type="name"
+										className="form-control"
+										onChange={handleRegisterChange}
+										name="lastname"
+										id="lastNameSign"
+									/>
+								</div>
+								<div className="mb-3">
+									<label className="form-label">Username</label>
+									<input
+										value={registerUser.username}
+										type="name"
+										className="form-control"
+										onChange={handleRegisterChange}
+										name="username"
+										id="userNameSign"
+									/>
+								</div>
+								<div className="mb-3">
+									<label className="form-label">Password</label>
+									<input
+										value={registerUser.password}
+										type="password"
+										className="form-control"
+										onChange={handleRegisterChange}
+										name="password"
+										id="passwordSign"
+									/>
+								</div>
+								<div className="mb-3">
+									<label className="form-label">Email address</label>
+									<input
+										value={registerUser.email}
+										type="email"
+										className="form-control"
+										onChange={handleRegisterChange}
+										name="email"
+										id="emailSign"
+									/>
+								</div>
+							</div>
+							<div className="modal-footer">
+								<button
+									type="button"
+									className="btn btn-secondary"
+									onClick={handleSubmit}
+									data-bs-dismiss="modal"
+								>
+									Create Account
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+
 }
 
 export default Login;

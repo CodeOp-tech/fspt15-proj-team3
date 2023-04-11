@@ -118,7 +118,8 @@ function App(props) {
   {
     return (
 
-      <div>{location.pathname != "/" ?
+      <div>
+        {location.pathname != "/" ? (
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
             <a className="navbar-brand" href="/dashboard">
@@ -183,10 +184,8 @@ function App(props) {
                </div>}
       
               </ul>
-
-            </div>
-
-            <div></div>
+              </div>
+            </div> 
           </nav>
         ) : null}
 

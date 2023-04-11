@@ -37,8 +37,6 @@ con.connect(function (err) {
   api VARCHAR(5000) not null,
   PRIMARY KEY (id));`;
 
- 
-
   con.query(usersSql, function (err, result) {
     if (err) throw err;
     console.log("Table creation `users` was successful!");

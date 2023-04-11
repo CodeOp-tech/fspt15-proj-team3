@@ -3,7 +3,7 @@ import FunContainer from "../Components/FunContainer";
 import funBreakImg from "../Illustrations/funBreak.png";
 import Services from "../services";
 import CountdownTimer from "../Components/CountdownTimer";
-import { useContext } from 'react'; 
+import { useContext } from "react";
 import { TimerContext } from "../Hooks/TimerContext";
 import StartButton from "../Components/StartButton";
 import "./FunBreak.css";
@@ -40,29 +40,24 @@ function FunBreak() {
     getData();
   }, []);
 
-
-//To use CountDownTimer start/pause button in StartButton comp
-//Passed from App.js as via useContext
-let {toggleStart} = useContext(TimerContext);
+  //To use CountDownTimer start/pause button in StartButton comp
+  //Passed from App.js as via useContext
+  let { toggleStart } = useContext(TimerContext);
 
   return (
     <div className="App">
-
-    <div className="wrapper2">
-      <p className="funTitle">
-        Almost everything will work again
-        if you unplug it for a few minutes.
-        <br />
-      Including
+      <div className="wrapper2">
+        <p className="funTitle">
+          Almost everything will work again if you unplug it for a few minutes.
+          <br />
+          Including
           <span className="fontColor"> you</span>.
-      
-      </p>
-      <img className="funBreakImg" src={funBreakImg} />
+        </p>
+        <img className="funBreakImg" src={funBreakImg} />
       </div>
 
-      <CountdownTimer/>
-      <StartButton
-				toggleStart={toggleStart}/>
+      <CountdownTimer />
+      <StartButton toggleStart={toggleStart} />
 
       <FunContainer
         jokes={jokes}
@@ -72,6 +67,7 @@ let {toggleStart} = useContext(TimerContext);
         dogs={dogs}
       />
 
+      <br />
       <button className="funRandom" onClick={() => getData()}>
         SHOW RANDOM
       </button>

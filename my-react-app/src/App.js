@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DashBoard from "./Pages/DashBoard";
-import Home from "./Pages/Home"
+import Home from "./Pages/Home";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import Services from "./services";
@@ -19,98 +19,105 @@ function App(props) {
   const services = new Services();
   const [isShown, setIsShown] = useState(false);
   let location = useLocation();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   let [token, setToken] = useState(null);
 
   //Used to fetch email of loggedIn user to start/stopReminder function
-  const [userId, setUserId] = useState(0)
+  const [userId, setUserId] = useState(0);
 
   //Functions & var related to timer, passed on to children via UseContext/TimerContext
   //toggleStart > FunBreak, RelaxBreak, MoveBreak to use StartButton comp
   //TargetMin, start, countDownTime, timer > CountdownTimer comp for useCountDown hook
-  
-  const [targetMin, setTargetMin] = useState(0.17)
-  //calc targetMin to milliseconds
-  const countDownTime = targetMin * 60 * 1000
 
-  //timer stateVar 
+  const [targetMin, setTargetMin] = useState(0.17);
+  //calc targetMin to milliseconds
+  const countDownTime = targetMin * 60 * 1000;
+
+  //timer stateVar
   const [timer, setTimer] = useState(countDownTime);
 
-  const [start, setStart] = useState(false)
-  
-  const toggleStart = () => {
-    setStart(!start)
-    console.log("toggle clicked", start)
-  }
+  const [start, setStart] = useState(false);
 
-  let timerObj = {targetMin, setTargetMin, start, setStart, toggleStart, timer, setTimer, countDownTime };
-  let userObj = {userId, setUserId};
+  const toggleStart = () => {
+    setStart(!start);
+    console.log("toggle clicked", start);
+  };
+
+  let timerObj = {
+    targetMin,
+    setTargetMin,
+    start,
+    setStart,
+    toggleStart,
+    timer,
+    setTimer,
+    countDownTime,
+  };
+  let userObj = { userId, setUserId };
 
   //resets timer when user navs to different page (not for relaxbreak as timer is custom set to match video length)
   useEffect(() => {
     if (location.pathname == "/move" || location.pathname == "/fun") {
-         setStart(false)
-         setTargetMin(0.17)
-         setTimer(targetMin * 60 * 1000)
-         console.log("timer reset", countDownTime)}
-      }, [location, targetMin])
-   
-   
-  console.log(location.pathname)
-   
-
- function logOut(){
-  localStorage.removeItem("token");
-  setToken(null);
-  stopReminders()
-  console.log("logged out")
-  navigate("/");
-}
-
-
- const startReminders = async () => {
-  try {
-    let id = userId
-    let options = {
-      method: "POST",
-      headers: {
-      "Content-Type": "application/json"},
+      setStart(false);
+      setTargetMin(0.17);
+      setTimer(targetMin * 60 * 1000);
+      console.log("timer reset", countDownTime);
     }
-    let results = await fetch(`/reminders-start/${id}`, options)
-    let notification = await results.json();
-    console.log(notification)
+  }, [location, targetMin]);
+
+  console.log(location.pathname);
+
+  function logOut() {
+    localStorage.removeItem("token");
+    setToken(null);
+    stopReminders();
+    console.log("logged out");
+    navigate("/");
+  }
+
+  const startReminders = async () => {
+    try {
+      let id = userId;
+      let options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      let results = await fetch(`/reminders-start/${id}`, options);
+      let notification = await results.json();
+      console.log(notification);
+    } catch (error) {
+      console.log(error);
     }
-    catch (error) {
-    console.log(error)
-  } 
-};
+  };
 
-const stopReminders = async () => {
-  try {
-    let id = userId
-    let options = {
-      method: "POST",
-      headers: {
-      "Content-Type": "application/json"},
+  const stopReminders = async () => {
+    try {
+      let id = userId;
+      let options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      let results = await fetch(`/reminders-stop//${id}`, options);
+      let notification = await results.json();
+      console.log(notification);
+    } catch (error) {
+      console.log(error);
     }
-    let results = await fetch(`/reminders-stop//${id}`, options)
-    let notification = await results.json();
-    console.log(notification)
-    }
-    catch (error) {
-    console.log(error)
-  } 
-};
+  };
 
+  //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
 
-	//Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
-
-	// useEffect(() => {
-	//   services.getFacts();
-	// }, []);
+  // useEffect(() => {
+  //   services.getFacts();
+  // }, []);
 
   {
     return (
+
       <div>{location.pathname != "/" ?
         <nav className="navbar navbar-expand-lg bg-body-tertiary d-flex">
           <div className="container-fluid">
@@ -176,41 +183,41 @@ const stopReminders = async () => {
                </div>}
       
               </ul>
+
             </div>
-          </div>
 
-          <div> 
-          </div>
-
-        </nav> :null}
+            <div></div>
+          </nav>
+        ) : null}
 
         <div className="App">
-    
-        <TimerContext.Provider value={timerObj}>
-        <UserContext.Provider value={userObj}>
-           <Routes>
+          <TimerContext.Provider value={timerObj}>
+            <UserContext.Provider value={userObj}>
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/test" element={<Home />} />
+                <Route path="/dashboard" element={<DashBoard />} />
 
-            <Route path="/" element={<Login />} />
-            <Route path="/test" element={<Home/>} />
-            <Route path="/dashboard" element={<DashBoard />} />
+                <Route path="/timer" element={<CountdownTimer />} />
+                <Route path="/welldone" element={<BreakEnd />} />
+                <Route path="/" element={<Login />} />
+                <Route path="/test" element={<Home />} />
+                <Route path="/dashboard" element={<DashBoard />} />
 
-							<Route path="/timer" element={<CountdownTimer />} />
-							<Route path="/welldone" element={<BreakEnd />} />
+                <Route path="/fun" element={<FunBreak />} />
+                <Route path="/fun/welldone" element={<BreakEnd />} />
 
-							<Route path="/fun" element={<FunBreak />} />
-							<Route path="/fun/welldone" element={<BreakEnd />} />
+                <Route path="/relax" element={<RelaxBreak />} />
+                <Route path="/relax/welldone" element={<BreakEnd />} />
 
-							<Route path="/relax" element={<RelaxBreak />} />
-							<Route path="/relax/welldone" element={<BreakEnd />} />
-
-							<Route path="/move" element={<MoveBreak />} />
-							<Route path="/move/welldone" element={<BreakEnd />} />
-						</Routes>
-          </UserContext.Provider>
-					</TimerContext.Provider>
-				</div>
-			</div>
-		);
-	}
+                <Route path="/move" element={<MoveBreak />} />
+                <Route path="/move/welldone" element={<BreakEnd />} />
+              </Routes>
+            </UserContext.Provider>
+          </TimerContext.Provider>
+        </div>
+      </div>
+    );
+  }
 }
 export default App;

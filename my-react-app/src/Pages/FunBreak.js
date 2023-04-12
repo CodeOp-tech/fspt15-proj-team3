@@ -42,7 +42,7 @@ function FunBreak() {
 
   //To use CountDownTimer start/pause button in StartButton comp
   //Passed from App.js as via useContext
-  let { toggleStart } = useContext(TimerContext);
+  let { toggleStart, start } = useContext(TimerContext);
 
   return (
     <div className="App">
@@ -57,7 +57,8 @@ function FunBreak() {
       </div>
 
       <CountdownTimer />
-      <StartButton toggleStart={toggleStart} />
+      <StartButton toggleStart={toggleStart}
+                    start={start} />
 
       <FunContainer
         jokes={jokes}

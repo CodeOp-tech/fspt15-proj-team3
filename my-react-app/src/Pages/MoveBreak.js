@@ -103,7 +103,7 @@ function MoveBreak() {
 
 	//To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
-let {toggleStart} = useContext(TimerContext);
+let {toggleStart, start} = useContext(TimerContext);
 
 
 	return (
@@ -117,6 +117,7 @@ let {toggleStart} = useContext(TimerContext);
 			</div>
 			<CountdownTimer/>
       <StartButton
+	            start={start}
 				toggleStart={toggleStart}/>
 			<div className="activities-container">
 				<div className="left-cont">

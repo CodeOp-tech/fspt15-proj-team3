@@ -21,7 +21,7 @@ function RelaxBreak() {
  
 //To use CountDownTimer start/pause button in StartButton comp
 //Passed from App.js as via useContext
-let {toggleStart, targetMin, setTargetMin, setTimer, timer} = useContext(TimerContext);
+let {toggleStart, targetMin, setTargetMin, setTimer, timer, start} = useContext(TimerContext);
 
 //const [resetTimer] = useCountdown(targetMin, start, setStart, setTimer, timer, countDownTime);
 
@@ -131,7 +131,8 @@ let {toggleStart, targetMin, setTargetMin, setTimer, timer} = useContext(TimerCo
 			</div>
 			<div>
 				<CountdownTimer />
-				<StartButton toggleStart={toggleStart} />
+				<StartButton toggleStart={toggleStart}
+				             start={start} />
 			</div>
 
 			<div className="container"></div>

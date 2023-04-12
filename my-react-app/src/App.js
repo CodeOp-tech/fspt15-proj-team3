@@ -53,19 +53,19 @@ function App(props) {
     setTimer,
     countDownTime,
   };
-  let userObj = { userId, setUserId };
+  let userObj = { userId, setUserId, logOut };
 
   //resets timer when user navs to different page (not for relaxbreak as timer is custom set to match video length)
   useEffect(() => {
     if (location.pathname == "/move" || location.pathname == "/fun") {
       setStart(false);
-      setTargetMin(0.17);
+      setTargetMin(2);
       setTimer(targetMin * 60 * 1000);
       console.log("timer reset", countDownTime);
     }
   }, [location, targetMin]);
 
-  console.log(location.pathname);
+  console.log(location.pathname); 
 
   function logOut() {
     localStorage.removeItem("token");

@@ -2,7 +2,9 @@
 
 ## Introduction
 
-BreakTime is an app that helps you take break between work. It send you an email reminder when it's time to take a break and provides activity suggestions to help you unwind. It is built with Express for the backend server, MySQL is the database to hold the information and React for the front end.
+BreakTime is an app that helps you take breaks between work. It sends an email reminder when it's time to take a break and provides activity suggestions to help you unwind. 
+
+It is built with Express for the backend server, MySQL is the database to hold the information and React for the front end.
 
 ## Setup
 

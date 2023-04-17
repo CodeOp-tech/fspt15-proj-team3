@@ -1,10 +1,12 @@
-#CodeOp Group Project 3 BreakTime
+# Group Project - BreakTime
 
 ## Introduction
 
-BreakTime is an app that helps you take breaks between work. It sends an email reminder when it's time to take a break and provides activity suggestions to help you unwind. 
+BreakTime is an app that helps you take breaks between work. It sends an email reminder when it's time to take a break, allows you to set a timer and provides activity suggestions to help you unwind. 
 
-It is built with Express for the backend server, MySQL is the database to hold the information and React for the front end.
+## Technologies
+
+It is built with Express for the backend server, MySQL for the database, React for the front end.
 
 ## Setup
 
@@ -37,7 +39,22 @@ It is built with Express for the backend server, MySQL is the database to hold t
 ## Code & Functionality Overview
 
 - **Front End**
-We have 4 pages, First is the home page, and the other three are for different topics in our system, Move = exercises, Relax = meditation videos and Fun we have a Api for funy images and jokes. we have the Log out function to remove the token created and we have timer for each topic
+This project includes Pages, Components, Hooks/ReactContexts and Local Files (i.e. videos, images)
+
+Pages:
+  - Login/Registration
+  - DashBoard
+  - FunBreak
+  - RelaxBreak
+  - MoveBreak
+
+Components:
+  - 
+ 
+Hooks/ReactContexts: 
+  - 
+ 
+
 
 - **Back End**
-We have  Users table, this one we used for create the new users and the users can logIn in our system, our Back end is developed with Express, the other part for back we have reminder for the users in their emails.
+

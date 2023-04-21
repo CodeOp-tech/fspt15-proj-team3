@@ -9,11 +9,11 @@ BreakTime is an app that helps you take breaks between work. It sends an email r
 It is built with Express for the backend server, MySQL for the database, React for the front end. It uses API Ninja, Cats API and Dogs API to fetch data and images for the FunBreak category. 
 
 You can read more about each API:
-- API Ninja's / Facts [here] (https://api-ninjas.com/api/facts)
-- API Ninja's / Quotes [here] (https://api-ninjas.com/api/quotes)
-- API Ninja's / Jokes [here] (https://api-ninjas.com/api/jokes)
-- Cats API [here] (https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t)
-- Dogs API [here] (https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=8FfZAkNzs)
+- API Ninja's / Facts [here](https://api-ninjas.com/api/facts)
+- API Ninja's / Quotes [here](https://api-ninjas.com/api/quotes)
+- API Ninja's / Jokes [here](https://api-ninjas.com/api/jokes)
+- Cats API [here](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t)
+- Dogs API [here](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=8FfZAkNzs)
 
 ## Setup
 

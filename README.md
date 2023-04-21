@@ -4,6 +4,8 @@
 
 BreakTime is an app that helps you take breaks between work. It sends an email reminder when it's time to take a break, allows you to set a timer and provides activity suggestions to help you unwind. 
 
+This is a Code-Op Group project developed with @monicalopez1991, @LouiseB96 and @gabriela-caeiro 🤍
+
 ## Technologies
 
 It is built with Express for the backend server, MySQL for the database, React for the front end. It uses API Ninja, Cats API and Dogs API to fetch data and images for the FunBreak category. 

@@ -1,6 +1,6 @@
 # Group Project - BreakTime
 
-![This is an image] (./my-react-app/src/illustrations/logoBreaktime)
+![This is an image] (./logoBreaktime.png)
 
 ## Introduction
 

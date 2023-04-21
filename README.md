@@ -28,11 +28,12 @@ It is built with Express for the backend server, MySQL for the database, React f
   DB_PASS=YOURPASSWORD
   SUPER_SECRET=shhhhhhhhh
 ```
-
 - Run `npm run migrate` in the main folder of this repository, in a new terminal window. This will create a table called 'users'
 
-### Database schema 
-
+- Notes about users table:
+  - `id` -- This column is generated automatically in the database. It serves as the primary key for the table.
+  - `email` -- This column holds user's email. This will be used to send reminders.
+  - `password` -- This column holds an encrypted password.
 
 ### Development
 
@@ -63,6 +64,11 @@ This project includes Pages, Components, Hooks/ReactContexts and Local Files (i.
 - useCountDown
  
 - **Back End**
+ - The project uses `users` MySQL table to store user info for user login and sending reminder emails.
+ - `api.js` includes all the router function for login.
+ - `index.js` includes all of the router functions for scheduling and sending reminders.
+ - The project uses **nodemailer** and **node-cron** modules for scheduling and sending email reminders. You can read more about nodemailer [here](https://nodemailer.com/about/) and node-cron [here] (https://www.npmjs.com/package/node-cron)
+
 
 
 

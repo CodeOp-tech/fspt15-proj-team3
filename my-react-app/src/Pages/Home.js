@@ -1,5 +1,5 @@
 import React from "react";
-import "./DashBoard.css";
+import "./Home.css";
 import illustration from "../Illustrations/zombieing.png";
 import relax from "../Illustrations/relax.png";
 import move from "../Illustrations/move.png";

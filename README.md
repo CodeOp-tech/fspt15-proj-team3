@@ -1,6 +1,6 @@
 # Group Project - BreakTime
 
-![This is an image] (./logoBreaktime.png)
+![This is an image](./logoBreaktime.png)
 
 ## Introduction
 

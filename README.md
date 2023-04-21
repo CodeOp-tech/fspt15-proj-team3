@@ -29,7 +29,7 @@ It is built with Express for the backend server, MySQL for the database, React f
   SUPER_SECRET=shhhhhhhhh
 ```
 
-- Run `npm run migrate` in the main folder of this repository, in a new terminal window. This will create a table called 'users' and 'messages' in your database.
+- Run `npm run migrate` in the main folder of this repository, in a new terminal window. This will create a table called 'users'
 
 ### Database schema 
 ![Database schema](UsersTable.png)

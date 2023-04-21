@@ -1,5 +1,7 @@
 # Group Project - BreakTime
 
+![This is an image] (./my-react-app/src/illustrations/logoBreaktime)
+
 ## Introduction
 
 BreakTime is an app that helps you take breaks between work. It sends an email reminder when it's time to take a break, allows you to set a timer and provides activity suggestions to help you unwind. 

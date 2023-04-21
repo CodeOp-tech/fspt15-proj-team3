@@ -1,4 +1,4 @@
-const db = require("./model/helper");
+const db = require("../model/helper");
 require("dotenv").config();
 
 async function ensureUserExists(req, res, next) {

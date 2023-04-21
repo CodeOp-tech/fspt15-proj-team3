@@ -3,7 +3,7 @@ import { NavLink} from "react-router-dom";
 import "./BreakEnd.css"
 import illustration from "../Illustrations/zombieing.png"
 import { useContext } from "react";
-import { UserContext } from "../Hooks/UserContext";
+import { UserContext } from "../Hooks&Context/UserContext";
 
 const BreakEnd = () => {
 
@@ -32,7 +32,7 @@ const BreakEnd = () => {
        <div>
        <div className='button-box'>
         <NavLink
-        to="/dashboard">
+        to="/home">
         <button 
         className='popup-button popup-button-outline'
         > EXLORE MORE !</button>
@@ -52,7 +52,7 @@ const BreakEnd = () => {
 
         <div className='button-box'>
         <NavLink
-        to="/dashboard">
+        to="/home">
         <button
          className='popup-button popup-button-outline'
          onClick={logOut}

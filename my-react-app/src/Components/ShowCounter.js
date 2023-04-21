@@ -4,7 +4,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DateTimeDisplay from './DateTimeDisplay';
 import { useContext } from 'react'; 
-import { TimerContext } from "../Hooks/TimerContext";
+import { TimerContext } from "../Hooks&Context/TimerContext";
 import "./CountDownTimer.css";
 
 const ShowCounter = ({minutes, seconds, increaseMin, decreaseMin}) => {

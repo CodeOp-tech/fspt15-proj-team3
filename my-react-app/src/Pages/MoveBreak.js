@@ -11,7 +11,7 @@ import image6 from "../MoveImages/highKnees.png";
 import image7 from "../MoveImages/lungeJumps.png";
 import CountdownTimer from "../Components/CountdownTimer";
 import { useContext } from 'react'; 
-import { TimerContext } from "../Hooks/TimerContext";
+import { TimerContext } from "../Hooks&Context/TimerContext";
 import StartButton from "../Components/StartButton";
 
 function MoveBreak() {

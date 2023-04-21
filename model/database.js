@@ -28,25 +28,9 @@ con.connect(function (err) {
   email VARCHAR(255) not null,
   PRIMARY KEY (id));`;
 
-  let messagesSql = `DROP TABLE if exists messages; 
-  CREATE TABLE messages(id INT NOT NULL AUTO_INCREMENT, 
-  name VARCHAR(255) not null,
-  category VARCHAR(255) not null, 
-  content VARCHAR(5000) not null,
-  image VARCHAR(5000) not null,
-  api VARCHAR(5000) not null,
-  PRIMARY KEY (id));`;
-
   con.query(usersSql, function (err, result) {
     if (err) throw err;
     console.log("Table creation `users` was successful!");
-
-    console.log("Closing...");
-  });
-
-  con.query(messagesSql, function (err, result) {
-    if (err) throw err;
-    console.log("Table creation `messages` was successful!");
 
     console.log("Closing...");
   });

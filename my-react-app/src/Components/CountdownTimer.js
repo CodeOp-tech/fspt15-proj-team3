@@ -1,10 +1,10 @@
 import {React} from 'react';
 import ShowCounter from './ShowCounter';
 import "./CountDownTimer.css";
-import { useCountdown } from '../Hooks/useCountDown';
+import { useCountdown } from '../Hooks&Context/useCountDown';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react'; 
-import { TimerContext } from "../Hooks/TimerContext";
+import { TimerContext } from "../Hooks&Context/TimerContext";
 //Parent component that renders ShowCounter or Navs to BreakEnd if timer < 0
 
 const CountdownTimer = () => {

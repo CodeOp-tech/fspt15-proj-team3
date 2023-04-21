@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import DashBoard from "./Pages/DashBoard";
 import Home from "./Pages/Home";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
@@ -11,9 +10,9 @@ import BreakEnd from "./Components/BreakEnd";
 import Login from "./Components/Login";
 import logo from "./Illustrations/logoBreaktime.png";
 import CountdownTimer from "./Components/CountdownTimer";
-import { TimerContext } from "./Hooks/TimerContext";
+import { TimerContext } from "./Hooks&Context/TimerContext";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "./Hooks/UserContext";
+import { UserContext } from "./Hooks&Context/UserContext";
 
 function App(props) {
   const services = new Services();
@@ -110,12 +109,6 @@ function App(props) {
     }
   };
 
-  //Added useEffect to test API calls on page load, this can be removed when we have components that can call it instead!
-
-  // useEffect(() => {
-  //   services.getFacts();
-  // }, []);
-
   {
     return (
 
@@ -140,7 +133,7 @@ function App(props) {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <Link to="/dashboard">
+                  <Link to="/home">
                     <a className="nav-link active">Home</a>
                   </Link>
                 </li>
@@ -195,14 +188,12 @@ function App(props) {
             <UserContext.Provider value={userObj}>
               <Routes>
                 <Route path="/" element={<Login />} />
-                <Route path="/test" element={<Home />} />
-                <Route path="/dashboard" element={<DashBoard />} />
+                <Route path="/home" element={<Home />} />
 
                 <Route path="/timer" element={<CountdownTimer />} />
                 <Route path="/welldone" element={<BreakEnd />} />
                 <Route path="/" element={<Login />} />
-                <Route path="/test" element={<Home />} />
-                <Route path="/dashboard" element={<DashBoard />} />
+                <Route path="/home" element={<Home />} />
 
                 <Route path="/fun" element={<FunBreak />} />
                 <Route path="/fun/welldone" element={<BreakEnd />} />

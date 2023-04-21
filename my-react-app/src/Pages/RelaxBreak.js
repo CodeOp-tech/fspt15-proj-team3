@@ -14,8 +14,8 @@ import CountdownTimer from "../Components/CountdownTimer";
 import "react-alice-carousel/lib/alice-carousel.css";
 import StartButton from "../Components/StartButton";
 import { useContext } from "react";
-import { TimerContext } from "../Hooks/TimerContext";
-import { useCountdown } from "../Hooks/useCountDown";
+import { TimerContext } from "../Hooks&Context/TimerContext";
+import { useCountdown } from "../Hooks&Context/useCountDown";
 
 function RelaxBreak() { 
  

@@ -4,7 +4,7 @@ import funBreakImg from "../Illustrations/funBreak.png";
 import Services from "../services";
 import CountdownTimer from "../Components/CountdownTimer";
 import { useContext } from "react";
-import { TimerContext } from "../Hooks/TimerContext";
+import { TimerContext } from "../Hooks&Context/TimerContext";
 import StartButton from "../Components/StartButton";
 import "./FunBreak.css";
 import { Link } from "react-router-dom";

@@ -5,8 +5,7 @@ let cron = require('node-cron');
 const db = require("../model/helper");
 require("dotenv").config();
 let HTML_TEMPLATE = require("../email-template")
-var cors = require('cors')
-var ensureUserLoggedIn = require("../EnsureUserLoggedIn")
+var ensureUserLoggedIn = require("../guards/EnsureUserLoggedIn")
 
 const EM_PASS = process.env.EM_PASS; // this is the app password key to use my google account as "sender"
 const message = "Time to take a break!"
@@ -21,41 +20,11 @@ let transporter = nodemailer.createTransport({
   }
 }); 
 
-/*
-const reminderEveryMin = cron.schedule('* * * * *', () => {
-  transporter.sendMail({
-    from: 'melecouvreur@gmail.com',
-    to: 'melecouvreur@gmail.com',
-    subject: 'Hello - Break Reminder!',
-    text: message,
-    html: HTML_TEMPLATE(message),
-}, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Reminder email sent every min:' + info.response);
-        }
-    });
-  });
-*/
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.send('index', { title: 'Express' });
 });
-/*
-//START Reminders. Old Route.
-router.post('/reminders-start', async (req, res) => {
-  reminderEveryMin.start();
-  return res.json({ message: 'Started' });
-});
 
-//STOP Reminders. Old Route. 
-router.post('/reminders-stop', async (req, res) => {
-  reminderEveryMin.stop();
-  return res.json({ message: 'Stopped' });
-});
-*/
 //Private route for logged in users only. To test ensureUserLoggedin. Not working
 router.get("/private", ensureUserLoggedIn, (req, res) => {
   let id = req.user_id

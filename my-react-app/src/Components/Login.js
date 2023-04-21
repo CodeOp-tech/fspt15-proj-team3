@@ -3,7 +3,7 @@ import loginimg from "../Illustrations/moshing.png";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "../Hooks/UserContext";
+import { UserContext } from "../Hooks&Context/UserContext";
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -54,7 +54,7 @@ function Login() {
         console.log(data.user_id);
         setUserId(data.user_id);
         console.log(userId);
-        navigate("/dashboard");
+        navigate("/home");
       }
     } catch (error) {
       console.log(error);
@@ -123,7 +123,7 @@ function Login() {
           Sign up
         </button>
       </div>
-      <Link to="/dashboard">
+      <Link to="/home">
         <a className="alogin">Skip for now</a>
       </Link>
 

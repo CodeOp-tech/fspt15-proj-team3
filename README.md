@@ -32,7 +32,7 @@ It is built with Express for the backend server, MySQL for the database, React f
 - Run `npm run migrate` in the main folder of this repository, in a new terminal window. This will create a table called 'users'
 
 ### Database schema 
-![Database schema](UsersTable.png)
+
 
 ### Development
 
@@ -41,20 +41,28 @@ It is built with Express for the backend server, MySQL for the database, React f
 - **Front End**
 This project includes Pages, Components, Hooks/ReactContexts and Local Files (i.e. videos, images)
 
-Pages:
-  - Login/Registration
-  - DashBoard
-  - FunBreak
-  - RelaxBreak
-  - MoveBreak
+**Pages:**
+- Home
+- FunBreak
+- RelaxBreak
+- MoveBreak
 
-Components:
-  - 
+**Components:**
+- Login
+- BreakEnd
+- FunContainer
+- FunDisplayBox
+- ShowCounter
+- CountDownTimer
+- DateTimeDisplay
+- StartButton
  
-Hooks/ReactContexts: 
-  - 
+**Hooks/ReactContexts:** 
+- TimerContext
+- UserContext
+- useCountDown
  
-
-
 - **Back End**
+
+
 

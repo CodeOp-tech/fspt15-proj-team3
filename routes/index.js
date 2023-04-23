@@ -10,6 +10,8 @@ var ensureUserLoggedIn = require("../guards/EnsureUserLoggedIn")
 const EM_PASS = process.env.EM_PASS; // this is the app password key to use my google account as "sender"
 const message = "Time to take a break!"
 
+//reusable transporter object containing email address and pw
+//from which to send emails
 let transporter = nodemailer.createTransport({
   service: 'gmail',
   host: "smtp.gmail.com",
@@ -43,6 +45,7 @@ router.post('/test-start', ensureUserLoggedIn, async (req, res, next) => {
     console.log(result.data[0].email)
     
     const reminder = cron.schedule('* * * * *', () => {
+      //sendMail function, passing mailOptions object as param
       transporter.sendMail({
         from: 'melecouvreur@gmail.com',
         to: `${result.data[0].email}`,

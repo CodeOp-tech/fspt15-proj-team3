@@ -29,6 +29,7 @@ function App(props) {
   //TargetMin, start, countDownTime, timer > CountdownTimer comp for useCountDown hook
 
   const [targetMin, setTargetMin] = useState(0.17);
+  
   //calc targetMin to milliseconds
   const countDownTime = targetMin * 60 * 1000;
 

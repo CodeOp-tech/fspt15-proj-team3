@@ -4,14 +4,6 @@ import { useEffect, useState } from 'react';
 
 const useCountdown = (targetMin, start, setStart, timer, setTimer, countDownTime) => {
 
-//Moved to App.js so siblinh comp can also access
-//calc targetMin to milliseconds
-//const countDownTime = targetMin * 60 * 1000
- // console.log(countDownTime)
-
-//timer stateVar 
-//const [timer, setTimer] = useState(countDownTime);
- // console.log(timer)
 
 //Restarts break
 //Resets countDownTime (based on targetMin in App.js) and start = false
@@ -21,17 +13,6 @@ const resetTimer = () => {
     setTimer(countDownTime)
     console.log("timer reset", countDownTime)
   }
-
-
-/*
-//Adjusts countDownTime after in/decrease targetMin in CountDownTimer comp
-const adjustTimer = () => {
-  console.log(countDownTime)
-  setTimer(countDownTime)
-  console.log(countDownTime)
-  console.log("timing adjusted")
-}
-*/
 
 //setInterval browser API method to calculate the spare time every second(1000 milliseconds).
 //returns time left i.e. timer in min & sec

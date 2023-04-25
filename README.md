@@ -1,6 +1,6 @@
 # Group Project - BreakTime
 
-![This is an image] (./logoBreaktime.png)
+![This is an image](./logoBreaktime.png)
 
 ## Introduction
 
@@ -8,9 +8,19 @@ BreakTime is an app that helps you take breaks between work. It sends an email r
 
 You can find a live version [here](https://breaktime.herokuapp.com/)
 
+This is a Code-Op Group project developed with @monicalopez1991, @LouiseB96 and @gabriela-caeiro 🤍
+
+
 ## Technologies
 
-It is built with Express for the backend server, MySQL for the database, React for the front end.
+It is built with Express for the backend server, MySQL for the database, React for the front end. It uses API Ninja, Cats API and Dogs API to fetch data and images for the FunBreak category. 
+
+You can read more about each API:
+- API Ninja's / Facts [here](https://api-ninjas.com/api/facts)
+- API Ninja's / Quotes [here](https://api-ninjas.com/api/quotes)
+- API Ninja's / Jokes [here](https://api-ninjas.com/api/jokes)
+- Cats API [here](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t)
+- Dogs API [here](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=8FfZAkNzs)
 
 ## Setup
 
@@ -32,11 +42,12 @@ It is built with Express for the backend server, MySQL for the database, React f
   DB_PASS=YOURPASSWORD
   SUPER_SECRET=shhhhhhhhh
 ```
-
 - Run `npm run migrate` in the main folder of this repository, in a new terminal window. This will create a table called 'users'
 
-### Database schema 
-
+- Notes about users table:
+  - `id` -- This column is generated automatically in the database. It serves as the primary key for the table.
+  - `email` -- This column holds user's email. This will be used to send reminders.
+  - `password` -- This column holds an encrypted password.
 
 ### Development
 
@@ -65,8 +76,20 @@ This project includes Pages, Components, Hooks/ReactContexts and Local Files (i.
 - TimerContext
 - UserContext
 - useCountDown
+
+**Local Files:** 
+- Illustrations
+- MoveImages
+- RelaxVideos
  
 - **Back End**
+ - The project uses `users` MySQL table to store user info for user login and sending reminder emails.
+ - `api.js` includes all the router function for login.
+ - `index.js` includes all of the router functions for scheduling and sending reminders.
+ - `services.js` includes all code to fetch data from the external API for FunBreak category.
+ - The project uses **nodemailer** and **node-cron** modules for scheduling and sending email reminders. You can read more about nodemailer [here](https://nodemailer.com/about/) and node-cron [here](https://www.npmjs.com/package/node-cron)
 
 
+
+## Thank you!
 
